@@ -1,0 +1,12 @@
+{
+	"comment": [
+		"login :number - 0 로그인 전 / 1 로그인 후",
+		"chance :number - 0 참여완료 / 1 참여가능",
+		"isOneDay :boolean - true 1일 1회 응모, false 기간 중 1회 응모",
+		"result :number - 1 성공 / 그 외 실패"
+	],
+	"login": 1,
+	"chance": 1,
+	"isOneDay": true,
+	"result": 1
+}

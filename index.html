@@ -1,0 +1,1779 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+
+	<title>엔터식스 쇼핑몰 PC</title>
+
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/fonts.css">
+	<style>
+		*{box-sizing:border-box; margin:0; padding:0; vertical-align:top; color:inherit; font:inherit; letter-spacing:inherit;}
+		a{display:inline-block; text-decoration:none;}
+		ol,ul,li{list-style: none;}
+		li{position: relative;}
+		img{border:0;}
+		html,
+		body{min-width:1200px; background:#fff;}
+		html{color:#000; font:12px/1 "Nanum Gothic",sans-serif;}
+		body{overflow-y:scroll; position:relative; padding-bottom:100px;}
+		h1{margin-bottom:30px; padding:25px 0; background:#00999d; color:#fff; font-weight:700; font-size:40px; text-align:center;}
+		h2{font-weight:700; font-size:15px;}
+		.text_color{color:#ff621d;}
+		.text_color2{color:#24aef2;}
+		.text_color3{color:#973af3;}
+		.text_color4{color:#04aa37;}
+		.text_color5{color:#e622ba;}
+		.text_color6{color:#ee1111;}
+
+		#mm_view{margin:0 auto; width:1400px;}
+
+		.mm_tab-menu{}
+		.mm_tab-menu ul{padding:1px 0 0 1px;}
+		.mm_tab-menu ul > li{float:left; margin:-1px 0 0 -1px;}
+		.mm_tab-menu ul > li > .btn_tab{padding:0px 15px; border:1px solid #999; background:#f5f5f5; color:#999; font-size:14px; line-height:45px}
+		.mm_tab-menu ul > li > .btn_tab.__tab-on{background:#fff; color: #202020; font-weight:700;}
+
+		.mm_tab-item{margin-top:-1px; padding:10px; border:1px solid #999;}
+
+		li li{padding-left:30px;}
+		.item-depth1 > li{margin-bottom:5px; border:1px solid #ddd;}
+		.item-depth2 > li:nth-child(even) {background:#fafafa;}
+		.item-depth2 ul:before{display:block; position:absolute; top:35px; bottom:10px; left:40px; border-left:1px solid #ddd; content:"";}
+		.item-depth2 .mm_box-flex{border-top:1px solid #f4f4f4;}
+
+		.mm_box-flex{-webkit-align-items:center; align-items:center; padding:8px 0px; line-height:18px;}
+		.mm_box-flex:hover{background:#dfdfdf;}
+		.mm_box-flex div{padding:0 10px;font-size:13px; text-align:center;}
+		.mm_box-flex div.text_name{-webkit-flex:1; flex:1; border-left:0; text-align:left;}
+		.mm_box-flex div.text_link{width:350px; font-weight:700;}
+		.mm_box-flex div:nth-child(3){width:100px;}
+		.mm_box-flex div:nth-child(4){width:400px;}
+		.mm_box-flex del{color:#aaa;}
+
+		.text_tag{display:inline-block; padding:0 5px; height:22px; border:1px solid #ee1111; border-radius:3px; background:#fff; color:#ee1111; font-size:12px; line-height:20px;}
+		.text_tag.__tag_develop__,
+		.text_tag.__tag_complete__{border-color:#04aa37; color:#04aa37;}
+		.text_tag.__tag_working__{border-color:#558eda; color:#558eda;}
+		.text_tag.__tag_checking__{border-color:#973af3; color:#973af3;}
+		.text_tag.__tag_remove__{border-color:#aaa; color:#aaa;}
+	</style>
+
+	<!-- 스크립트 -->
+	<script src="js/libs/jquery-3.3.1.slim.min.js"></script>
+	<script src="js/libs/underscore-1.9.1.min.js"></script>
+	<script src="js/app_common.js"></script>
+	<script>
+		$(function() {
+
+			var $tag = $('.text_tag');
+			var counts = { _complete: 0, _develop: 0, _working: 0, _checking: 0, _ready: 0, _remove: 0 };
+
+			$tag.each(function() {
+
+				var $this = $(this);
+				var $a = $this.closest('a');
+				var _class = $this.attr('class');
+
+				if (/complete/i.test(_class)) {
+					counts._complete++;
+					$this.html('완료');
+				}
+				else if (/develop/i.test(_class)) {
+					counts._develop++;
+					$this.html('개발가능');
+				}
+				else if (/working/i.test(_class)) {
+					counts._working++;
+					$this.html('작업중');
+				}
+				else if (/checking/i.test(_class)) {
+					counts._checking++;
+					$this.html('검수중');
+				}
+				else if (/remove/i.test(_class)) {
+					counts._remove++;
+					$this.html('삭제');
+				}
+				else {
+					counts._ready++;
+					$this.html('미작업');
+					return;
+				}
+
+				$a.attr({ 'href': 'html/' + $a.find('.text_link').text(),
+					'target': function(__index, __value) {
+
+						return (__value) ? __value : '_blank';
+
+					}
+				});
+
+			});
+
+			console.log('총 페이지 수: ' + $tag.length);
+			console.log('완료: ' + counts._complete);
+			console.log('개발가능(완료 전): ' + counts._develop);
+			console.log('삭제: ' + counts._remove);
+			console.log('검수중: ' + counts._checking);
+			console.log('작업중: ' + counts._working);
+			console.log('미작업: ' + counts._ready);
+
+		});
+	</script>
+</head>
+<body>
+	<div id="mm_view">
+		<h1>엔터식스 쇼핑몰 PC</h1>
+		<div class="mm_tab">
+			<nav class="mm_tab-menu">
+				<ul>
+					<li><a href="javscript:void(0)" class="btn_tab __tab-on">템플릿/에러/메인/검색</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">로그인/회원가입</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">마이페이지</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">장바구니/주문결제</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">고객센터</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">카테고리/상품상세</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">브랜드</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">이벤트/혜택/기획전/바로접속</a></li>
+					<li><a href="javscript:void(0)" class="btn_tab">약관/정책</a></li>
+				</ul>
+			</nav>
+
+			<!--
+				(D) 1depth Ul은 div.mm_tab-item로 감싸서 사용합니다.
+				depth별 주석 표시는 편의상 3depth만 표시합니다.
+				아래 상태에 따라 text_tag 요소를 변경합니다.
+					미작업 - <span class="text_tag"></span>
+					완료 - <span class="text_tag __tag_complete__"></span>
+				상태가 완료일 경우 스크립트로 a요소에 href 속성이 추가됩니다.
+				해당 Depth에 링크가 없을경우 .text_name을 제외한 나머지 div 요소를 삭제합니다.
+			 -->
+
+			<!-- 템플릿/에러/메인/검색 -->
+			<div class="mm_tab-item __tab-on">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>템플릿</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">템플릿 기본</div>
+									<div class="text_link">_template.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>
+										작업이 진행되면서 내용이 업데이트 됩니다.<br>
+										서브헤더는 메인페이지 헤더와 전체카테고리 부분이 다릅니다.<br>
+										<br>
+										헤더 검색영역 샘플적용<br>
+										최상단 띠배너 샘플적용
+									</div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">템플릿 서브</div>
+									<div class="text_link">_templateSub.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>
+										(상태) 헤더영역 - 로그인 전<br>
+										(상태) 헤더 검색영역 - 오토컴플리트 내용없음<br>
+										(상태) 사이드영역 - 슬라이드 롤링없음, 바로접속 OFF, 최근본상품 없음
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>에러</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">403</div>
+									<div class="text_link">error403.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">404</div>
+									<div class="text_link">error404.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">500</div>
+									<div class="text_link">error500.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">서비스점검</div>
+									<div class="text_link">errorService.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">트래픽</div>
+									<div class="text_link">errorTraffic.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">리뉴얼</div>
+									<div class="text_link">errorRenewal.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>메인</h2></div>
+							<div class="text_link">main.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div>-</div>
+						</a>
+						<ul class="item-depth3">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(팝업) 레이어팝업</div>
+								</a>
+								<ul class="item-depth4">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(팝업) 이미지 레이어팝업</div>
+											<div class="text_link">_popup_customLayer_image.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>-</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(팝업) 텍스트 레이어팝업</div>
+											<div class="text_link">_popup_customLayer_text.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>-</div>
+										</a>
+									</li>
+								</ul>
+							</li>
+
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(팝업) 윈도우팝업</div>
+									<div class="text_link">_popup_customWindow.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>-</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 템플릿/에러/메인/검색 -->
+
+			<!-- 로그인/회원가입 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>로그인</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">로그인/비회원(주문조회)</div>
+									<div class="text_link">login.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>(모달) 계정연결</div>
+								</a>
+
+								<!-- 로그인 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 계정연결</div>
+											<div class="text_link">_modal_loginAccount.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>SNS마다 텍스트 변경 필요</div>
+										</a>
+									</li>
+								</ul>
+								<!--// 로그인 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">로그인/비회원주문하기</div>
+									<div class="text_link">login_order.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>(모달) 계정연결</div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">아이디찾기(개인/외국인)</div>
+									<div class="text_link">findID.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 아이디찾기 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">아이디찾기완료</div>
+											<div class="text_link">findIDComplete.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 아이디찾기 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">비밀번호찾기(개인/외국인)</div>
+									<div class="text_link">findPW.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 비밀번호찾기 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">비밀번호찾기완료</div>
+											<div class="text_link">findPWComplete.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">비밀번호재설정</div>
+											<div class="text_link">findPWReset.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 비밀번호찾기 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">비밀번호변경안내</div>
+									<div class="text_link">changePW.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>회원가입</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">본인인증</div>
+									<div class="text_link">joinVerify.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">약관동의</div>
+									<div class="text_link">joinAgreement.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 약관동의 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 구매이용 약관</div>
+											<div class="text_link">_modal_joinTermsUse.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 개인정보수집 약관</div>
+											<div class="text_link">_modal_joinTermsPrivary.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 개인정보취급위탁 약관</div>
+											<div class="text_link">_modal_joinTermsTrust.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 제3자정보제공 약관</div>
+											<div class="text_link">_modal_joinTermsThird.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+								</ul>
+								<!--// 약관동의 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">정보입력</div>
+									<div class="text_link">joinInfo.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">가입완료</div>
+									<div class="text_link">joinComplete.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">네이버회원가입</div>
+									<div class="text_link">joinNaver.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(모달) 추가정보입력</div>
+									<div class="text_link">_modal_joinAddInfo.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 로그인/회원가입 -->
+
+			<!-- 마이페이지 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>마이페이지</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">메인</div>
+								</a>
+
+								<!-- 마이페이지메인 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">vip</div>
+											<div class="text_link">mypageMain_vip.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 회원등급혜택</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">gold</div>
+											<div class="text_link">mypageMain_gold.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 회원등급혜택</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">silver</div>
+											<div class="text_link">mypageMain_silver.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 회원등급혜택</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">family</div>
+											<div class="text_link">mypageMain_family.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 회원등급혜택</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">mypageMain_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 회원등급혜택</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 회원등급혜택</div>
+											<div class="text_link">_modal_mypageBenefit.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 마이페이지메인 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">나의쇼핑정보</div>
+								</a>
+
+								<!-- 나의쇼핑정보 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">주문현황</div>
+											<div class="text_link">mypageShoppingHistory.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												(모달) 후기작성<br>
+												(상태) 일반상품, 쿠프상품
+											</div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">주문상세</div>
+													<div class="text_link">mypageShoppingHistoryDetail.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+												<ul class="item-depth5">
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">(모달) 영수증보기</div>
+															<div class="text_link">_modal_receipt.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 후기작성</div>
+													<div class="text_link">_modal_productReview.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>상품상세 후기작성모달과 동일</div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">찜한상품</div>
+											<div class="text_link">mypageShoppingLikeProd.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageShoppingLikeProd_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">찜한브랜드</div>
+											<div class="text_link">mypageShoppingLikeBrand.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageShoppingLikeBrand_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">상품후기관리</div>
+											<div class="text_link">mypageShoppingReview.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 후기작성하기, 후기내용보기</div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageShoppingReview_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 후기 작성하기</div>
+													<div class="text_link">_modal_productReview.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>상품상세 후기작성모달과 동일</div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 후기 내용보기</div>
+													<div class="text_link">_modal_productReviewModify.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">배송지관리</div>
+											<div class="text_link">mypageShoppingAddress.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 배송지추가, 우편번호찾기</div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageShoppingAddress_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>(모달) 배송지추가, 우편번호찾기</div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 배송지추가</div>
+													<div class="text_link">_modal_mypageShoppingAddressRegister.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>(모달) 우편번호찾기</div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 배송지수정</div>
+													<div class="text_link">_modal_mypageShoppingAddressModify.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>(모달) 우편번호찾기</div>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<!--// 나의쇼핑정보 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">취소/반품</div>
+								</a>
+
+								<!-- 취소/반품 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">주문취소신청</div>
+											<div class="text_link">mypageCancelOrderRegister.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageCancelOrderRegister_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">취소신청상세</div>
+													<div class="text_link">mypageCancelOrderRegisterDetail.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">주문취소내역</div>
+											<div class="text_link">mypageCancelOrder.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageCancelOrder_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">교환/반품신청</div>
+											<div class="text_link">mypageCancelTradeRegister.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageCancelTradeRegister_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">반품신청</div>
+												</a>
+												<ul class="item-depth5">
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">반품신청(엔터배송)</div>
+															<div class="text_link">mypageCancelTradeRegisterReturn_enter.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">반품신청(업체배송)</div>
+															<div class="text_link">mypageCancelTradeRegisterReturn_co.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">반품신청(쿠프마케팅)</div>
+															<div class="text_link">mypageCancelTradeRegisterReturn_coop.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">교환신청</div>
+												</a>
+												<ul class="item-depth5">
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">교환신청(엔터배송)</div>
+															<div class="text_link">mypageCancelTradeRegisterExchange_enter.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">교환신청(업체배송)</div>
+															<div class="text_link">mypageCancelTradeRegisterExchange_co.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">교환/반품신청내역</div>
+											<div class="text_link">mypageCancelTrade.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageCancelTrade_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">상세내역</div>
+												</a>
+												<ul class="item-depth5">
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">반품상세내역</div>
+															<div class="text_link">mypageCancelTradeDetailReturn.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">반품상세내역(업체배송)</div>
+															<div class="text_link">mypageCancelTradeDetailReturn_co.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">교환상세내역</div>
+															<div class="text_link">mypageCancelTradeDetailExchange.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+													<li>
+														<a class="mm_box-flex">
+															<div class="text_name">교환상세내역(업체배송)</div>
+															<div class="text_link">mypageCancelTradeDetailExchange_co.html</div>
+															<div><span class="text_tag __tag_complete__"></span></div>
+															<div></div>
+														</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name"><del>택배송장번호입력</del></div>
+											<div class="text_link"><del>mypageCancelInvoice.html</del></div>
+											<div><span class="text_tag __tag_remove__"></span></div>
+											<div></div>
+										</a>
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name"><del>내용없음</del></div>
+													<div class="text_link"><del>mypageCancelInvoice_none.html</del></div>
+													<div><span class="text_tag __tag_remove__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<!--// 취소/반품 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">나의혜택</div>
+								</a>
+
+								<!-- 나의혜택 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">쿠폰조회/등록</div>
+											<div class="text_link">mypageBenefitCoupon.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 쿠폰적용범위</div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageBenefitCoupon_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 쿠폰적용범위</div>
+													<div class="text_link">_modal_mypageBenefitCouponScope.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">포인트</div>
+											<div class="text_link">mypageBenefitPoint.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageBenefitPoint_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<!--// 나의혜택 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">개인정보관리</div>
+								</a>
+
+								<!-- 개인정보관리 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">회원정보관리</div>
+											<div class="text_link">mypageInfo.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 비밀번호변경, 휴대폰번호변경</div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">비밀번호재확인</div>
+													<div class="text_link">mypageInfoPW.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 비밀번호변경</div>
+													<div class="text_link">_modal_mypageInfoChangePW.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 휴대폰번호변경</div>
+													<div class="text_link">_modal_mypageInfoChangeMobile.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">간편계정연결관리</div>
+											<div class="text_link">mypageAccount.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">비밀번호재확인</div>
+													<div class="text_link">mypageAccountPW.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">계좌번호관리</div>
+											<div class="text_link">mypageBank.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">내용없음</div>
+													<div class="text_link">mypageBank_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">비밀번호재확인</div>
+													<div class="text_link">mypageBankPW.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">회원탈퇴</div>
+											<div class="text_link">mypageWithdraw.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">비밀번호재확인</div>
+													<div class="text_link">mypageWithdrawPW.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<!--// 개인정보관리 -->
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 마이페이지 -->
+
+			<!-- 장바구니/주문결제 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>장바구니</h2></div>
+							<div class="text_link">cart.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">내용없음</div>
+									<div class="text_link">cart_none.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(모달) 옵션변경</div>
+									<div class="text_link">_modal_cartOption.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>(상태) 옵션선택</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>주문결제</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">주문서작성</div>
+								</a>
+
+								<!-- 주문서작성 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">회원</div>
+											<div class="text_link">orderMember.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 배송지목록, 우편번호찾기</div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 배송지목록</div>
+													<div class="text_link">_modal_orderAddress.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>(상태) 검색결과/결과없음</div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">(모달) 우편번호찾기</div>
+													<div class="text_link">_modal_postcode.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>(상태) 검색결과/결과없음</div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">비회원</div>
+											<div class="text_link">orderNonmember.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>(모달) 우편번호찾기</div>
+										</a>
+									</li>
+								</ul>
+								<!--// 주문서작성 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">주문완료</div>
+									<div class="text_link">orderComplete.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 주문완료 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">신용체크</div>
+											<div class="text_link">orderComplete_card.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">간편결제</div>
+											<div class="text_link">orderComplete_easy.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 주문완료 -->
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 장바구니/주문결제 -->
+
+			<!-- 고객센터 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>고객센터</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">메인</div>
+									<div class="text_link">csMain.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">공지사항</div>
+									<div class="text_link">csNotice.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 공지사항 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">csNotice_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">상세보기</div>
+											<div class="text_link">csNoticeDetail.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 공지사항 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">자주묻는질문</div>
+									<div class="text_link">csFAQ.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 자주묻는질문 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">csFAQ_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">검색결과</div>
+											<div class="text_link">csFAQSearch.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">결과없음</div>
+											<div class="text_link">csFAQSearch_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 자주묻는질문 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">1:1문의하기</div>
+									<div class="text_link">csInquiry.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 1:1문의하기 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">csInquiry_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">상세보기</div>
+											<div class="text_link">csInquiryDetail.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">옵션비노출</div>
+													<div class="text_link">csInquiryDetail_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div>(상태) 문의상품 영역 노출/비노출</div>
+												</a>
+											</li>
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">답변완료</div>
+													<div class="text_link">csInquiryDetail_answer.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">작성하기</div>
+											<div class="text_link">csInquiryWrite.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+
+										<ul class="item-depth4">
+											<li>
+												<a class="mm_box-flex">
+													<div class="text_name">주문번호,옵션비노출</div>
+													<div class="text_link">csInquiryWrite_none.html</div>
+													<div><span class="text_tag __tag_complete__"></span></div>
+													<div></div>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<!--// 1:1문의하기 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">제휴/입점문의</div>
+									<div class="text_link">csAlliance.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 제휴문의 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 개인정보</div>
+											<div class="text_link">_modal_csAlliancePrivacy.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 제휴문의 -->
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 고객센터 -->
+
+			<!-- 카테고리/상품상세 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>카테고리</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">대카테고리</div>
+									<div class="text_link">productMain.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">중소카테고리</div>
+									<div class="text_link">productSub.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 중소카테고리 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">productSub_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 중소카테고리 -->
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>상품상세 (단일상품)</h2></div>
+							<div class="text_link">productDetail.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div>
+								(모달) 쿠폰다운로드, 후기작성, 상품문의<br>
+								(상태) (모달)네이버 PCS쿠폰
+							</div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">상품상세 (묶음상품)</div>
+									<div class="text_link">productDetail_none.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div>(상태) 상품평/문의 없음, 상품옵션 1개</div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(아이프레임) 단일상품 상세페이지</div>
+									<div class="text_link">_iframe_productSingle.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(아이프레임) 묶음상품 상세페이지</div>
+									<div class="text_link">_iframe_productDeal.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(아이프레임) 상품평</div>
+									<div class="text_link">_iframe_productReview.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 상품평 -->
+								<ul class="item-depth2">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">_iframe_productReview_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 상품평 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(아이프레임) QnA</div>
+									<div class="text_link">_iframe_productQna.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- QnA -->
+								<ul class="item-depth2">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">_iframe_productQna_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// QnA -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(모달) 쿠폰다운로드</div>
+									<div class="text_link">_modal_couponDownload.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(모달) 후기작성</div>
+									<div class="text_link">_modal_productReview.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(모달) 상품문의하기</div>
+									<div class="text_link">_modal_productInquiry.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">(모달) 네이버 PCS쿠폰</div>
+									<div class="text_link">_modal_couponNaver.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>검색결과</h2></div>
+							<div class="text_link">productSearchResult.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">결과없음</div>
+									<div class="text_link">productSearchResult_none.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>베스트</h2></div>
+							<div class="text_link">productBest.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div></div>
+						</a>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>스윗딜</h2></div>
+							<div class="text_link">productDeal.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div></div>
+						</a>
+					</li>
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>엔터식스NOW</h2></div>
+							<div class="text_link">enter6Now.html</div>
+							<div><span class="text_tag __tag_complete__"></span></div>
+							<div></div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--// 카테고리/상품상세 -->
+
+			<!-- 브랜드 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>브랜드</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">메인</div>
+									<div class="text_link">brandMain.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 브랜드메인 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">내용없음</div>
+											<div class="text_link">brandMain_none.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 브랜드메인 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">브랜드샵</div>
+									<div class="text_link">brandShop.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 브랜드 -->
+
+			<!-- 이벤트/혜택/기획전/바로접속 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>이벤트/혜택/기획전/바로접속</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">이벤트/혜택</div>
+									<div class="text_link">eventBenefit.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+
+								<!-- 약관/정책 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">이벤트상세</div>
+											<div class="text_link">eventBenefitDetail.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 약관/정책 -->
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">기획전</div>
+									<div class="text_link">promotion.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">바로접속</div>
+									<div class="text_link">directOn.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">출석체크이벤트</div>
+									<div class="text_link">eventAttendance.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">댓글응모이벤트</div>
+									<div class="text_link">eventReply.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">룰렛이벤트</div>
+									<div class="text_link">eventRoulette.html</div>
+									<div><span class="text_tag __tag_complete__"></span></div>
+									<div></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 이벤트/혜택/기획전/바로접속 -->
+
+			<!-- 약관/정책 -->
+			<div class="mm_tab-item">
+				<ul class="item-depth1">
+					<li>
+						<a class="mm_box-flex">
+							<div class="text_name"><h2>약관/정책</h2></div>
+						</a>
+
+						<ul class="item-depth2">
+							<li>
+								<a class="mm_box-flex">
+									<div class="text_name">약관/정책</div>
+								</a>
+
+								<!-- 약관/정책 -->
+								<ul class="item-depth3">
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">이용약관</div>
+											<div class="text_link">termsUse.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">개인정보처리방침</div>
+											<div class="text_link">termsPrivacy.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">청소년보호정책</div>
+											<div class="text_link">termsAdolescent.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div>
+												어드민 구조와 동일<br>
+												m--detail-item 클래스만 mm_terms-item 으로 변경
+											</div>
+										</a>
+									</li>
+									<li>
+										<a class="mm_box-flex">
+											<div class="text_name">(모달) 개인정보의 위탁 현황</div>
+											<div class="text_link">_modal_trustCoop.html</div>
+											<div><span class="text_tag __tag_complete__"></span></div>
+											<div></div>
+										</a>
+									</li>
+								</ul>
+								<!--// 약관/정책 -->
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!--// 약관/정책 -->
+		</div>
+	</div>
+</body>
+</html>

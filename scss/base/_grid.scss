@@ -1,0 +1,208 @@
+@charset 'utf-8';
+
+/**
+** 그리드
+**/
+
+html,
+body {
+	// overflow: hidden;// mobile
+	width: 100%;
+	height: 100%;
+	min-width: $minWidth_extend;// 좌/우 날개배너 포함
+	min-height: 100%;
+	background: #fff;
+}
+
+html {
+	color: $color_text_base;
+	font-weight: normal;
+	font-size: $fontSize_base;
+	font-family: $fontFamily_base;
+	line-height: 1;
+	letter-spacing: -0.5px;
+	@include prefix(text-size-adjust, none, webkit ms);
+	// -webkit-tap-highlight-color: rgba(0,0,0,0);
+	
+	// 폰트 로드 후 적용
+	&.wf-active {
+		// font-family: $fontFamily_base;
+	}
+}
+
+body {
+	overflow-y: scroll;// pc 스크롤바 기본 삽입
+	-webkit-overflow-scrolling: touch;
+
+	// 스크롤 안됨
+	.__noscroll & {
+		position: fixed;// fixed 사용 시 안드로이드 4에서 오류
+	}
+}
+
+/// 스킵 네비게이션
+.mm_skip {
+	position: absolute;
+	z-index: $zIndex_skip;
+	top: 0;
+	left: 0;
+	font-size: 0;
+	line-height: 1;
+
+	a:focus {
+		padding: 10px;
+		background: $color_primary_base;
+		color: #fff;
+		font-weight: 700;
+		font-size: 12px;
+	}
+}
+///-- 스킵 네비게이션
+
+/// 전체 영역
+.mm_app {
+	position: relative;
+	height: 100%;
+}
+///-- 전체 영역
+
+/// 최상단배너
+.mm_topbanner {
+	$height-topbanner: 70px;
+	
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 0;
+	
+	// 배너노출(서버에서 적용)
+	@at-root .__topbanner-show {
+		.mm_app {
+			padding-top: $height-topbanner;
+		}
+		
+		.mm_topbanner {
+			height: $height-topbanner;
+		}
+	}
+	
+	// 왼쪽배너
+	> .image_banner {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: $height-topbanner;
+		background-repeat: no-repeat;
+		background-position: 50% 0;
+	}
+	
+	ul {
+		position: relative;
+		height: $height-topbanner;
+		
+		a {
+			background: transparent;
+		}
+		
+		// 오른쪽배너
+		.image_banner {
+			
+		}
+	}
+	
+	.btn_topbanner-close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		width: 60px;
+		height: 60px;
+		color: #f2f2f2;
+		font-size: 22px;
+		line-height: 60px;
+		text-align: center;
+	}
+}
+///-- 최상단배너
+
+/// 기본 화면
+.mm_view {
+	position: relative;
+	padding-top: $height_header_base;
+	height: 100%;
+}
+///-- 기본 화면
+
+/// 페이지
+.mm_page {
+	position: relative;
+	padding-bottom: $height_footer_base;
+	min-height: 100%;
+
+	/// 페이지 본문
+	&-content {
+		position: relative;
+		padding: 0 0 100px;
+		border-top: 1px solid #f2f2f2;
+		
+		// 본문 내용(pc)
+		&-inner {
+			position: relative;
+			float: right;
+			width: 870px;
+		}
+	}
+	///-- 페이지 본문
+}
+///-- 페이지
+
+/// 아이프레임 페이지 (modal, popup 제외)
+html[class*="_frame_"] {
+	min-width: 0;
+	
+	body {
+		overflow-y: visible;
+		min-width: 0;
+	}
+	
+	.mm_view {
+		padding: 0;
+	}
+
+	.mm_page {
+		padding: 0;
+	}
+
+	.mm_page-content {
+		padding: 0;
+		border-top: 0;
+	}
+}
+
+/// 레이어,윈도우팝업
+html[class*="_customPop_"] {
+	min-width: 0;
+	
+	body {
+		overflow-y: visible;
+		min-width: 0;
+	}
+	
+	.mm_view {
+		padding: 0;
+	}
+
+	.mm_page {
+		overflow-y: hidden;
+		padding: 0;
+		height: 100%;
+		border: 1px solid #000;
+	}
+
+	.mm_page-content {
+		padding: 0;
+		border-top: 0;
+	}
+}

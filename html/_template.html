@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="ko" class="__topbanner-show">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+	<!-- 소셜태그 -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<!--// 소셜태그 -->
+
+	<title>엔터식스 온라인몰</title>
+
+	<!-- 라이브러리 css -->
+	<link rel="stylesheet" href="../css/libs/fontello-custom.css">
+	<link rel="stylesheet" href="../css/libs/swiper-4.4.6.min.css">
+	<link rel="stylesheet" href="../css/libs/overlayscrollbars-1.6.1.min.css">
+	<link rel="stylesheet" href="../css/libs/pikaday.css">
+
+	<!-- 페이지 css -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/app.css">
+
+	<!-- (D) 스크립트(폴리필, 라이브러리)는 요청을 줄이기 위해 combind + minify를 적용해주세요. -->
+	<!-- 폴리필 스크립트 -->
+	<script src="../js/polyfill/es6-promise.auto-4.2.4.min.js"></script>
+
+	<!-- 라이브러리 스크립트 -->
+	<!-- <script src="../js/libs/webfontloader-1.6.28.min.js"></script> -->
+	<script src="../js/libs/jquery-3.3.1.slim.min.js"></script>
+	<script src="../js/libs/axios-0.18.0.min.js"></script>
+	<script src="../js/libs/underscore-1.9.1.min.js"></script>
+	<script src="../js/libs/load-image.all-2.20.1.min.js"></script>
+	<script src="../js/libs/tweenmax-2.0.2.min.js"></script>
+	<script src="../js/libs/swiper-4.4.6.min.js"></script>
+	<script src="../js/libs/overlayscrollbars-1.6.1.min.js"></script>
+	<script src="../js/libs/moment-2.23.0.min.js"></script>
+	<script src="../js/libs/pikaday-1.8.0.min.js"></script>
+	<script src="../js/libs/sortable-1.6.0.min.js"></script>
+	<!-- <script src="../js/libs/handlebars-4.0.12.min.js"></script> -->
+	<!-- <script src="../js/libs/template7-1.4.0.min.js"></script> -->
+	<!-- <script src="../js/libs/vue-2.5.21.min.js"></script> -->
+	<!-- <script src="../js/libs/autoNumeric-4.1.0.min.js"></script> -->
+	<!-- <script src="../js/libs/chart-2.7.3.min.js"></script> -->
+	<!-- <script src="../js/libs/ckeditor.full-4.10.0/ckeditor.js"></script> -->
+
+	<!-- 공통 선언 스크립트 -->
+	<script src="../js/app_common.js"></script>
+
+	<!-- (D) 페이지 공통 스크립트는 body 하단, 전용 스크립트는 .mm_page-content 하단에 넣어주세요. -->
+</head>
+<body>
+	<div id="mm_app" class="mm_app">
+		<!-- 스킵 -->
+		<nav class="mm_skip">
+			<ul>
+				<li><a href="#mm_body" data-href="anchor">본문바로가기</a></li>
+			</ul>
+		</nav>
+		<!-- 스킵 -->
+		
+		<!-- 최상단배너 -->
+		<div class="mm_topbanner">
+			<!--
+				(D) 배너가 등록되어 있고, "IS_TOPBANNER_HIDE" 쿠키가 없으면 서버에서 html 요소에 "__topbanner-show" 클래스를 추가합니다.
+				왼쪽 배너는 i 요소에 백그라운드로, 오른쪽 배너는 img 요소로 등록합니다.
+				왼쪽 배너는 하나만 독립적으로 사용할 수 있습니다.(독립적으로 사용할 경우 배너 내용을 중앙에 맞게 디자인 필요)
+				오른쪽 배너는 왼쪽 배너가 있을 때만 세트로 노출하고, 없으면 li 요소를 삭제합니다.
+			-->
+			<i class="mm_preload image_banner" data-preload="{ '_src': '../images/_sample/top_banner_left.jpg' }"></i>
+			<div class="mm_inner">
+				<ul class="mm_box-flex __flex_equal__">
+					<li><a href="#" data-href="{ '_type': 'link' }"><span class="mm_ir-blind">로켓와우 신청하면 100% 무료배송</span></a></li>
+					<li><a href="#" data-href="{ '_type': 'link' }"><i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/top_banner_right.jpg' }" alt="두유/음료 1일 1생식"></i></a></li>
+				</ul>
+			</div>
+			<button type="button" class="btn_topbanner-close" onclick="topbannerHide();"><i class="mco_close"></i><span class="mm_ir-blind">배너 숨기기</span></button>
+			
+			<script>
+				function topbannerHide() {
+					
+					mm.cookie.set('IS_TOPBANNER_HIDE', true, 1, true);// 1일 자정 리셋
+					
+					TweenMax.to('.mm_app', mm.times._fast, { 'padding-top': 0, ease: Sine.easeOut });
+					TweenMax.to('.mm_topbanner', mm.times._fast, { 'height': 0, ease: Sine.easeOut,
+						onComplete: function() {
+							
+							$('html').removeClass('__topbanner-show');
+							$('.mm_topbanner').remove();
+							
+						}
+					});
+					
+				}
+			</script>
+		</div>
+		<!--// 최상단배너 -->
+
+		<!-- 화면 -->
+		<div class="mm_view">
+			<!-- 헤더 -->
+			<div class="mm_header">
+				<div class="mm_header-top">
+					<div class="mm_inner mm_container">
+						<div class="mm_box-rside">
+							<ul>
+								<!-- <li><a href="#" data-href="{ '_type': 'link' }"><span>로그인</span></a></li> -->
+								<!-- <li><a href="#" data-href="{ '_type': 'link' }"><span>회원가입</span></a></li> -->
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>로그아웃</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>고객센터</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="mm_inner">
+					<h1><a href="#" data-href="{ '_type': 'link' }"><span class="mm_ir-blind">엔터식스 온라인몰</span></a></h1>
+
+					<!-- 헤더 검색 -->
+					<div class="mm_header-search">
+						<a href="#mm_search" class="btn_search">
+							<span class="mm_ir-blind">검색하기</span>
+							<ul>
+								<li><span>인기검색어</span></li>
+								<li><span>최근검색어</span></li>
+							</ul>
+						</a>
+						<!-- (D) 키워드배너는 돋보기를 클릭할 때만 링크가 이동됩니다. -->
+						<div class="mm_header-search-keyword">
+							<span>로엠/테이트 오늘만 착한가격! 득템하러 바로가기</span>
+							<a href="#" data-href="{ '_type': 'link' }"><i class="mco_search"></i><span class="mm_ir-blind">바로가기</span></a>
+						</div>
+
+						<!-- 전체 검색영역 -->
+						<div id="mm_search" class="mm_search">
+							<div class="mm_inner">
+								<div class="mm_search-form">
+									<div class="mm_form-text">
+										<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+										<label>
+											<input type="text" id="dev_search-keyword" class="textfield"><i class="bg_text"></i>
+											<span class="text_placeholder mm_ir-blind">검색어</span>
+										</label>
+									</div>
+									<button type="button" class="btn_submit"><i class="mco_search"></i><span class="mm_ir-blind">검색하기</span></button>
+
+									<script>
+										$(function() {
+
+											// (D) 검색어 자동완성영역 노출 샘플로 수정해서 적용해주세요.
+											$('#dev_search-keyword').on('keyup change', function() {
+
+												var $autocomplete = $('.mm_search-autocomplete');
+												if ($.trim($(this).val()).length > 0) $autocomplete.addClass('__autocomplete-on');
+												else $autocomplete.removeClass('__autocomplete-on');
+
+											});
+
+										});
+									</script>
+								</div>
+
+								<!-- 검색자동완성 -->
+								<div class="mm_search-autocomplete">
+									<!-- (D) 최대 10개까지 노출합니다. -->
+									<div class="mm_search-autocomplete-list">
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>후드 <strong class="mm_text-primary">아</strong>노락</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>하이넥 알파카</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>캡틴 <strong class="mm_text-primary">아</strong>메리카</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>지미추 맨 <strong class="mm_text-primary">아</strong>이스</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>웨스트우드 알래스카</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스오리지널</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스 운동화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스 슈퍼스타</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스 블랙</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스</span></a></li>
+										</ul>
+									</div>
+
+									<section class="mm_search-autocomplete-category">
+										<h6><span>추천 카테고리</span></h6>
+										<!-- (D) 최대 4개까지 노출합니다. -->
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>유니섹스/진 캐주얼 &#62; 티셔츠 &#62; 기본/라운드/브이넥 티셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠/레저 &#62; <strong class="mm_text-primary">아</strong>웃도어 &#62; 남성의류 &#62; 긴바지</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠/레저 &#62; 스포츠슈즈 &#62; 남성스포츠슈즈 &#62; 운동화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠/레저 &#62; <strong class="mm_text-primary">아</strong>웃도어 &#62; 여성의류 &#62; 자켓/점퍼/바람막이</span></a></li>
+										</ul>
+									</section>
+
+									<section class="mm_search-autocomplete-brand">
+										<h6><span>추천 브랜드</span></h6>
+										<!-- (D) 최대 8개까지 노출합니다. -->
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>엠포리오 알마니</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>나보노</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>장프로보카퇴르</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>이러브플랫</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>이에이엠제이</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>네타</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>케이드코드</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>이엠</span></a></li>
+										</ul>
+									</section>
+								</div>
+								<!--// 검색자동완성 -->
+
+								<!-- 검색어목록 -->
+								<div class="mm_search-list">
+									<div class="mm_search-list-inner">
+										<section>
+											<h6><span>인기 검색어</span></h6>
+											<ol>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>로엠</span><i class="mco_rank-up" title="순위상승"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>쉬즈미스</span><i class="mco_rank-down" title="순위하락"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>잇미샤</span><i class="mco_rank-unchanged" title="순위변동없음"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>푸마</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>뉴에라</span><i class="mco_rank-unchanged" title="순위변동없음"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>SOUP</span><i class="mco_rank-down" title="순위하락"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>후드짚업</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>라인에디션</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>게스</span><i class="mco_rank-up" title="순위상승"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>더아이잗</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+											</ol>
+										</section>
+
+										<section>
+											<h6><span>최근 검색어</span></h6>
+											<ul>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>아디다스</span></a><button type="button" class="btn_remove"><i class="mco_remove __mco_circle__"></i><span class="mm_ir-blind">삭제</span></button></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>나이키에어맥스97</span></a><button type="button" class="btn_remove"><i class="mco_remove __mco_circle__"></i><span class="mm_ir-blind">삭제</span></button></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>숏패딩점퍼</span></a><button type="button" class="btn_remove"><i class="mco_remove __mco_circle__"></i><span class="mm_ir-blind">삭제</span></button></li>
+											</ul>
+											<button type="button" class="mm_btn __btn_line_transparent__ btn_remove-all"><i class="mco_trash"></i><span>검색기록 전체 삭제</span></button>
+											<p class="mm_text-none">최근 검색어가 없습니다</p>
+										</section>
+									</div>
+								</div>
+								<!--// 검색어목록 -->
+
+								<div class="mm_search-menu">
+									<ul>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_cs"></i><span>고객센터</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_mypage"></i><span>마이페이지</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_order"></i><span>주문/배송조회</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_return"></i><span>취소/반품/교환</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_inquiry"></i><span>1:1 문의하기</span><i class="mco_link __mco_sm__"></i></a></li>
+									</ul>
+								</div>
+
+								<button type="button" class="btn_search-close"><i class="mco_close"></i><span class="mm_ir-blind">검색창 닫기</span></button>
+							</div>
+						</div>
+						<!--// 전체 검색영역 -->
+					</div>
+					<!--// 헤더 검색 -->
+
+					<!-- gnb -->
+					<nav class="mm_gnb">
+						<div class="mm_gnb-inner">
+							<ul>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>베스트</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span style="color:#e71d3e;">롱패딩DAY</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>스윗딜</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>엔터식스 NOW</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>이벤트/혜택</span></a></li>
+							</ul>
+						</div>
+					</nav>
+					<!--// gnb -->
+
+					<div class="mm_header-quick">
+						<ul>
+							<li>
+								<a href="#" data-href="{ '_type': 'link' }">
+									<i class="mco_cart"><strong class="text_badge">2</strong></i>
+									<span>장바구니</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" data-href="{ '_type': 'link' }">
+									<i class="mco_mypage"></i>
+									<span>마이페이지</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--// 헤더 -->
+
+			<!-- 내용 -->
+			<div id="mm_body" class="mm_page">
+				<!-- 사이드요소 -->
+				<div class="mm_sidebar">
+					<div class="mm_inner">
+						<div class="mm_sidebar-lside">
+							<!-- 사이드 슬라이드배너 -->
+							<div class="mm_sidebar-banner">
+								<div class="mm_swiper">
+									<div class="mm_swiper-inner">
+										<ul class="swiper-wrapper">
+											<li class="swiper-slide"><a href="#" data-href="{ '_type': 'link' }"><i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_banner1.jpg' }" alt="2018 F/W 메이크업"></i></a></li>
+											<li class="swiper-slide"><a href="#" data-href="{ '_type': 'link' }"><i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_banner1.jpg' }" alt="2018 F/W 메이크업"></i></a></li>
+										</ul>
+									</div>
+									<div class="swiper-count"></div>
+								</div>
+							</div>
+							<!--// 사이드 슬라이드배너 -->
+
+							<!-- 사이드 둥둥배너 -->
+							<div class="mm_sidebar-floating">
+								<a href="#" data-href="{ '_type': 'link' }">
+									<i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_floating.png' }" alt="마블컬렉션"></i>
+									<i class="image_expand"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_floating_expand.png' }" alt="마블컬렉션"></i>
+								</a>
+								<button type="button" class="btn_hide"><i class="mco_close"></i><span class="mm_ir-blind">배너 숨기기</span></button>
+							</div>
+							<!--// 사이드 둥둥배너 -->
+						</div>
+						<div class="mm_sidebar-rside">
+							<!-- 사이드 바로온 -->
+							<!-- <div class="mm_sidebar-direct"><a href="#" data-href="{ '_type': 'link' }"><span>바로접속</span><strong>OFF</strong></a></div> -->
+							<div class="mm_sidebar-direct __direct-on"><a href="#" data-href="{ '_type': 'link' }"><span>바로접속</span><strong>ON</strong></a></div>
+							<!--// 사이드 바로온 -->
+
+							<!-- 사이드 최근본상품 -->
+							<section class="mm_sidebar-recent">
+								<h6><span>최근 본 상품</span></h6>
+								<div class="mm_swiper" data-swiper="{ 'configs': { 'autoplay': false } }">
+									<div class="mm_swiper-inner">
+										<ul class="swiper-wrapper">
+											<li class="swiper-slide">
+												<ul>
+													<li><a href="#" data-href="{ '_type': 'link' }" title="엠폴헴 남성 멀티스프라이프 포플린 그래픽셔츠"><i class="mm_preload mm_bg-contain image_product" data-preload="{ '_src': '../images/_sample/product_x100_1.jpg' }"></i></a></li>
+													<li><a href="#" data-href="{ '_type': 'link' }" title="반스 18년 인기아이템 슬립온 블랙체크(재입고)"><i class="mm_preload mm_bg-contain image_product" data-preload="{ '_src': '../images/_sample/product_x100_2.jpg' }"></i></a></li>
+												</ul>
+											</li>
+											<li class="swiper-slide">
+												<ul>
+													<li><a href="#" data-href="{ '_type': 'link' }" title="잇미샤 가을신상 리본 포인트 콜라보레이션 블라우스"><i class="mm_preload mm_bg-contain image_product" data-preload="{ '_src': '../images/_sample/product_x100_3.jpg' }"></i></a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+									<div class="swiper-control">
+										<div class="mm_box-inline">
+											<button type="button" class="btn_swiper-prev"><i class="mco_prev __mco_circle__"></i><span class="mm_ir-blind">이전</span></button>
+											<button type="button" class="btn_swiper-next"><i class="mco_next __mco_circle__"></i><span class="mm_ir-blind">다음</span></button>
+										</div>
+									</div>
+								</div>
+							</section>
+							<!--// 사이드 최근본상품 -->
+
+							<a href="#mm_app" class="btn_anchor-top" data-href="{ '_type': 'anchor' }" title="페이지 처음으로 이동"><i class="mco_up __mco_face__"></i><span>UP</span></a>
+							<a href="#mm_footer" class="btn_anchor-bottom" data-href="{ '_type': 'anchor' }" title="페이지 마지막으로 이동"><i class="mco_down __mco_face__"></i><span>DOWN</span></a>
+						</div>
+					</div>
+				</div>
+				<!--// 사이드요소 -->
+
+				<!-- 본문 -->
+				<div class="mm_page-content">
+					<!-- (D) 실제 내용을 추가하는 부분입니다. -->
+
+					<div class="mm_inner">
+						<!-- 시스템 팝업 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 시스템 팝업 (BOM 모달)</h2>
+							<!--
+								(D) 얼럿
+								mm.bom.alert('내용', 콜백함수, { title: '제목', args: [콜백 파라미터] });
+								콜백함수가 있으면 확인버튼을 클릭할 때 해당 함수를 실행합니다.
+								args가 있으면 콜백함수를 호출할 때 함께 전달합니다.
+								내용의 줄바꿈은 <br>입니다.
+							-->
+							<button type="button" class="mm_btn __btn_sm__" onclick="mm.bom.alert('안내안내<br>br 줄바꿈');"><span>얼럿 - 기본</span></button>
+							<br><br>
+							<button type="button" class="mm_btn __btn_sm__" onclick="mm.bom.alert('타이틀을 변경할 수 있습니다.', null, { _title: '타이틀' });return false;"><span>얼럿 - 타이틀 변경</span></button>
+							<br><br>
+							<!--
+								(D) 컨펌
+								mm.bom.confirm('내용', 콜백함수, { title: '제목', args: [콜백 파라미터] });
+								사용은 얼럿과 동일합니다.
+								콜백함수를 호출할 때 첫번째 파라미터로 확인(true)/취소(false) 값을 전달합니다.
+							-->
+							<button type="button" class="mm_btn __btn_sm_primary__" onclick="mm.bom.confirm('안내안내<br>줄바꿈', sample_callback);"><span>컨펌 - 기본</span></button>
+							<br><br>
+							<button type="button" class="mm_btn __btn_sm_primary__" onclick="mm.bom.confirm('타이틀을 변경할 수 있습니까?', sample_callback, { _title: '타이틀 변경', args: [1, 'test'] });"><span>컨펌 - 옵션적용</span></button>
+							<script>
+								function sample_callback() {
+									alert(_.values(arguments));
+								}
+							</script>
+							<br><br>
+							<!--
+								(D) 프롬프트
+								mm.bom.prompt('내용', 콜백함수, { _title: '제목', args: [콜백 파라미터], forms: [생성할 입력폼] });
+								사용은 얼럿과 동일합니다.
+								_callback 첫번째 파라미터로 form value(배열)과 확인(true)/취소(false)를 전달합니다.
+								입력폼은 옵션이 없어도 기본 값은 input:text 1종 노출입니다.
+								추가/변경할 때는 { forms: [{ type: '속성', placeholder: '내용이 없으면 삭제', value: '내용이 없으면 삭제' }] } 형식의 오브젝트를 forms 배열에 추가합니다.
+								type 값은 input 입력요소(text, tel, number, email, search, url, password, date, month, time)와 textarea, select 입니다.
+								select의 option은 options: [{ text: '텍스트', value: '값', selected: true }] 형식으로 배열에 추가합니다.
+								date, time의 노출 방식은 format: '값'으로 변경할 수 있습니다.(moment.js format 참고)
+								attrs 값이 빈 값이 아니면 폼요소에 attr을 적용합니다.({ 'data-text': JSON.stringify({ _isResize: true }).replace(/"/g, '\''), 'style': 'background:red' } 등)
+							-->
+							<button type="button" class="mm_btn __btn_sm_secondary__" onclick="mm.bom.prompt('입력하세요.', sample_callback);"><span>프롬프트 - 기본</span></button>
+							<br><br>
+							<button type="button" class="mm_btn __btn_sm_secondary__" onclick="sample_prompt();"><span>프롬프트 - 옵션적용</span></button>
+							<script>
+								function sample_prompt() {
+
+									var options = {
+										_title: '고객센터 이관처리',
+										forms: [
+											{
+												_type: 'select',
+												options: [
+													{ _text: '가나다', _value: 'select 가' },
+													{ _text: 'abcd', _value: 'select a' },
+													{ _text: '123', _value: 'select 1', _selected: true }
+												]
+											},
+											{
+												_type: 'textarea',
+												_placeholder: '고객센터로 이관하는 사유를 작성하세요.',
+												_value: 'value 내용\n줄바꿈'// textarea의 줄바꿈은 \n 입니다.
+											},
+											{
+												_type: 'text',
+												// _placeholder: '입력',
+												_value: '결과 값'
+											},
+											{
+												_type: 'password',
+												_placeholder: '비밀번호를 입력하세요'
+											},
+											{
+												_type: 'date',
+												// _placeholder: '날짜를 선택하세요.',
+												_format: 'YYYY년 MM월 DD일'
+												// _format은 moment.js 기준으로 합니다.
+											},
+											{
+												// pc에서 지원 안함 (select, text 등으로 적용)
+												_type: 'time',
+												_placeholder: '시간 (pc에서 지원 안함, select로 사용)',
+												_format: 'a hh:mm'
+											}
+										]
+									};
+									mm.bom.prompt('', sample_callback, options);
+
+								}
+							</script>
+						</section>
+						<!--// 시스템 팝업 -->
+
+						<!-- 폼유형 -->
+						<section>
+							<h3 class="mm_heading">
+								<i class="mco_heading"></i><span>폼 유형</span>
+								<label class="mm_form-check">
+									<input type="checkbox">
+									<b class="mm_box-block">
+										<i class="mco_form-check"></i>
+										<span class="text_label">이전 값과 동일</span>
+									</b>
+								</label>
+							</h3>
+							<div id="dev_form-test" class="mm_formbox">
+								<table>
+									<tbody>
+										<tr>
+											<th scope="row"><span>텍스트 인풋</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<input type="text" class="textfield"><i class="bg_text"></i>
+																			<span class="text_placeholder">플레이스홀더</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>사이즈 lg</span></th>
+																<td>
+																	<div class="mm_form-text __text_lg__">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<input type="text" class="textfield"><i class="bg_text"></i>
+																			<span class="text_placeholder">플레이스홀더</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>읽기전용</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<input type="text" class="textfield" readonly><i class="bg_text"></i>
+																			<span class="text_placeholder">플레이스홀더</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>비활성</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<input type="text" class="textfield" disabled><i class="bg_text"></i>
+																			<span class="text_placeholder">플레이스홀더</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>기본 값 적용</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<input type="text" class="textfield" data-text="{ '_default': '텍스트 삭제 시 기본 값' }"><i class="bg_text"></i>
+																			<span class="text_placeholder">플레이스홀더</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>비밀번호</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-pw"><i class="mco_hide"></i><span class="mm_ir-blind">비밀번호 보기</span></button>
+																		<label>
+																			<input type="password" class="textfield"><i class="bg_text"></i>
+																			<span class="text_placeholder">비밀번호</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>텍스트 인풋<br>(모바일만)</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>숫자패드</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<input type="number" class="textfield"><i class="bg_text"></i>
+																			<span class="text_placeholder">tel 아님, 스크립트로 속성 추가됩니다.</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>날짜</span></th>
+																<td>
+																	<!--
+																		(D) 모바일 기본 date, month 속성을 사용합니다. (모바일에서만 확인 가능)
+																		input:date는 i.textfield.text_date 다음에 있어야 합니다.
+																		날짜 형식은 data-text 값으로 { '_format': 'YYYY-MM-DD' }을 설정하면 됩니다.
+																	-->
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<span class="textfield text_date"></span>
+																			<input type="date" class="textfield" data-text="{ '_format': 'YYYY년 MM월 DD일' }" value="2017-01-23"><i class="bg_text"></i>
+																			<span class="text_placeholder">날짜</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>월</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<span class="textfield text_date"></span>
+																			<input type="month" class="textfield" data-text="{ '_format': 'YYYY년 MM월' }" value="2017-01"><i class="bg_text"></i>
+																			<span class="text_placeholder">월</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>시간</span></th>
+																<td>
+																	<!--
+																		(D) 모바일 기본 time 속성을 사용합니다. (모바일에서만 확인 가능)
+																		input:time은 i.textfield.text_date 다음에 있어야 합니다.
+																		시간 형식은 data-text 값으로 { '_format': 'HH:mm' }을 설정하면 됩니다.
+																			HH:mm (21:59), a h:mm (am 9:59), A hh:mm (PM 09:59)
+																	-->
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<span class="textfield text_date"></span>
+																			<input type="time" class="textfield" data-text="{ '_format': 'a hh:mm' }" value="23:30"><i class="bg_text"></i>
+																			<span class="text_placeholder">시간</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>텍스트 멀티라인</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<!--
+														(D) textarea을 자동으로 높이 조절 할 경우 data-text 값으로 { '_isResize': true }을 설정합니다.
+														추가로 { '_isResize': true, '_resizeMin': 2, '_resizeMax': 5 }처럼 _resizeMin과 _resizeMax를 설정하여 최소/최대 라인 수를 제한할 수 있습니다.
+													-->
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_form-textarea">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<textarea class="textfield"></textarea><i class="bg_text"></i>
+																			<span class="text_placeholder">플레이스홀더<br>플레이스홀더 2번째 줄</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>자동높이 조절</span></th>
+																<td>
+																	<div class="mm_form-textarea">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<textarea class="textfield" data-text="{ '_isResize': true }"></textarea><i class="bg_text"></i>
+																			<span class="text_placeholder">자동 최소 라인 수는 2줄입니다.</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>자동높이 조절(제한)</span></th>
+																<td>
+																	<div class="mm_form-textarea">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<textarea class="textfield" data-text="{ '_isResize': true, '_resizeMin': 1, '_resizeMax': 5 }"></textarea><i class="bg_text"></i>
+																			<span class="text_placeholder">자동 라인 수가 최소 1줄, 최대 5줄만 조절됩니다.</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>라디오</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<label class="mm_form-radio">
+																		<input type="radio">
+																		<b class="mm_box-block">
+																			<i class="mco_form-radio"></i>
+																			<span class="text_label">기본</span>
+																		</b>
+																	</label>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>비활성</span></th>
+																<td>
+																	<label class="mm_form-radio">
+																		<input type="radio" checked disabled>
+																		<b class="mm_box-block">
+																			<i class="mco_form-radio"></i>
+																			<span class="text_label">비활성</span>
+																		</b>
+																	</label>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>리스트</span></th>
+																<td>
+																	<div class="mm_radio-list">
+																		<ul>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-list" checked>
+																					<b class="mm_box-block">
+																						<i class="mco_form-radio"></i>
+																						<span class="text_label">라디오1</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-list">
+																					<b class="mm_box-block">
+																						<i class="mco_form-radio"></i>
+																						<span class="text_label">라디오2</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-list">
+																					<b class="mm_box-block">
+																						<i class="mco_form-radio"></i>
+																						<span class="text_label">라디오3</span>
+																					</b>
+																				</label>
+																			</li>
+																		</ul>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>체크박스</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<label class="mm_form-check">
+																		<input type="checkbox">
+																		<b class="mm_box-block">
+																			<i class="mco_form-check"></i>
+																			<span class="text_label">기본</span>
+																		</b>
+																	</label>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>비활성</span></th>
+																<td>
+																	<label class="mm_form-check">
+																		<input type="checkbox" checked disabled>
+																		<b class="mm_box-block">
+																			<i class="mco_form-check"></i>
+																			<span class="text_label">비활성</span>
+																		</b>
+																	</label>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>리스트</span></th>
+																<td>
+																	<!--
+																		(D) 체크박스 전체선택
+																		name 속성을 사용하여 그룹화 할 수 있습니다.
+																		그룹화 할 때 name 대신 data-check 속성으로 { '_group': '이름' }을 사용할 수 있습니다.
+																		name 과 _group 을 함께 사용할 수 있고, 함께 사용할 때 _group 이 name 보다 우선순위로 적용됩니다.
+																		전체 체크박스에는 data-check 속성으로 { '_type': 'check_all' }을 설정합니다.
+																		전체 체크박스에 data-check 속성으로 { '_min': 1 }처럼 최소 값을 적용하면 최소 값이 충족되었을 때 전체가 체크표시됩니다.
+																		개수 요소에 data-check 속성으로 { '_type': 'check_count', '_group': 'name 값' }을 설정합니다.
+																		추가로 전체가 체크되는 시점이 전체가 아닌 임의의 개수로 변경이 필요한 경우,
+																	-->
+																	<div class="mm_check-list">
+																		<label class="mm_form-check">
+																			<input type="checkbox" name="dev_check-list" data-check="{ '_type': 'check_all' }">
+																			<b class="mm_box-block">
+																				<i class="mco_form-check"></i>
+																				<span class="text_label">체크박스 전체</span>
+																			</b>
+																		</label>
+																		<ul>
+																			<li>
+																				<label class="mm_form-check">
+																					<input type="checkbox" name="dev_check-list">
+																					<b class="mm_box-block">
+																						<i class="mco_form-check"></i>
+																						<span class="text_label">체크박스1</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-check">
+																					<input type="checkbox" name="dev_check-list">
+																					<b class="mm_box-block">
+																						<i class="mco_form-check"></i>
+																						<span class="text_label">체크박스2</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-check">
+																					<input type="checkbox" name="dev_check-list">
+																					<b class="mm_box-block">
+																						<i class="mco_form-check"></i>
+																						<span class="text_label">체크박스3</span>
+																					</b>
+																				</label>
+																			</li>
+																		</ul>
+																		<p>선택된 개수: <span data-check="{ '_type': 'check_count', '_group': 'dev_check-list' }">0</span>개</p>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>셀렉트</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_form-select">
+																		<label>
+																			<select>
+																				<option value="">셀렉트박스</option>
+																			</select>
+																			<i class="mco_form-select"></i>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>사이즈 sm</span></th>
+																<td>
+																	<div class="mm_form-select __select_sm__">
+																		<label>
+																			<select>
+																				<option value="">셀렉트박스</option>
+																			</select>
+																			<i class="mco_form-select"></i>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>비활성</span></th>
+																<td>
+																	<div class="mm_form-select">
+																		<label>
+																			<select disabled>
+																				<option value="">셀렉트박스</option>
+																			</select>
+																			<i class="mco_form-select"></i>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>리스트</span></th>
+																<td>
+																	<div class="mm_select-list">
+																		<ul>
+																			<li>
+																				<div class="mm_form-select">
+																					<label>
+																						<select>
+																							<option value="">셀렉트1</option>
+																						</select>
+																						<i class="mco_form-select"></i>
+																					</label>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="mm_form-select">
+																					<label>
+																						<select>
+																							<option value="">셀렉트2</option>
+																						</select>
+																						<i class="mco_form-select"></i>
+																					</label>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>텍스트</span></th>
+											<td><span class="text_form">폼 요소 없이 텍스트만 노출</span></td>
+										</tr>
+										<tr>
+											<th scope="row"><span>텍스트 인풋<br>(캡슐형)</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<dl class="mm_formbox-capsule">
+																		<dt><span>이름</span></dt>
+																		<dd>
+																			<div class="mm_form-text">
+																				<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																				<label>
+																					<input type="text" class="textfield"><i class="bg_text"></i>
+																					<span class="text_placeholder">플레이스홀더</span>
+																				</label>
+																			</div>
+																		</dd>
+																	</dl>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>단위</span></th>
+																<td>
+																	<div class="mm_formbox-capsule">
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder">플레이스홀더</span>
+																			</label>
+																		</div>
+																		<span class="text_unit">단위</span>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>데이트픽커</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<i class="mco_datepicker-calendar"></i>
+																			<input type="text" class="textfield mm_datepicker"><i class="bg_text"></i>
+																			<span class="text_placeholder">날짜선택</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>인라인 + 포멧변경</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<i class="mco_datepicker-calendar"></i>
+																			<input type="text" class="textfield mm_datepicker" data-datepicker="{ 'configs': { 'container': '#datepicker-inline', 'bound': false, 'numberOfMonths': 2, 'format': 'YYYY년 MM월 DD일' } }"><i class="bg_text"></i>
+																			<span class="text_placeholder">날짜선택</span>
+																		</label>
+																	</div>
+																	<div id="datepicker-inline"></div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>월선택</span></th>
+																<td>
+																	<div class="mm_form-text">
+																		<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																		<label>
+																			<i class="mco_datepicker-calendar"></i>
+																			<input type="text" class="textfield mm_datepicker" data-datepicker="{ '_isSelectMonth': true }"><i class="bg_text"></i>
+																			<span class="text_placeholder">날짜선택</span>
+																		</label>
+																	</div>
+																	<div class="mm_formbox-attention">
+																		<ul>
+																			<li>기간/범위설정, 달력 2개이상 노출 안됨</li>
+																		</ul>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>기간</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_formbox-period">
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<i class="mco_datepicker-calendar"></i>
+																				<input type="text" class="textfield mm_datepicker"><i class="bg_text"></i>
+																				<span class="text_placeholder">시작일</span>
+																			</label>
+																		</div>
+																		<span class="text_tilde">-</span>
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<i class="mco_datepicker-calendar"></i>
+																				<input type="text" class="textfield mm_datepicker"><i class="bg_text"></i>
+																				<span class="text_placeholder">종료일</span>
+																			</label>
+																		</div>
+																		<ul>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period">
+																					<b class="mm_box-block">
+																						<span class="text_label">1개월</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period">
+																					<b class="mm_box-block">
+																						<span class="text_label">3개월</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period">
+																					<b class="mm_box-block">
+																						<span class="text_label">6개월</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period">
+																					<b class="mm_box-block">
+																						<span class="text_label">12개월</span>
+																					</b>
+																				</label>
+																			</li>
+																		</ul>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>2줄</span></th>
+																<td>
+																	<div class="mm_formbox-period">
+																		<ul>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period2">
+																					<b class="mm_box-block">
+																						<span class="text_label">오늘</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period2">
+																					<b class="mm_box-block">
+																						<span class="text_label">1주일</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period2">
+																					<b class="mm_box-block">
+																						<span class="text_label">1개월</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period2">
+																					<b class="mm_box-block">
+																						<span class="text_label">6개월</span>
+																					</b>
+																				</label>
+																			</li>
+																			<li>
+																				<label class="mm_form-radio">
+																					<input type="radio" name="dev_radio-period2">
+																					<b class="mm_box-block">
+																						<span class="text_label">1년</span>
+																					</b>
+																				</label>
+																			</li>
+																		</ul>
+																		<div class="mm_formbox-period-inner">
+																			<div class="mm_form-text">
+																				<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																				<label>
+																					<i class="mco_datepicker-calendar"></i>
+																					<input type="text" class="textfield mm_datepicker"><i class="bg_text"></i>
+																					<span class="text_placeholder">시작일</span>
+																				</label>
+																			</div>
+																			<div class="mm_formbox-capsule">
+																				<div class="mm_form-text">
+																					<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																					<label>
+																						<input type="text" class="textfield" maxlength="2"><i class="bg_text"></i>
+																						<span class="text_placeholder">0~23</span>
+																					</label>
+																				</div>
+																				<span class="text_unit">시</span>
+																			</div>
+																			<div class="mm_formbox-capsule">
+																				<div class="mm_form-text">
+																					<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																					<label>
+																						<input type="text" class="textfield" maxlength="2"><i class="bg_text"></i>
+																						<span class="text_placeholder">0~59</span>
+																					</label>
+																				</div>
+																				<span class="text_unit">분</span>
+																			</div>
+																			<span class="text_tilde">-</span>
+																			<div class="mm_form-text">
+																				<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																				<label>
+																					<i class="mco_datepicker-calendar"></i>
+																					<input type="text" class="textfield mm_datepicker"><i class="bg_text"></i>
+																					<span class="text_placeholder">종료일</span>
+																				</label>
+																			</div>
+																			<div class="mm_formbox-capsule">
+																				<div class="mm_form-text">
+																					<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																					<label>
+																						<input type="text" class="textfield" maxlength="2"><i class="bg_text"></i>
+																						<span class="text_placeholder">0~23</span>
+																					</label>
+																				</div>
+																				<span class="text_unit">시</span>
+																			</div>
+																			<div class="mm_formbox-capsule">
+																				<div class="mm_form-text">
+																					<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																					<label>
+																						<input type="text" class="textfield" maxlength="2"><i class="bg_text"></i>
+																						<span class="text_placeholder">0~59</span>
+																					</label>
+																				</div>
+																				<span class="text_unit">분</span>
+																			</div>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>컬러픽커</span></th>
+											<td>
+												<div class="mm_form-color">
+													<input type="text" class="colorfield" readonly value="#FFFFFF">
+													<button type="button" class="btn_picker"><i class="bg_color" style="background:#FFFFFF"></i><span class="mm_ir-blind">배경 색상</span></button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>폼 연결</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_formbox-linked">
+																		<span class="text_linked">텍스트</span>
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder">플레이스홀더</span>
+																			</label>
+																		</div>
+																		<span class="text_tilde">-</span>
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder">플레이스홀더</span>
+																			</label>
+																		</div>
+																		<span class="text_linked">텍스트</span>
+																		<div class="mm_form-select">
+																			<label>
+																				<select>
+																					<option value="">셀렉트</option>
+																				</select>
+																				<i class="mco_form-select"></i>
+																			</label>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>생년월일</span></th>
+																<td>
+																	<div class="mm_formbox-linked">
+																		<div class="mm_form-text __text_shorter__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">생년월일(년)</span>
+																			</label>
+																		</div>
+																		<span class="text_linked">년</span>
+																		<div class="mm_form-text __text_shorter__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield" maxlength="2"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">생년월일(월)</span>
+																			</label>
+																		</div>
+																		<span class="text_linked">월</span>
+																		<div class="mm_form-text __text_shorter__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield" maxlength="2"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">생년월일(일)</span>
+																			</label>
+																		</div>
+																		<span class="text_linked">일</span>
+
+																		<div class="mm_radio-list">
+																			<ul>
+																				<li>
+																					<label class="mm_form-radio">
+																						<input type="radio" name="dev_radio-calendar" checked>
+																						<b class="mm_box-block">
+																							<i class="mco_form-radio"></i>
+																							<span class="text_label">양력</span>
+																						</b>
+																					</label>
+																				</li>
+																				<li>
+																					<label class="mm_form-radio">
+																						<input type="radio" name="dev_radio-calendar">
+																						<b class="mm_box-block">
+																							<i class="mco_form-radio"></i>
+																							<span class="text_label">음력</span>
+																						</b>
+																					</label>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>휴대폰번호</span></th>
+																<td>
+																	<div class="mm_formbox-linked">
+																		<div class="mm_form-text __text_shorter__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">휴대폰번호(앞자리)</span>
+																			</label>
+																		</div>
+																		<span class="text_tilde">-</span>
+																		<div class="mm_form-text __text_shorter__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">휴대폰번호(가운데자리)</span>
+																			</label>
+																		</div>
+																		<span class="text_tilde">-</span>
+																		<div class="mm_form-text __text_shorter__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">휴대폰번호(뒷자리)</span>
+																			</label>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>이메일</span></th>
+																<td>
+																	<div class="mm_formbox-linked">
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">이메일(아이디)</span>
+																			</label>
+																		</div>
+																		<span class="text_at">@</span>
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder mm_ir-blind">이메일(도메인)</span>
+																			</label>
+																		</div>
+																		<div class="mm_form-select">
+																			<label>
+																				<select>
+																					<option value="">직접입력</option>
+																					<option value="naver.com">naver.com</option>
+																					<option value="nate.com">nate.com</option>
+																					<option value="gmail.com">gmail.com</option>
+																					<option value="hotmail.net">hotmail.net</option>
+																					<option value="hanmail.net">hanmail.net</option>
+																					<option value="paran.com">paran.com</option>
+																					<option value="dreamwiz.com">dreamwiz.com</option>
+																					<option value="korea.com">korea.com</option>
+																				</select>
+																				<i class="mco_form-select"></i>
+																			</label>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>중복확인</span></th>
+																<td>
+																	<div class="mm_formbox-linked">
+																		<div class="mm_form-text __text_auto__">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder">6 ~ 20자리의 영어, 숫자 조합</span>
+																			</label>
+																		</div>
+																		<button type="button" class="mm_btn __btn_lg_light__"><span>중복확인</span></button>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>주소</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_formbox-address">
+													<div class="mm_formbox-address-postcode">
+														<div class="mm_form-text">
+															<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+															<label>
+																<input type="text" class="textfield" readonly><i class="bg_text"></i>
+																<span class="text_placeholder mm_ir-blind">우편번호</span>
+															</label>
+														</div>
+														<a href="_modal_postcode.html" class="mm_btn __btn_lg_primary__ btn_postcode" data-href="{ '_type': 'modal' }"><span>우편번호 찾기</span></a>
+													</div>
+													<div class="mm_form-text">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" readonly><i class="bg_text"></i>
+															<span class="text_placeholder">검색주소</span>
+														</label>
+													</div>
+													<div class="mm_form-text">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield"><i class="bg_text"></i>
+															<span class="text_placeholder">상세주소</span>
+														</label>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>파일 업로드</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_form-file">
+																		<button type="button" class="btn_remove"><i class="mco_form-clear"></i><span class="mm_ir-blind">파일삭제</span></button>
+																		<label>
+																			<input type="file">
+																			<span class="text_path"></span>
+																			<span class="mm_btn __btn_lg_light__ text_file">파일첨부</span>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>용량, 이름 제한</span></th>
+																<td>
+																	<div class="mm_form-file">
+																		<button type="button" class="btn_remove"><i class="mco_form-clear"></i><span class="mm_ir-blind">파일삭제</span></button>
+																		<label>
+																			<input type="file" accept=".zip" data-file="{ '_fileName': 'product_image_uploads', '_fileSize': 1000 }">
+																			<span class="text_path"></span>
+																			<span class="mm_btn __btn_lg_light__ text_file">파일첨부</span>
+																		</label>
+																	</div>
+																	<div class="mm_formbox-attention">
+																		<ul>
+																			<li><span>최대 1MB / 파일명: product_uploads.xls</span></li>
+																		</ul>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>이미지 업로드<br>(미리보기)</span></th>
+											<td>
+												<div class="mm_formbox-innertable">
+													<!--
+														(D) 파일(이미지) 속성 값 (미리보기가 있을 때)
+														data-file: {
+															_width: background 미리보기 이미지 가로 크기
+															_height: background 미리보기 이미지 세로 크기
+															_fileName: 이름을 제한합니다.
+															_fileSize: 용량(type number)을 제한합니다.
+																단위는 kb입니다.
+															_orientation: 이미지를 선택할 때 가로/세로 비율을 제한합니다.
+																portrait (세로가 긴 이미지만 노출), landscape (가로가 긴 이미지만 노출), square (정방형 이미지만 노출)
+															_isBg: 미리보기 이미지 노출방식으로 true면 <i> background-image, false면 <img>로 노출합니다.
+															_bgSize: 백그라운드 사이즈로 contain, cover이 있으면 해당하는 background-size가 적용됩니다.
+															_item: 초기 값으로 미리보기에 노출할 파일 경로(type string)를 설정합니다.
+															_classOn: '__image-on',// :string
+															onChange: change 이벤트 이후 호출하는 합수입니다.
+																파라미터로 [file]을 전달합니다.
+																change 이벤트 + [file].files 조합과 다른 점으로
+																파일 선택을 취소했을 때 내용이 삭제되지 않고 기존 내용 유지합니다.
+																$([file]).on('image-change', event handler);처럼 직접 연결하여 사용할 수 있습니다.
+															onChangeArgs: [],// :array
+														}
+
+														# 초기화 트리거
+														$[file].trigger('update')
+															페이지에 처음 접속했을 때 실행됩니다.
+															그 외 초기화가 필요하거나 별도로 .mm_form-image을 dom에 생성할 경우 실행합니다.
+															mm.form.update(대상 또는 부모)으로 사용할 수 있습니다.
+
+														# 값 전달
+														$([file]).data('mm.file').files: [file]의 전달 값(type object / File)입니다.
+															form에 전달할 때 기본 전달 값 [file].files는 선택 취소했을 때 값이 사라지는 이슈가 있어 data('mm.file').files를 form data로 변환하여 사용합니다.
+															.data('mm.file').files을 가지고 있는 요소에는 __image-on 클래수가 추가됩니다.
+															[file].files와 FileReader로 로드한 result: data...base64, width, height, orientation 값을 추가로 포함하고 있습니다.
+															파일을 선택하기 전, 처음 미리보기(data-file: { _item })가 있을 경우에는 result 값으로 이미지 경로가 들어가 있습니다.
+															미리보기를 삭제할 경우 값은 {}입니다.
+													-->
+													<table>
+														<tbody>
+															<tr>
+																<th scope="row"><span>기본</span></th>
+																<td>
+																	<div class="mm_form-image">
+																		<button type="button" class="btn_remove"><i class="mco_form-image-remove"></i><span class="mm_ir-blind">파일삭제</span></button>
+																		<label>
+																			<input type="file" accept="image/*">
+																			<b class="mm_form-image-box">
+																				<span class="mm_btn __btn_lg_tertiary__ text_file">찾아보기</span>
+																			</b>
+																			<b class="mm_form-image-preview"></b>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>백그라운드</span></th>
+																<td>
+																	<div class="mm_form-image">
+																		<button type="button" class="btn_remove"><i class="mco_form-image-remove"></i><span class="mm_ir-blind">파일삭제</span></button>
+																		<label>
+																			<input type="file" accept="image/*" data-file="{ '_isBg': true, '_bgSize': 'cover' }">
+																			<b class="mm_form-image-box">
+																				<span class="mm_btn __btn_lg_tertiary__ text_file">찾아보기</span>
+																			</b>
+																			<b class="mm_form-image-preview"></b>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>기본 값 적용</span></th>
+																<td>
+																	<div class="mm_form-image">
+																		<button type="button" class="btn_remove"><i class="mco_form-image-remove"></i><span class="mm_ir-blind">파일삭제</span></button>
+																		<label>
+																			<input type="file" accept="image/*" data-file="{ '_item': '../images/_sample/product_x800_1.jpg' }">
+																			<b class="mm_form-image-box">
+																				<span class="mm_btn __btn_lg_tertiary__ text_file">찾아보기</span>
+																			</b>
+																			<b class="mm_form-image-preview"></b>
+																		</label>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>외부 버튼</span></th>
+																<td>
+																	<div class="mm_formbox-image">
+																		<button type="button" class="mm_btn __btn_sm_tertiary__ btn_find-image" onclick="$(this).siblings('.mm_form-image').find('[type=file]').click();"><span>이미지 찾기</span></button>
+																		<span class="text_limit">최대 2MB<br>확장자 PNG, JPG만 가능</span>
+																		<div class="mm_form-image">
+																			<button type="button" class="btn_remove"><i class="mco_form-image-remove"></i><span class="mm_ir-blind">파일삭제</span></button>
+																			<label>
+																				<input type="file" accept=".png, .jpg" data-file="{ '_fileSize': 2000 }">
+																				<b class="mm_form-image-box">
+																					<span class="text_label">미리보기 영역</span>
+																				</b>
+																				<b class="mm_form-image-preview"></b>
+																			</label>
+																		</div>
+																		<div class="mm_form-text">
+																			<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+																			<label>
+																				<input type="text" class="textfield"><i class="bg_text"></i>
+																				<span class="text_placeholder">대체 텍스트</span>
+																			</label>
+																		</div>
+																		<div class="mm_formbox-attention">
+																			<ul>
+																				<li>대체 텍스트는 화면에 노출되지 않는 이미지로 설명하는 내용을 작성해주세요.</li>
+																			</ul>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<th scope="row"><span>멀티 이미지</span></th>
+																<td>
+																	<!--
+																		(D) 여러 파일을 관리할 경우 .mm_image-list 구조로 사용합니다.
+																		.mm_image-list에 __list_delegate__ 클래스를 추가하면 1번 이미지에 대표가 표시됩니다.
+																		li > .mm_form-image 1세트는 기본 값으로 세팅합니다.(복제용)
+																		.mm_image-multiple 내 [file]은 다중 선택용으로 실제 값과 다를 수 있습니다.
+																		실제 값은 각각의 li > $([file]).data('mm.file').files를 사용합니다.
+
+																		data-file: {
+																			_isAdd: 파일을 선택하면 자동으로 리스트 마지막에 빈 항목을 생성합니다.
+																				boolean 타입으로 기본 값은 true입니다.
+																			_isRemove: 미리보기를 삭제하면 해당 리스트 항목를 삭제합니다.
+																				boolean 타입으로 기본 값은 true입니다.
+																			_max: 설정된 값(Number)까지만 리스트 항목을 생성합니다.
+																			items: 초기 값으로 미리보기에 노출할 파일 경로(type array)를 설정합니다.
+																		}
+
+																		# 초기화 트리거
+																		$('target .mm_image-list').trigger('update')
+																			페이지에 처음 접속했을 때 실행됩니다.
+																			그 외 초기화가 필요하거나 별도로 .mm_image-list를 dom에 생성할 경우 실행합니다.
+																			mm.form.update(대상 또는 부모)으로 사용할 수 있습니다.
+																	-->
+																	<div class="mm_image-list __list_delegate__" data-filelist="{ '_max': 9, 'items': ['../images/_sample/product_x800_2.jpg', '../images/_sample/product_x800_3.jpg'] }">
+																		<ul>
+																			<li>
+																				<div class="mm_form-image">
+																					<button type="button" class="btn_remove"><i class="mco_form-image-remove"></i><span class="mm_ir-blind">파일삭제</span></button>
+																					<label>
+																						<input type="file" accept="image/*" data-file="{ '_isBg': true, '_bgSize': 'cover' }">
+																						<b class="mm_form-image-box">
+																							<span class="mm_btn __btn_lg_tertiary__ text_file">찾아보기</span>
+																						</b>
+																						<b class="mm_form-image-preview"></b>
+																					</label>
+																				</div>
+																			</li>
+																		</ul>
+																		<div class="mm_box-flex __flex-equal__ mm_image-list-sortable">
+																			<button type="button" class="mm_btn __btn_sm_line_light_primary__ btn_sort"><span><i class="mco_form-image-sortable"></i>순서 편집</span></button>
+																			<button type="button" class="mm_btn __btn_sm_line_dark__ btn_sort-cancel"><span>순서 편집 취소</span></button>
+																			<button type="button" class="mm_btn __btn_sm_line_light_primary__ btn_sort-apply"><span>순서 적용</span></button>
+																		</div>
+
+																		<!-- (D) 파일 다중 선택과 파일 드래그앤드롭은 IE10이상에서 지원합니다. -->
+																		<div class="mm_image-multiple">
+																			<input type="file" accept="image/*" multiple>
+																			<button type="button" class="mm_btn __btn_darker__ btn_multiple" onclick="$(this).prev().trigger('click');"><span><i class="mco_add"></i><i class="mco_image-multiple"></i>한번에 여러장 선택</span></button>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<div class="mm_btngroup">
+									<div class="mm_box-inline">
+										<button type="button" class="mm_btn __btn_secondary__ btn_submit"><span>폼 하단버튼</span></button>
+									</div>
+								</div>
+							</div>
+						</section>
+						<!--// 폼유형 -->
+
+						<!-- 폼전송복제 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 폼 복제 (submit에 활용)</h2>
+							<!--
+								(D) DOM 레이아웃 틀어짐을 방지하기 위해 form 요소에 복제하여 전송합니다.
+								form 요소에 'mm_form-hidden' 클래스를 추가하여 영역을 숨겨놓습니다.
+								복제할 때 jQuery clone(true) 깊은 복제를 사용합니다.
+								복제 요소는 폼 요소($('input'))나 폼 요소를 감싸고 있는 컨테이너 엘리먼트($('element')) 모두 가능합니다.
+								버튼은 'submit' 타입 대신 'button' 타입을 사용합니다.
+								file 요소는 기본 전송 대신 .data('mm.file').files를 가져와 formData를 생성하여 전송합니다.
+								전송이 완료되면 중복이 안되도록 form 요소의 내용을 비워줍니다.
+							-->
+							<form class="mm_form-hidden"></form>
+							<button type="button" class="mm_btn __btn_sm_line_primary__" onclick="$('form').empty().append($('#dev_form-test').clone(true));"><span>폼 복제 샘플(소스보기로 확인)</span></button>
+						</section>
+						<!--// 폼전송복제 -->
+
+						<!-- 폼업데이트 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 폼 업데이트</h2>
+							<!--
+								(D) 폼 요소의 생성, 초기화, 변경 등 변화가 발생하면 업데이트가 필요합니다.
+								mm.form.update();로 업데이트 합니다.
+								파라미터가 빈 값이면 html 전체 폼 요소를 검색하여 업데이트 합니다.
+								파라미터가 폼 요소일 경우 선택한 폼 요소만 업데이트 합니다.(이 때 아래 샘플처럼 변경과 업데이트를 동시에 적용할 수 있습니다.)
+								파라미터가 폼 요소의 컨테이너 요소일 경우 컨테이너 내 모든 폼 요소를 업데이트 합니다.
+							-->
+							<div class="mm_form-text">
+								<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+								<label>
+									<input type="text" id="updatetest" class="textfield"><i class="bg_text"></i>
+									<span class="text_placeholder">플레이스홀더</span>
+								</label>
+							</div>
+							<div class="mm_box-flex __flex_equal__">
+								<button type="button" class="mm_btn __btn_xs__" onclick="$('#updatetest').val('일반적인 value 변경으로 placeholder와 겹침');"><span>일반적인 value 변경(오류확인)</span></button>
+								<button type="button" class="mm_btn __btn_xs_line__" onclick="mm.form.update($('#updatetest').val('업데이트 value 변경'));"><span>업데이트 변경 적용</span></button>
+							</div>
+						</section>
+						<!--// 폼업데이트 -->
+
+						<!-- 폼오류 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">-폼 (오류메시지)</h2>
+							<!--
+								(D) 폼요소의 오류메시지는 .textfield에만 적용됩니다. (checkbox, radio 안됨)
+								스크립트 mm.form.alert(대상 input, '알림 메시지')를 호출하여 사용할 수 있습니다.
+							-->
+							<div class="mm_form-text">
+								<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+								<label>
+									<input type="text" id="errortest" class="textfield"><i class="bg_text"></i>
+									<span class="text_placeholder">오류메시지 테스트</span>
+								</label>
+							</div>
+							<div class="mm_box-flex __flex_equal__">
+								<button type="button" class="mm_btn __btn_xs_" onclick="mm.form.alert('#errortest', '오류메시지가 노출됩니다.<br>br로 줄바꿈을 할 수 있지만 위치에 따라 제대로 표시가 되지 않을 수 있습니다.');"><span>오류메시지 노출</span></button>
+								<!-- (D) 오류메시지를 해제할 때 mm.form.lift(); 함수에 파라미터를 전달하지 않으면 페이지 내 전체 메시지를 해제합니다. -->
+								<button type="button" class="mm_btn __btn_xs_line__" onclick="mm.form.lift('#errortest');"><span>오류메시지 숨김</span></button>
+							</div>
+						</section>
+						<!--// 폼오류 -->
+
+						<!-- 이미지오류 -->
+						<section>
+							<!--
+								(D) 이미지(백그라운드 이미지)에 preload를 적용하면 이미지 경로가 잘못되었을 때 기본 이미지를 보여줍니다.
+								preload가 없는 일반 이미지는 onerror="mm.image.none(this);" 속성을 추가합니다.
+							-->
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 이미지 오류 (노이미지/직접 적용)</h2>
+							<div style="position:relative; width:100px; height: 100px; border:1px solid #ddd;">
+								<img src="error/error.jpg" alt="" onerror="mm.image.none(this);">
+							</div>
+
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 이미지 오류 (노이미지/프리로드 이미지)</h2>
+							<div style="position:relative; width:100px; height: 100px; border:1px solid #ddd;">
+								<img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': 'error/error.jpg' }" alt="">
+							</div>
+
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 이미지 오류 (노이미지/프리로드 백그라운드)</h2>
+							<div style="position:relative; width:100px; height: 100px; border:1px solid #ddd;">
+								<i class="mm_preload" data-preload="{ '_src': 'error/error.jpg' }"></i>
+							</div>
+
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 이미지 오류 (노이미지 아이콘 변경/프리로드)</h2>
+							<div style="position:relative; width:100px; height: 100px; border:1px solid #ddd;">
+								<i class="mm_preload" data-preload="{ '_src': 'error/error.jpg' }" data-image="{ '_classNone': 'mco_camera' }"></i>
+							</div>
+						</section>
+						<!--// 이미지오류 -->
+
+						<!-- 버튼 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 버튼 스타일 (a, button)</h2>
+							<a href="#" class="mm_btn"><span>기본버튼</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_sm__"><span>sm</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_xs__"><span>xs</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_2xs__"><span>2xs</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_lg__"><span>lg</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_xl__"><span>xl</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_2xl__"><span>2xl</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_light__"><span>밝은</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_lighter__"><span>더 밝은(비활성)</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_dark__"><span>어두운</span></a>
+							<!-- <br><br>
+							<a href="#" class="mm_btn __btn_darker__"><span>더 어두운</span></a> -->
+							<br><br>
+							<a href="#" class="mm_btn __btn_primary__"><span>메인컬러</span></a>
+							<!-- <br><br>
+							<a href="#" class="mm_btn __btn_secondary__"><span>세컨컬러</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_tertiary__"><span>서드컬러</span></a> -->
+							<br><br>
+							<a href="#" class="mm_btn __btn_line__"><span>테두리</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_light__"><span>테두리 + light</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_lighter__"><span>테두리 + lighter</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_dark__"><span>테두리 + dark</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_darker__"><span>테두리 + darker</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_darkest__"><span>테두리 + darkest</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_transparent__"><span class="mm_text-secondary">테두리 + transparent</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_primary__"><span>테두리 + 메인컬러</span></a>
+							<!-- <br><br>
+							<a href="#" class="mm_btn __btn_line_secondary__"><span>테두리 + 세컨컬러</span></a>
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_tertiary__"><span>테두리 + 서드컬러</span></a> -->
+							<br><br>
+							<a href="#" class="mm_btn __btn_line_naver__"><span>테두리 + 네이버</span></a>
+						</section>
+						<!--// 버튼 -->
+
+						<!-- 탭메뉴 -->
+						<section>
+							<h2 style="margin-bottom:-80px; padding:30px 5px 10px; font-size:16px;">- 탭메뉴 기본</h2>
+							<div class="mm_tabmenu">
+								<!-- (D) 선택된 탭메뉴에 '__tab-on' 클래스와 '선택됨' 타이틀을 추가합니다. -->
+								<ul>
+									<li><a href="#" class="__tab-on" title="선택됨" data-href="{ '_type': 'link' }"><span>이용약관</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>청소년 보호대책</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>개인정보 처리방침</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>개인정보 처리위탁</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>개인정보 제3자 제공</span></a></li>
+								</ul>
+							</div>
+
+							<h2 style="margin-bottom:-80px; padding:30px 5px 10px; font-size:16px;">- 탭메뉴 가변 (메뉴가 많을 때 적용)</h2>
+							<div class="mm_tabmenu __tabmenu_auto__">
+								<!-- (D) 선택된 탭메뉴에 '__tab-on' 클래스와 '선택됨' 타이틀을 추가합니다. -->
+								<ul>
+									<li><a href="#" class="__tab-on" title="선택됨" data-href="{ '_type': 'link' }"><span>자사몰(엔터식스)</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>11번가</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>인터파크</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>지마켓</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>옥션</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>패션 플러스</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>GS SHOP</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><span>하프클럽</span></a></li>
+								</ul>
+							</div>
+
+							<h2 style="margin-bottom:-80px; padding:30px 5px 10px; font-size:16px;">- 탭메뉴 flex</h2>
+							<div class="mm_tabmenu">
+								<!-- (D) 선택된 탭메뉴에 '__tab-on' 클래스와 '선택됨' 타이틀을 추가합니다. -->
+								<ul class="mm_box-flex __flex_equal__">
+									<li><a href="#" class="btn_tab __tab-on" title="선택됨"><span>이용약관</span></a></li>
+									<li><a href="#" class="btn_tab"><span>청소년 보호대책</span></a></li>
+									<li><a href="#" class="btn_tab"><span>개인정보 제3자 제공</span></a></li>
+								</ul>
+							</div>
+
+							<h2 style="margin-bottom:-80px; padding:30px 5px 10px; font-size:16px;">- 탭메뉴 flex 가변</h2>
+							<div class="mm_tabmenu">
+								<!-- (D) 선택된 탭메뉴에 '__tab-on' 클래스와 '선택됨' 타이틀을 추가합니다. -->
+								<ul class="mm_box-flex __flex_auto__">
+									<li><a href="#" class="btn_tab __tab-on" title="선택됨"><span>이용약관</span></a></li>
+									<li><a href="#" class="btn_tab"><span>청소년 보호대책</span></a></li>
+									<li><a href="#" class="btn_tab"><span>개인정보 제3자 제공</span></a></li>
+								</ul>
+							</div>
+						</section>
+						<!--// 탭메뉴 -->
+
+						<!-- 탭컨텐츠 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 탭컨텐츠 (탭메뉴 포함, 메뉴 토글 가능)</h2>
+							<!-- (D) 선택된 탭메뉴에 '__tab-on' 클래스와 '선택됨' 타이틀을 추가합니다. -->
+							<div class="mm_tab" data-tab="{ '_isToggle': true }">
+								<div class="mm_tabmenu">
+									<ul>
+										<li><a href="#" class="btn_tab __tab-on" title="선택됨"><span>탭메뉴 1</span></a></li>
+										<li><a href="#" class="btn_tab"><span>탭메뉴 2</span></a></li>
+									</ul>
+								</div>
+								<div class="mm_tab-item __tab-on">
+									탭메뉴1 내용
+								</div>
+								<div class="mm_tab-item">
+									탭메뉴2 내용
+								</div>
+							</div>
+						</section>
+						<!--// 탭컨텐츠 -->
+
+						<!-- ckeditor -->
+						<!-- <section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- ck editor</h2>
+							<div class="mm_editor">
+								<textarea id="editor" name="editor" title="에디터"></textarea>
+								<script>
+									// (D) ckeditor는 IE이슈로 full 4버전을 사용합니다.
+									// 최적화를 위해 config.js와 contents.css를 수정했습니다.
+									// 추가로 필요없는 기능(버튼)을 제거해야 할 경우 config.js를 수정합니다.
+									CKEDITOR.replace('editor');
+								</script>
+							</div>
+						</section> -->
+						<!--// ckeditor -->
+
+						<!-- 드롭다운 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 드롭다운</h2>
+							<div class="mm_dropdown">
+								<button type="button" class="btn_dropdown" title="펼쳐보기"><span>드롭다운</span><i class="mco_dropdown"></i></button>
+								<div class="mm_dropdown-item">
+									<div class="mm_dropdown-item-inner">
+										드롭다운 내용<br>
+										드롭다운 내용 2번째 줄
+									</div>
+								</div>
+							</div>
+						</section>
+						<!--// 드롭다운 -->
+
+						<!-- 아코디언 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 아코디언</h2>
+							<div class="mm_accordion">
+								<ul>
+									<li>
+										<dl class="mm_dropdown" data-dropdown="{ '_group': 'dev_accrodion' }">
+											<dt class="btn_dropdown" tabindex="0" title="펼쳐보기"><span>회원가입은 어떻게 해야 하나요?</span><i class="mco_dropdown"></i></dt>
+											<dd class="mm_dropdown-item">
+												<div class="mm_dropdown-item-inner">
+													아이디/비밀번호 분실 시 휴대폰 인증 또는 아이핀 인증을 통해 조회가 가능합니다.<br>아이디/비밀번호 분실 시 휴대폰 인증 또는 아이핀 인증을 통해 조회가 가능합니다
+												</div>
+											</dd>
+										</dl>
+									</li>
+									<li>
+										<dl class="mm_dropdown" data-dropdown="{ '_group': 'dev_accrodion' }">
+											<dt class="btn_dropdown" tabindex="0" title="펼쳐보기"><span>아이디 / 비밀번호를 분실하였습니다. 어떻게 확인하나요?</span><i class="mco_dropdown"></i></dt>
+											<dd class="mm_dropdown-item">
+												<div class="mm_dropdown-item-inner">
+													아이디/비밀번호 분실 시 휴대폰 인증 또는 아이핀 인증을 통해 조회가 가능합니다. 아이디/비밀번호 분실 시 휴대폰 인증 또는 아이핀 인증을 통해 조회가 가능합니다
+												</div>
+											</dd>
+										</dl>
+									</li>
+								</ul>
+							</div>
+						</section>
+						<!--// 아코디언 -->
+
+						<!-- 페이지네이션 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 페이지네이션</h2>
+							<!-- (D) 현재 페이지의 메뉴에 '__page-on' 클래스와 '선택됨' 타이틀을 추가합니다. -->
+							<div class="mm_pagination">
+								<div class="mm_box-inline">
+									<ol>
+										<li><a href="#" class="__page-on" title="선택됨"><span>1</span></a></li>
+										<li><a href="#"><span>2</span></a></li>
+										<li><a href="#"><span>3</span></a></li>
+										<li><a href="#"><span>4</span></a></li>
+										<li><a href="#"><span>5</span></a></li>
+									</ol>
+									<button type="button" class="btn_control-first" onclick="mm.link('')" disabled><i class="mco_page-first"></i><span class="mm_ir-blind">처음</span></button>
+									<button type="button" class="btn_control-prev" onclick="mm.link('')" disabled><i class="mco_page-prev"></i><span class="mm_ir-blind">이전</span></button>
+									<button type="button" class="btn_control-next" onclick="mm.link('')"><i class="mco_page-next"></i><span class="mm_ir-blind">다음</span></button>
+									<button type="button" class="btn_control-last" onclick="mm.link('')"><i class="mco_page-last"></i><span class="mm_ir-blind">마지막</span></button>
+								</div>
+							</div>
+						</section>
+						<!--// 페이지네이션 -->
+
+						<!-- 페이저 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 페이저</h2>
+							<div class="mm_pager">
+								<div class="mm_box-inline">
+									<div class="mm_pager-count"><strong>1</strong> / <span>10</span></div>
+									<button type="button" class="btn_control-first" onclick="mm.link('')" disabled><i class="mco_page-first"></i><span class="mm_ir-blind">처음</span></button>
+									<button type="button" class="btn_control-prev" onclick="mm.link('')" disabled><i class="mco_page-prev"></i><span class="mm_ir-blind">이전</span></button>
+									<button type="button" class="btn_control-next" onclick="mm.link('')"><i class="mco_page-next"></i><span class="mm_ir-blind">다음</span></button>
+									<button type="button" class="btn_control-last" onclick="mm.link('')"><i class="mco_page-last"></i><span class="mm_ir-blind">마지막</span></button>
+								</div>
+							</div>
+						</section>
+						<!--// 페이저 -->
+
+						<!-- 타이틀 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 페이지 제목</h2>
+							<h3 class="mm_title"><span>공지사항</span></h3>
+
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 영역/컨텐츠 제목</h2>
+							<h4 class="mm_heading"><span>최근 주문목록</span><strong class="mm_text-primary">20181005-0000001</strong><small>최근 3주 이내 주문 건</small></h4>
+
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 소제목 제목</h2>
+							<h5 class="mm_strapline"><span>소제목</span></h5>
+						</section>
+						<!--// 타이틀 -->
+
+						<!-- 태그/뱃지/플래그 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 상품 태그</h2>
+							<span class="mm_tag __tag_mall__">엔터식스 온라인몰</span>
+							<span class="mm_tag __tag_general__">일반상품</span>
+							<span class="mm_tag __tag_sale__">세일상품</span>
+							<span class="mm_tag __tag_single__">단일상품</span>
+							<span class="mm_tag __tag_reserve__">예약상품</span>
+							<span class="mm_tag __tag_deal__">스윗딜상품</span>
+							<span class="mm_tag __tag_custom__">주문제작상품</span>
+							<span class="mm_tag __tag_shipping__">무료배송</span>
+							<span class="mm_tag __tag_return__">무료반품</span>
+							<span class="mm_tag __tag_discount__">할인쿠폰</span>
+							<span class="mm_tag __tag_seller__">판매자쿠폰</span>
+							<span class="mm_tag __tag_usepoint__">즉시사용포인트쿠폰</span>
+							<span class="mm_tag __tag_night__">심야쿠폰</span>
+							<br><br>
+							<span class="mm_tag __tag_lg_mall__">엔터식스 온라인몰</span>
+							<span class="mm_tag __tag_lg_general__">일반상품</span>
+							<span class="mm_tag __tag_lg_sale__">세일상품</span>
+							<span class="mm_tag __tag_lg_single__">단일상품</span>
+							<span class="mm_tag __tag_lg_reserve__">예약상품</span>
+							<span class="mm_tag __tag_lg_deal__">스윗딜상품</span>
+							<span class="mm_tag __tag_lg_custom__">주문제작상품</span>
+							<span class="mm_tag __tag_lg_shipping__">무료배송</span>
+							<span class="mm_tag __tag_lg_return__">무료반품</span>
+							<span class="mm_tag __tag_lg_discount__">할인쿠폰</span>
+							<span class="mm_tag __tag_lg_seller__">판매자쿠폰</span>
+							<span class="mm_tag __tag_lg_usepoint__">즉시사용포인트쿠폰</span>
+							<span class="mm_tag __tag_lg_night__">심야쿠폰</span>
+
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 스윗딜 뱃지</h2>
+							<span class="mm_badge __badge_deal__">스윗딜</span>
+						</section>
+						<!--// 태그/뱃지/플래그 -->
+
+						<!-- 게시판 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 게시판</h2>
+							<div class="mm_board-list">
+								<table>
+									<colgroup>
+										<col style="width:80px">
+										<col style="width:160px">
+										<col>
+										<col style="width:125px">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col"><span>NO.</span></th>
+											<th scope="col"><span>분류</span></th>
+											<th scope="col"><span>제목</span></th>
+											<th scope="col"><span>등록일</span></th>
+										</tr>
+									</thead>
+									<tbody class="mm_board-list-notice">
+										<tr>
+											<td><span>공지</span></td>
+											<td><span>이벤트 안내</span></td>
+											<td><a href="#" data-href="{ '_type': 'link' }"><span>'9월 적립금 페이백 이벤트' 당첨자 발표</span></a></td>
+											<td><span>2018.09.28</span></td>
+										</tr>
+										<tr>
+											<td><span>공지</span></td>
+											<td><span>공지사항</span></td>
+											<td><a href="#" data-href="{ '_type': 'link' }"><span>네이버페이 내부점검 안내</span></a></td>
+											<td><span>2018.09.28</span></td>
+										</tr>
+									</tbody>
+									<tbody>
+										<tr>
+											<td><span>25</span></td>
+											<td><span>이벤트 안내</span></td>
+											<td><a href="#" data-href="{ '_type': 'link' }"><span>‘블랙데이 이벤트’ 당첨자 발표</span></a></td>
+											<td><span>2018.09.28</span></td>
+										</tr>
+										<tr>
+											<td><span>24</span></td>
+											<td><span>이벤트 안내</span></td>
+											<td><a href="#" data-href="{ '_type': 'link' }"><span>‘너랑 벚꽃축제 가고싶나 봄 이벤트’ 당첨자 발표</span></a></td>
+											<td><span>2018.09.28</span></td>
+										</tr>
+										<tr>
+											<td><span>23</span></td>
+											<td><span>이벤트 안내</span></td>
+											<td><a href="#" data-href="{ '_type': 'link' }"><span>‘화이트데이 이벤트’ 당첨자 발표</span></a></td>
+											<td><span>2018.09.28</span></td>
+										</tr>
+										<tr>
+											<td><span>22</span></td>
+											<td><span>공지사항</span></td>
+											<td><a href="#" data-href="{ '_type': 'link' }"><span>[당첨자공지] 던킨도너츠 6pack 증정 이벤트</span></a></td>
+											<td><span>2018.09.28</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+						<!--// 게시판 -->
+
+						<!-- 프리로딩 -->
+						<section>
+							<h2 style="padding:30px 5px 10px; font-size:16px;">- 프리로딩</h2>
+							<div class="loading-preview" style="position:relative; height:100px; border:1px solid #ddd;">로딩 노출 영역</div>
+							<div class="mm_box-flex __flex_equal__">
+								<button type="button" class="mm_btn __btn_xs_primary__" onclick="mm.loading.show('.loading-preview');"><span>로딩 노출 (영역지정)</span></button>
+								<button type="button" class="mm_btn __btn_xs_secondary__" onclick="mm.loading.show(null, { _size: 50, _text: '로딩텍스트 변경내용<br> br로 줄바꿈 가능' });"><span>로딩 노출 (사이즈변경, 텍스트노출)</span></button>
+								<button type="button" class="mm_btn __btn_xs_line__" onclick="mm.loading.hide();"><span>로딩 숨김</span></button>
+							</div>
+							<button type="button" class="mm_btn __btn_xs__" onclick="mm.loading.show();"><span>로딩 노출 (전체)</span></button>
+						</section>
+						<!--// 프리로딩 -->
+					</div>
+
+					<!-- 현재 페이지 스크립트 -->
+					<!-- <script src="../js/.js"></script> -->
+				</div>
+				<!--// 본문 -->
+
+				<!-- 푸터 -->
+				<div id="mm_footer" class="mm_footer">
+					<!-- 푸터 - 공지사항 -->
+					<div class="mm_footer-notice">
+						<div class="mm_inner">
+							<section class="mm_footer-notice-list">
+								<h5><span>공지<br>사항</span></h5>
+								<ul>
+									<li><a href="#" data-href="{ '_type': 'link' }"><p>2018년 10월 신용카드 무이자할부 혜택</p><span class="text_date">2018.10.01</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><p>사이트 정기점검 안내</p><span class="text_date">2018.10.01</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><p>네이버페이 내부점검 안내</p><span class="text_date">2018.10.01</span></a></li>
+								</ul>
+							</section>
+							<section class="mm_footer-notice-cs">
+								<h5><span>고객<br>센터</span></h5>
+								<p class="text_hours">AM 10:00 ~ PM 5:00</p>
+								<p class="text_tel">1566 <span class="text_tilde">-</span> 6222</p>
+								<p class="text_add">PM 12:30 ~ PM 1:30 및 주말 제외<br><a href="mailto:help@enter6.co.kr" title="새 창 열림"><i class="mco_email"></i><span>help@enter6.co.kr</span></a></p>
+							</section>
+						</div>
+					</div>
+					<!--// 푸터 - 공지사항 -->
+
+					<!-- 푸터 - 메뉴 -->
+					<div class="mm_footer-menu">
+						<div class="mm_inner">
+							<ul>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>회사소개</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>이용약관</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>개인정보처리방침</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>청소년보호정책</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>입점신청</span></a></li>
+							</ul>
+							<div class="mm_form-select mm_footer-menu-family">
+								<label>
+									<select>
+										<option value="">Family Site</option>
+									</select>
+									<i class="mco_form-select"></i>
+								</label>
+							</div>
+						</div>
+					</div>
+					<!--// 푸터 - 메뉴 -->
+
+					<!-- 푸터 - 정보 -->
+					<div class="mm_footer-info">
+						<div class="mm_inner">
+							<h6><span>(주)엔터식스 패션쇼핑몰</span></h6>
+							<address>
+								<span>서울특별시 광진구 광나루로 56길 85 37층, 38층, 39층</span>
+								<span>대표이사: 김상대</span>
+								<span>개인정보담당자: 김경원</span><br>
+								<span>사업자등록번호: 120-81-45616</span>
+								<span>통신판매업신고: 2017-서울광진-0523호 <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=&apv_perm_no=2017304019030200523" class="mm_btn __btn_2xs_line_lighter__" title="새 창 열림" onclick="window.open(this.href, '', 'width=750, height=700, menubar=no, status=no, toolbar=no, resizable=yes, scrollbars=auto');return false;"><span>사업자정보확인</span><i class="mco_link"></i></a></span>
+							</address>
+							<dl class="mm_footer-info-ascrow">
+								<dt>NICE구매안전(에스크로)서비스</dt>
+								<dd>안전거래를 위해 나이스페이먼츠 구매안전(에스크로)에 가입하여 서비스를 제공하고 있습니다 <a href="https://pg.nicepay.co.kr/issue/IssueEscrow.jsp?Mid=entersix0m&CoNo=1208145616" class="mm_btn __btn_2xs_line_lighter__" title="새 창 열림" onclick="window.open(this.href, '', 'width=450, height=390, menubar=no, status=no, toolbar=no, resizable=no, scrollbars=auto');return false;"><span>서비스 가입사실 확인</span><i class="mco_link"></i></a></dd>
+							</dl>
+							<p class="text_copyright">&copy; (주)엔터식스 패션쇼핑몰. all rights reserved.</p>
+							<div class="mm_footer-info-sns">
+								<ul>
+									<li><a href="https://www.facebook.com/enter6onlinemall/" class="btn_facebook" target="_blank" title="새 창 열림"><i class="mco_sns-facebook"></i><span class="mm_ir-blind">페이스북</span></a></li>
+									<li><a href="https://www.instagram.com/enter6_onlinemall/" class="btn_instagram" target="_blank" title="새 창 열림"><i class="mco_sns-instagram"></i><span class="mm_ir-blind">인스타그램</span></a></li>
+									<li><a href="http://blog.enter6.co.kr/" class="btn_blog" target="_blank" title="새 창 열림"><i class="mco_sns-blog"></i><span class="mm_ir-blind">블로그</span></a></li>
+									<li><a href="https://twitter.com/Enter_6" class="btn_twitter" target="_blank" title="새 창 열림"><i class="mco_sns-twitter"></i><span class="mm_ir-blind">트위터</span></a></li>
+									<li><a href="https://story.kakao.com/ch/enter6" class="btn_kakaostory" target="_blank" title="새 창 열림"><i class="mco_sns-kakaostory"></i><span class="mm_ir-blind">카카오스토리</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--// 푸터 - 정보 -->
+
+					<!-- 푸터 - 수상 -->
+					<div class="mm_footer-awards">
+						<ul>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_icsi.png' }" alt=""></i>
+									<figcaption>2014 대한민국<br>인터넷소통 대상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_wa.png' }" alt=""></i>
+									<figcaption>2014 웹어워드코리아<br>유통분야 최우수상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_kqma.png' }" alt=""></i>
+									<figcaption>2014 한국품질경영<br>우수기업 선정</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_kto.png' }" alt=""></i>
+									<figcaption>한국관광공사<br>국가인증우수쇼핑점</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_kba.png' }" alt=""></i>
+									<figcaption>2014 대한민국<br>블로그어워드 대상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2013_ksa.png' }" alt=""></i>
+									<figcaption>2013 대한민국<br>SNS 대상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_qsc.png' }" alt=""></i>
+									<figcaption>중국관광청<br>서비스품질 인증</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2009_kea.png' }" alt=""></i>
+									<figcaption>2009 대한민국<br>엔터테인먼트 대상</figcaption>
+								</figure>
+							</li>
+						</ul>
+					</div>
+					<!--// 푸터 - 수상 -->
+				</div>
+				<!--// 푸터 -->
+			</div>
+			<!--// 내용 -->
+		</div>
+		<!--// 화면 -->
+
+		<!-- 공통 페이지 스크립트 -->
+		<script src="../js/app_page-common.js"></script>
+	</div>
+
+	<!--
+		(D) 모달은 iframe, script 2가지 방식으로 사용할 수 있습니다.
+		스크립트 타입 모달은 body 하단에 추가합니다.
+		모달의 script id는 변경할 수 없습니다.
+		script id가 mm_modal-item의 class로 적용됩니다.
+		script 태그를 사용해야 할 경우 ((script))내용((/script)) 처럼 <> 대신 (())을 사용합니다.
+	-->
+
+	<!-- 스크립트 모달샘플 -->
+	<script id="m-modal-name" type="text/m-modal">
+		<div class="mm_modal-item-head">
+			<h5>모달 제목</h5>
+		</div>
+		<div class="mm_scroller" data-scrollbar>
+			<div class="mm_modal-item-content">
+				<!--
+					(D) 모달 내용을 추가하는 부분입니다.
+					모달 내용(높이)이 바뀌면 mm.modal.resize() 를 실행합니다.
+				-->
+
+				((script))
+					console.log(스크립트 샘플)
+				((/script)
+			</div>
+		</div>
+	</script>
+	<!--// 스크립트 모달샘플 -->
+</body>
+</html>

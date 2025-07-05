@@ -1,0 +1,198 @@
+@charset 'utf-8';
+
+/**
+** 헤더
+**/
+
+/// 헤더영역
+.mm_header {
+	position: absolute;
+	z-index: $zIndex_header;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: $height_header_base;
+	background: #fff;
+	font-weight: 500;
+
+	&-top {
+		height: 35px;
+		border-bottom: 1px solid #ebebeb;
+
+		.mm_box-rside {
+			ul {
+				margin-right: -9px;
+
+				li {
+					float: left;
+
+					a {
+						padding: 0 9px;
+						color: #555;
+						font-size: 12px;
+						line-height: 36px;
+
+						[class*="__ie1"] & { height: 36px; line-height: 39px; }
+					}
+				}
+			}
+		}
+	}
+
+	> .mm_inner {
+		padding: 34px 0 0 40px;
+	}
+
+	h1 {
+		position: absolute;
+		top: 35px;
+		left: 0;
+
+		a {
+			width: 189px;
+			height: 40px;
+			background: url("../images/common/logo.png") no-repeat;
+			background-size: contain;
+		}
+	}
+
+	&-quick {
+		position: absolute;
+		top: 33px;
+		right: 0;
+
+		ul {
+			margin-right: -2px;
+
+			li {
+				float: left;
+				margin-left: 1px;
+
+				a {
+					padding: 0 8px;
+					text-align: center;
+
+					i {
+						height: 34px;
+
+						&.mco_cart {
+							position: relative;
+							padding-top: 4px;
+							font-size: 22px;
+
+							[class*="__ie1"] & { margin-bottom: 2px; padding-top: 3px; }
+
+							.text_badge {
+								position: absolute;
+								top: -7px;
+								left: 100%;
+								margin-left: 1px;
+								padding: 0 6px;
+								min-width: 19px;
+								height: 19px;
+								border-radius: 19px;
+								background: $color_primary_base;
+								color: #fff;
+								font-weight: 700;
+								font-size: 13px;
+								line-height: 21px;
+								text-align: center;
+								@include transform(translateX(-50%));
+
+								[class*="__ie1"] & { line-height: 23px; }
+							}
+						}
+
+						&.mco_mypage {
+							padding-top: 3px;
+							font-size: 23px;
+
+							[class*="__ie1"] & { margin-bottom: 2px; padding-top: 2px; }
+						}
+					}
+
+					span {
+						display: block;
+						font-weight: 500;
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
+///-- 헤더영역
+
+/// 검색영역
+.mm_header-search {
+	position: relative;
+	margin: 0 auto 8px;
+	width: 680px;
+	height: 44px;
+	border-bottom: 2px solid $color_primary_base;
+	background: #f2f2f2;
+	line-height: 44px;
+
+	> a {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		height: 42px;
+		background: transparent;
+		cursor: text;
+
+		ul {
+			float: right;
+			padding-right: 29px;
+			cursor: pointer;
+
+			&:before {
+				float: left;
+				margin: 15px 8px 0 0;
+				height: 12px;
+				border-left: 1px solid #d5d5d5;
+				content: "";
+			}
+
+			li {
+				float: left;
+				margin-left: 22px;
+				font-size: 12px;
+
+				&:before {
+					margin: 18px 4px 0 0;
+					width: 7px;
+					height: 7px;
+					border: 2px solid $color_primary_base;
+					border-radius: 7px;
+					content: "";
+				}
+
+				[class*="__ie1"] & > span { display: inline-block; padding-top: 2px; }
+			}
+		}
+	}
+
+	&-keyword {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding-left: 13px;
+		height: 42px;
+		font-size: 14px;
+
+		[class*="__ie1"] & span { line-height: 48px; }
+
+		a {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 405px;
+			width: 42px;
+			height: 100%;
+			font-size: 18px;
+			text-align: center;
+		}
+	}
+}
+///-- 검색영역

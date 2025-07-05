@@ -1,0 +1,222 @@
+@charset 'utf-8';
+
+/**
+** 모바일 전면팝업
+**/
+
+/// 전면팝업
+.mm_cover {
+	position: absolute;
+	z-index: $zIndex_popup;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	@include opacity(0, none);
+
+	&.__cover-on {
+		@include opacity(1, auto);
+	}
+
+	.mm_box-equal {
+		position: relative;
+	}
+
+	.mm_scroller {
+		font-size: 0;
+		text-align: center;
+
+		&:before {
+			margin-left: -1px;
+			width: 1px;
+			height: 100%;
+			vertical-align: middle;
+			content: "";
+		}
+
+		> .mm_box-inline {
+			display: inline-block;
+			padding: 50px 15px;
+			width: 100%;
+			vertical-align: middle;
+			text-align: left;
+		}
+	}
+
+	.mm_btngroup {
+		ul {
+			height: 54px;
+
+			.mm_btn {
+				height: 54px;
+				border-radius: 0;
+				font-size: 17px;
+				line-height: 54px;
+			}
+		}
+	}
+}
+///-- 전면팝업
+
+/// 접근권한 전면팝업
+#mm_cover-power {
+	h1 {
+		padding-bottom: 15px;
+		font-size: 19px;
+		line-height: 25px;
+		text-align: center;
+
+		.mco_attention {
+			margin-bottom: 4px;
+			color: #f4690c;
+			font-size: 30px;
+			line-height: 1;
+		}
+	}
+
+	section {
+		margin: 35px auto 0;
+		max-width: 255px;
+
+		h2 {
+			color: #2c2c2c;
+			font-size: 15px;
+		}
+
+		ul {
+			margin-top: 14px;
+
+			li {
+				position: relative;
+
+				&:nth-child(n+2) {
+					margin-top: 10px;
+				}
+
+				> i {
+					width: 50px;
+					height: 50px;
+					border-radius: 100%;
+					background: #f5f5f5;
+					color: #6e7687;
+					line-height: 50px;
+					text-align: center;
+
+					&.mco_mobile {
+						font-size: 24px;
+					}
+
+					&.mco_tel {
+						font-size: 25px;
+
+						&:before {
+							margin-top: 2px;
+						}
+					}
+
+					&.mco_addressbook {
+						font-size: 18px;
+					}
+
+					&.mco_image-picture {
+						font-size: 20px;
+					}
+				}
+			}
+		}
+
+		dl {
+			position: absolute;
+			top: 50%;
+			left: 65px;
+			font-size: 12px;
+			@include transform(translateY(-50%));
+
+			dt {
+				color: #6e7687;
+			}
+
+			dd {
+				margin-top: 5px;
+				color: #666;
+				font-weight: 300;
+				line-height: 15px;
+			}
+		}
+	}
+
+	.mm_cover-power-change {
+		margin: 28px auto 0;
+		max-width: 255px;
+		font-size: 12px;
+
+		dt {
+			color: #666;
+			font-weight: 300;
+		}
+
+		dd {
+			margin-top: 6px;
+			color: #6e7687;
+
+			.mco_next {
+				margin: 1px 2px 0;
+			}
+		}
+	}
+}
+///-- 접근권한 전면팝업
+
+/// 공지사항 전면팝업
+#mm_cover-notice {
+	color: #2c2c2c;
+
+	h1 {
+		font-size: 19px;
+		text-align: center;
+	}
+
+	p {
+		margin-top: 30px;
+		font-size: 12px;
+		line-height: 16px;
+	}
+
+	dl {
+		margin-top: 15px;
+
+		dt {
+			font-size: 16px;
+		}
+
+		dd {
+			margin-top: 7px;
+			padding-left: 15px;
+			font-size: 12px;
+			line-height: 16px;
+		}
+
+		ul {
+			margin-top: -2px;
+
+			li {
+				position: relative;
+				margin-top: 5px;
+				padding-left: 12px;
+
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					content: "ㆍ";
+				}
+			}
+		}
+
+		+ p {
+			margin-top: 22px;
+		}
+	}
+}
+///-- 공지사항 전면팝업

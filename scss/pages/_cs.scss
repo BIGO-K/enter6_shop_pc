@@ -1,0 +1,441 @@
+@charset 'utf-8';
+
+/**
+** 페이지
+** 고객센터
+**/
+
+/// 공통
+// 상세보기
+.m-cs-detail-title {
+    position: relative;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    
+    h4 {
+        padding: 15px 15px 13px 5px;
+        font-size: 16px;
+        line-height: 20px;
+        
+        [class*="__ie1"] & { padding-top: 17px; padding-bottom: 11px; }
+    }
+
+    .text_date {
+        padding-right: 4px;
+        font-size: 14px;
+        
+        &:before {
+            height: 100%;
+            vertical-align: middle;
+            content: "";
+        }
+
+        span {
+            margin-left: 11px;
+            vertical-align: middle;
+            
+            [class*="__ie1"] & { display: inline-block; margin-bottom: -2px; padding-top: 2px; }
+        }
+    }
+}
+
+.m-cs-detail-option {
+    border-bottom: 1px solid #cfcfcf;
+
+    dl {
+        position: relative;
+        border-top: 1px solid #e8e8e8;
+        font-size: 14px;
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        dt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 18px 14px 16px;
+            width: 160px;
+            background: #f9f9f9;
+            
+            [class*="__ie1"] & { padding: 20px 14px 14px; }
+        }
+
+        dd {
+            padding: 18px 15px 16px 175px;
+            
+            [class*="__ie1"] & { padding-top: 20px; padding-bottom: 14px; }
+        }
+    }
+}
+
+.m-cs-detail-content {
+	@include clearfix;
+    padding: 24px 26px 64px;
+    min-height: 109px;
+    border-bottom: 1px solid #cfcfcf;
+    font-size: 14px;
+    line-height: 1.35;// 20px;
+	
+	img {
+		width: auto;
+		max-width: 100%;
+	}
+    
+    [class*="__ie1"] & { padding: 26px 26px 62px; }
+}
+
+.m-cs-detail-answer {
+    position: relative;
+    padding: 23px 24px 20px 42px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #cfcfcf;
+    font-size: 14px;
+    line-height: 20px;
+    
+    [class*="__ie1"] & { padding-top: 25px; padding-bottom: 18px; }
+    
+    &:before {
+        position: absolute;
+        top: 21px;
+        left: 24px;
+        color: $color_primary_base;
+        font-size: 13px;
+        content: 'ㄴ';
+        
+        [class*="__ie1"] & { top: 22px; }
+        .__edge & { top: 20px; }
+    }
+    
+    p:last-child {
+        margin-top: 20px;
+    }
+}
+
+// 하단버튼
+.m-cs-btngroup {
+    margin-top: 46px;
+
+    .mm_btn {
+        width: 200px;
+    }
+    
+    .mm_box-inline {
+        .mm_btn {
+            margin: 0 3px;
+        }
+    }
+}
+///-- 공통
+
+/// 메인
+// 바로가기
+.m-cs-main-quick {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #cfcfcf;
+    @include clearfix;
+}
+
+.m--quick-menu {
+    display: inline-block;
+    padding: 44px 0 49px 22px;
+    width: 612px;
+    
+    li {
+        float: left;
+        margin-left: -5px;
+        width: 25%;
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: -1px;
+        
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    
+    figure {
+        span {
+            display: inline-block;
+            margin-bottom: 14px;
+            width: 76px;
+            height: 76px;
+            border-radius: 100%;
+            background: #f7f7f7;
+            color: #666;
+            
+            [class*="__ie1"] & + figcaption { margin: 2px 0 -2px; }
+        }
+        
+        i {
+            margin-top: 26px;
+            font-size: 25px;
+            
+            &.mco_edit {
+                margin-top: 24px;
+                font-size: 27px;
+            }
+            
+            &.mco_qna {
+                margin-top: 22px;
+                font-size: 32px;
+            }
+        }
+    }
+}
+
+.m--quick-info {
+    float: right;
+    padding: 54px 0 0 29px;
+    width: 258px;
+    height: 199px;
+    background: #f9f9f9;
+    
+    .text_tel {
+        margin-bottom: 12px;
+        color: $color_primary_base;
+        font-weight: 700;
+        font-size: 32px;
+        
+        [class*="__ie1"] & { margin: 4px 0 10px; }
+        
+        .text_tilde {
+            display: inline-block;
+            margin: 13px 3px 0 3px;
+            width: 10px;
+            border-top: 3px solid $color_primary_base;
+            font-size: 0;
+            
+            [class*="__ie1"] & { margin-top: 9px; }
+        }
+    }
+    
+    .text_add {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+// 자주묻는질문
+.m-cs-main-faq {
+    &.m-cs-faq-search {
+        border: 0;
+    }
+    
+    &.mm_formbox-linked {
+        margin-top: 46px;
+        
+        .text_linked {
+            margin-right: 12px;
+        }
+    }
+    
+    .mm_heading {
+        padding: 46px 0 10px;
+    }
+    
+    .mm_accordion {
+        > ul {
+            border-top-color: #999;
+        }
+    }
+}
+
+// 공지사항
+.m-cs-main-notice {
+    position: relative;
+    
+    .mm_heading {
+        padding: 46px 0 10px;
+    }
+    
+    .btn_more {
+        position: absolute;
+        top: 52px;
+        right: 2px;
+        color: #666;
+        font-size: 14px;
+        
+        [class*="__ie1"] & { top: 54px; }
+        
+        .mco_link {
+            margin-left: 7px;
+            font-size: 16px;
+            line-height: 14px;
+            
+            [class*="__ie1"] & { line-height: 8px; }
+            .__edge & { line-height: 12px; }
+        }
+    }
+    
+    ul {
+        border-top: 1px solid #999;
+        border-bottom: 1px solid #cfcfcf;
+        font-size: 14px;
+        
+        li {
+            position: relative;
+            height: 48px;
+            border-top: 1px solid #e8e8e8;
+            
+            &:first-child {
+                border-top: 0;
+            }
+            
+            a {
+                padding-left: 4px;
+                padding-right: 82px;
+                width: 100%;
+                line-height: 50px;
+                
+                p {
+                    @include text-ellipsis(1);
+                    
+                    [class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+                }
+                
+                span {
+                    position: absolute;
+                    top: 0;
+                    right: 2px;
+                    color: #999;
+                    cursor: default;
+                    
+                    [class*="__ie1"] & { top: 2px; }
+                }
+            }
+        }
+    }
+}
+///-- 메인
+
+/// 자주묻는질문
+.m-cs-faq-search {
+    padding: 40px 107px;
+    background: #f9f9f9;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #cfcfcf;
+    
+    > .text_linked {
+        margin-right: 33px;
+    }
+    
+    .mm_form-text {
+        max-width: none;
+    }
+    
+    > .mm_btn {
+        width: 108px;
+    }
+    
+    + .mm_accordion,
+    + .m-cs-faq-none {
+        margin-top: 76px;
+        
+        > ul {
+            border-top: 1px solid #999;
+        }
+    }
+}
+.m-cs-faq-tabmenu {
+    border-bottom: 0;
+    
+    > ul {
+        > li {
+            a {
+                border-bottom: 1px solid #999;
+            }
+        }
+    }
+    
+    + .mm_accordion {
+        > ul {
+            border-top: 0;
+        }
+        
+        .mm_text-none {
+            border-bottom: 1px solid #cfcfcf;
+        }
+    }
+}
+
+.m-cs-faq-none {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #cfcfcf;
+}
+///-- 자주묻는질문
+
+/// 1:1문의하기
+.m-cs-inquiry {
+    table {
+        line-height: 17px;
+    }
+}
+
+.m-cs-inquiry-write {
+    > table {
+        border-top-color: #999;
+        border-bottom-color: #cfcfcf; 
+        
+        > tbody {
+            > tr {
+                border-top-color: #e8e8e8 !important;
+                
+                
+            }
+        }
+    }
+    
+    .mm_list {
+        padding-top: 0;
+        
+        .mm_order-item {
+            
+        }
+    }
+    
+    .mm_formbox-linked {
+        .mm_form-text {
+            + .mm_form-check {
+                margin-left: 18px;
+            }
+        }
+    }
+}
+///-- 1:1문의하기
+
+/// 제휴/입점문의하기
+.m-cs-alliance {
+    > table {
+        border-top-color: #999;
+        border-bottom-color: #cfcfcf; 
+        
+        > tbody {
+            > tr {
+                border-top-color: #e8e8e8 !important;
+            }
+        } 
+    }
+}
+
+.m-cs-alliance-privacy {
+    position: relative;
+    margin-top: 8px;
+    
+    > .mm_form-check {
+        margin-top: 3px;
+    }
+    
+    .mm_btn {
+        position: absolute;
+        right: 0;
+    }
+}
+
+.m-cs-alliance-recaptcha {
+    margin: 23px auto -20px;
+    width: 304px;
+    height: 78px;
+}
+///-- 제휴/입점문의하기

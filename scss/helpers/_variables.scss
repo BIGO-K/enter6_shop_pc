@@ -1,0 +1,86 @@
+@charset 'utf-8';
+
+/**
+* color - primary, secondary, tertiary, positive, negative, background, line, text, icon, tag...
+* font-size - body, button, tag
+**/
+
+/// color
+// $color_primary_light: #ffcc00;
+$color_primary_base: #e71d3e;
+// $color_primary_dark: #f78408;
+
+$color_secondary_base: #23b593;
+// $color_secondary_dark: #088589;
+
+$color_tertiary_base: #009d3f;
+
+$color_naver_light: #3ec729;
+$color_naver_base: #22b40c;
+
+$color_positive_base: $color_tertiary_base;//$color_primary_base;
+
+$color_negative_light: #ffe7eb;
+$color_negative_base: $color_primary_base;
+
+$color_text_base: #000;
+
+/// font
+$fontFamily_mobile: 'GothicA1', sans-serif;
+$fontFamily_pc: 'GothicA1', sans-serif;// ie에서 31자 이상 적용 안됨
+$fontFamily_base: $fontFamily_pc;
+$fontFamily_latin: 'Roboto', sans-serif;
+$fontFamily_password: $fontFamily_base;/*monospace, cursive, sans-serif;*/
+$fontFamily_special: 'Jalnan', 'GothicA1', sans-serif;
+
+$fontSize_base: 10px;
+
+/// z-index
+$zIndex_bom: 3200;
+$zIndex_loading: 3100;
+$zIndex_most: 3000;
+$zIndex_skip: $zIndex_most;
+$zIndex_modal: 2100;
+$zIndex_popup: 2000;
+$zIndex_header: 1200;// 1000
+$zIndex_toolbar: 1100;
+$zIndex_sidebar: 1000;// 1200
+$zIndex_floating: 100;
+$zIndex_alert: 10;// 텍스트 경고
+
+/// size
+$minWidth_mobile: 320px;
+$minWidth_pc: 1100px;
+$minWidth_base: $minWidth_pc;
+$minWidth_extend: $minWidth_base + 200px;// 좌/우 날개배너 확장
+
+/// transition sec
+$time_base: 0.4s;
+$time_fast: 0.2s;
+$time_faster: 0.1s;
+$time_slow: 0.7s;
+$time_slower: 1s;
+
+/// 1px transpatent gif
+$image_empty: "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+
+/// layout - grid
+
+/// layout - header
+$height_header_base: 181px;
+
+/// layout - footer
+$height_footer_base: 408px;
+
+/// layout - toolbar
+// $height_toolbar_base: 53px;
+
+/// layout - sidebar
+// $width_sidebar_base: 210px;
+// $width_sidebar_min: 50px;
+
+/// layout - popup
+
+/// layout - modal
+
+/// layout - bom

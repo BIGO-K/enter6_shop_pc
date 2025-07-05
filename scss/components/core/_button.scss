@@ -1,0 +1,336 @@
+@charset 'utf-8';
+
+/**
+** 컴포넌트 코어
+** 버튼, 버튼그룹 등 버튼의 기본 단위
+**/
+
+/// 탭인덱스
+[tabindex] {
+	cursor: pointer;
+}
+///-- 탭인덱스
+
+/// 기본형
+.mm_btn {
+	$height_btn_base: 32px;
+	$height_btn_sm: 26px;
+	$height_btn_xs: 22px;
+	$height_btn_2xs: 20px;
+	$height_btn_lg: 36px;
+	$height_btn_xl: 48px;
+	$height_btn_2xl: 58px;
+
+	$fontSize_btn_base: 14px;
+	$fontSize_btn_sm: 12px;
+	$fontSize_btn_xs: 12px;
+	$fontSize_btn_2xs: 10px;
+	$fontSize_btn_lg: 14px;
+	$fontSize_btn_xl: 16px;
+	$fontSize_btn_2xl: 18px;
+
+	overflow: hidden;
+	position: relative;
+	padding: 0 10px;
+	width: 100%;
+	height: $height_btn_base;
+	background: #424242;
+	color: #fff;
+	font-size: $fontSize_btn_base;
+	line-height: $height_btn_base + 2px;
+	text-align: center;
+
+	[class*="__ie1"] & { padding-top: 2px; }
+
+	&:after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		border: 1px solid transparent;
+		content: "";
+	}
+
+	// 사이즈
+	&[class*="_sm_"] {
+		height: $height_btn_sm;
+		font-size: $fontSize_btn_sm;
+		line-height: $height_btn_sm + 2px;
+	}
+	&[class*="_xs_"] {
+		height: $height_btn_xs;
+		font-size: $fontSize_btn_xs;
+		line-height: $height_btn_xs + 2px;
+		
+		.__ie10 & { line-height: $height_btn_xs - 1px; }
+	}
+	&[class*="_2xs_"] {
+		height: $height_btn_2xs;
+		font-size: $fontSize_btn_2xs;
+		line-height: $height_btn_2xs + 2px;
+
+		[class*="__ie1"] & { line-height: $height_btn_2xs; }
+	}
+	&[class*="_lg_"] {
+		height: $height_btn_lg;
+		font-size: $fontSize_btn_lg;
+		line-height: $height_btn_lg + 2px;
+	}
+	&[class*="_xl_"] {
+		height: $height_btn_xl;
+		font-size: $fontSize_btn_xl;
+		line-height: $height_btn_xl + 2px;
+	}
+	&[class*="_2xl_"] {
+		height: $height_btn_2xl;
+		font-size: $fontSize_btn_2xl;
+		line-height: $height_btn_2xl + 2px;
+	}
+
+	// 라인
+	&[class*="_line_"] {
+		background: #fff;
+		color: #666;
+
+		&:after {
+			border-color: #999;
+		}
+	}
+
+	// 색상, 라인
+	&[class*="_light_"] {
+		background: #4f4f4f;
+		// color: #fff;
+
+		&:after {
+			// border-color: #4f4f4f;
+		}
+
+		&[class*="_line_"] {
+			background: #fff;
+			color: #4f4f4f;
+
+			&:after {
+				border-color: #b9b9b9;
+			}
+		}
+	}
+	&[class*="_lighter_"] {
+		background: #f2f2f2;
+		color: #cfcfcf;
+
+		&:after {
+			// border-color: #f2f2f2;
+		}
+
+		&[class*="_line_"] {
+			background: #fff;
+			color: #666;
+
+			&:after {
+				border-color: #cfcfcf;
+			}
+		}
+	}
+	&[class*="_dark_"] {
+		background: #202020;
+
+		&:after {
+			// border-color: #202020;// shade(#666, 9%);
+		}
+
+		&[class*="_line_"] {
+			background: #fff;
+			color: #555;
+
+			&:after {
+				border-color: #555;
+			}
+		}
+	}
+	&[class*="_darker_"] {
+		&[class*="_line_"] {
+			background: #fff;
+			color: #4f4f4f;
+
+			&:after {
+				border-color: #4f4f4f;
+			}
+		}
+	}
+	&[class*="_darkest_"] {
+		&[class*="_line_"] {
+			background: #fff;
+			color: #202020;
+
+			&:after {
+				border-color: #202020;
+			}
+		}
+	}
+	&[class*="_transparent_"] {
+		&[class*="_line_"] {
+			background: transparent;
+			color: #fff;
+
+			&:after {
+				border-color: #fff;
+			}
+		}
+	}
+	&[class*="_naver"] {
+		&[class*="_line_"] {
+			background: #fff;
+			color: $color_naver_base;
+
+			&:after {
+				border-color: $color_naver_light;
+			}
+		}
+	}
+	&[class*="_primary_"] {
+		background: $color_primary_base;
+
+		&:after {
+			// border-color: shade($color_primary_base, 9%);
+		}
+
+		&[class*="_line_"] {
+			background: #fff;
+			color: $color_primary_base;
+
+			&:after {
+				border-color: $color_primary_base;
+			}
+		}
+	}
+	&[class*="_secondary_"] {
+		background: $color_secondary_base;
+
+		&:after {
+			// border-color: shade($color_secondary_base, 9%);
+		}
+
+		&[class*="_line_"] {
+			background: #fff;
+			color: $color_secondary_base;
+
+			&:after {
+				border-color: $color_secondary_base;
+			}
+		}
+	}
+	&[class*="_tertiary_"] {
+		background: $color_tertiary_base;
+
+		&:after {
+			// border-color: shade($color_tertiary_base, 9%);
+		}
+
+		&[class*="_line_"] {
+			background: #fff;
+			color: $color_tertiary_base;
+
+			&:after {
+				border-color: $color_tertiary_base;
+			}
+		}
+	}
+
+	// button 비활성
+	&:disabled {
+		@include opacity(0.4);
+	}
+
+	// a 다운로드 속성
+	&[download] {
+		padding-right: 0 !important;
+		width: auto;
+
+		.mco_download {
+			overflow: hidden;
+			margin-left: 13px;
+			width: 34px;
+			height: 100%;
+			background: $color_tertiary_base;
+			color: #fff;
+			font-size: 16px;
+			text-align: center;
+
+			&:before {
+				margin-top: -1px;
+			}
+		}
+	}
+
+	// 엑셀
+	.mco_excel {
+		margin: 0 6px 0 -3px;
+		font-size: 15px;
+	}
+
+	// sms, 메일
+	.mco_mail {
+		margin: 1px 6px 0 -3px;
+		font-size: 16px;
+	}
+
+	// 새창, 새탭
+	.mco_newtab {
+		margin-left: 7px;
+	}
+}
+///-- 기본형
+
+/// 버튼그룹
+.mm_btngroup {
+	text-align: center;
+	@include clearfix;
+
+	// 가운데
+	.mm_box-inline {
+		font-size: 0;
+		white-space: nowrap;
+	}
+
+	// 위치고정
+	&.__btngroup_fixed__ {
+		// position: relative;
+		// height: 58px;
+		//
+		// > * {
+		// 	position: fixed;
+		// 	z-index: $zIndex_floating;
+		// 	bottom: 0;
+		// 	left: 0;
+		// 	padding: 9px 15px;
+		// 	width: 100%;
+		// 	border-top: 1px solid #d3d3d3;
+		// 	background: #f5f5f5;
+		// 	@include transform(translate3d(0, 0, 0));
+		//
+		// 	// 폼요소 포커싱되면 페이지 하단으로 이동
+		// 	.__focus & {
+		// 		position: absolute;
+		// 		bottom: 0;
+		// 	}
+		//
+		// 	// 툴바가 없으면 화면 하단으로 이동
+		// 	.__toolbar-hide & {
+		// 		bottom: 0;
+		// 	}
+		//
+		// 	.text_count {
+		// 		margin-bottom: 8px;
+		// 		font-size: 15px;
+		// 		text-align: right;
+		// 	}
+		//
+		// 	li:nth-child(n+2) {
+		// 		margin-left: 4px;
+		// 	}
+		// }
+	}
+}
+///-- 버튼그룹

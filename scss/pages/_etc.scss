@@ -1,0 +1,232 @@
+@charset 'utf-8';
+
+/**
+** 페이지
+** 입점신청, 기타
+**/
+
+/// 바로접속 ON
+.m-direct {
+	// 제목
+	&-title {
+		padding: 70px 0 0;
+		height: 324px;
+		background-color: #f8f8f8;
+		text-align: center;
+
+		h3 {
+			height: 138px;
+		}
+
+		p {
+			margin-top: 23px;
+			color: #42434e;
+			font-size: 19px;
+			line-height: 25px;
+			letter-spacing: -1px;
+
+			[class*="_ie1"] & { margin-top: 25px; }
+		}
+
+		strong {
+			color: #000;
+			font-weight: 600;
+		}
+	}
+
+	// 방법
+	&-way {
+		@include clearfix;
+		margin-bottom: 83px;
+		padding-top: 250px;
+		height: 360px;
+		background: url("../images/content/direct_way.jpg") no-repeat;
+		color: #fff;
+
+		dd {
+			float: left;
+		}
+
+		button {
+			margin-left: 100px;
+			width: 242px;
+			height: 60px;
+			border-radius: 60px;
+			background-color: $color_primary_base;
+			font-size: 21px;
+			line-height: 62px;
+			text-align: center;
+
+			[class*="_ie1"] & { line-height: 66px; }
+		}
+	}
+
+	// 혜택
+	&-benefit {
+		text-align: center;
+
+		h4 {
+			position: relative;
+			margin-bottom: 52px;
+			font-weight: 300;
+			font-size: 33px;
+			letter-spacing: -1.5px;
+
+			[class*="_ie1"] & { height: 33px; line-height: 40px; }
+
+			&:before,
+			&:after {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				margin-top: -7px;
+				width: 374px;
+				height: 4px;
+				border-top: 1px solid #dadadc;
+				border-bottom: 1px solid #dadadc;
+				content: "";
+			}
+
+			&:after {
+				right: 0;
+				left: auto;
+			}
+		}
+
+		&-inner {
+			display: inline-block;
+			text-align: left;
+		}
+
+		&-head {
+			margin-bottom: 15px;
+			padding: 0 30px 0;
+			@include clearfix;
+
+			[class*="_ie1"] & { margin-bottom: 12px; }
+
+			i {
+				margin: -3px 0 0 -11px;
+
+				[class*="_ie1"] & { margin: -6px 0 0 -11px; }
+			}
+
+			p {
+				margin-top: 5px;
+				float: left;
+				font-size: 20px;
+				line-height: 30px;
+
+				[class*="_ie1"] & { margin-top: 8px; }
+			}
+
+			.btn_coupon-down {
+				float: right;
+				margin-right: 10px;
+				width: 258px;
+				height: 60px;
+				border: 3px solid $color_primary_base;
+				border-radius: 60px;
+				color: $color_primary_base;
+				font-weight: 600;
+				font-size: 21px;
+				line-height: 58px;
+				text-align: center;
+				letter-spacing: -1px;
+
+				[class*="_ie1"] & { line-height: 62px; }
+			}
+
+			.mco_download {
+				margin: -2px 0 0 13px;
+				font-size: 18px;
+				vertical-align: inherit;
+
+				[class*="_ie1"] & { margin: -4px 0 0 13px; }
+			}
+		}
+
+		// 모달 .m-modal-mypagebenefit의 구조를 가져와 사용
+		&-grade {
+			dd {
+				height: 356px;
+			}
+		}
+
+		&-attention {
+			position: relative;
+			margin-top: 18px;
+			font-size: 14px;
+
+			h5 {
+				position: absolute;
+				top: 50%;
+				left: 23px;
+				margin-top: -11px;
+				line-height: 23px;
+			}
+
+			.mco_attention {
+				margin: -1px 7px 0 0;
+				color: #bbb;
+				font-size: 22px;
+			}
+
+			ul {
+				padding-left: 133px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+		}
+	}
+}
+///-- 바로접속 ON
+
+/// 레이어,윈도우팝업
+.m-custom-popup {
+	position: relative;
+	padding-bottom: 32px;
+	width: auto;
+	height: 100%;
+
+	// 레이어팝업	
+	&-layer {
+		display: none;
+		position: fixed;
+		z-index: $zIndex_popup;
+		top: 0;
+		left: 0;
+		
+		&.__on {
+			display: block;
+		}
+	}
+	
+	// 팝업닫기
+	&-close {
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 6px;
+		height: 32px;
+		background: #000;
+		
+		.mm_form-check {
+			.text_label {
+				color: #fff;
+			}
+		}
+		
+		.btn_popup-close {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 9px 6px;
+			color: #fff;
+			font-size: 16px;
+		}
+	}
+}
+///-- 레이어,윈도우팝업

@@ -1,0 +1,1200 @@
+@charset 'utf-8';
+
+/**
+** 모달
+**/
+
+$width_modal_base: 700px;
+
+/// 모달 영역
+.mm_modal {
+	overflow: hidden;
+	position: fixed;// mobile: absolute, pc: fixed
+	z-index: $zIndex_modal;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	@include opacity(0, none);
+	@include transition(opacity 0s $time_fast);
+
+	// 모달 열림
+	.__modal & {
+		@include opacity(1, auto);
+		@include transition(opacity 0s ease-in);
+
+		.mm_modal-dim {
+			@include opacity(1);
+		}
+	}
+
+	&-dim {
+		width: 100%;
+		height: 100%;
+		background: rgba(#000, 0.8);
+		@include opacity(0);
+		@include transition(opacity $time_fast);
+	}
+
+	&-items {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+}
+///-- 모달 영역
+
+/// 모달 요소
+.mm_modal-item {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	@include opacity(0, none);
+	@include transform(scale(1.2));
+	@include transition(opacity $time_fast, transform $time_fast);
+
+	.mm_modal & {
+		display: block;
+	}
+
+	// 현재창
+	&.__modal-on {
+		z-index: 1;
+		@include opacity(1, auto);
+		@include transform(scale(1));
+	}
+
+	// 노출모션
+	&.__modal-motion-up {
+		@include transform(translateY(10%));
+
+		&.__modal-on {
+			@include transform(translateY(0));
+		}
+	}
+	&.__modal-motion-down {
+		@include transform(translateY(-10%));
+
+		&.__modal-on {
+			@include transform(translateY(0));
+		}
+	}
+	&.__modal-motion-left {
+		@include transform(translateX(10%));
+
+		&.__modal-on {
+			@include transform(translateX(0));
+		}
+	}
+	&.__modal-motion-right {
+		@include transform(translateX(-10%));
+
+		&.__modal-on {
+			@include transform(translateX(0));
+		}
+	}
+
+	.btn_modal-area {
+		width: 100%;
+		height: 100%;
+		background: rgba(#000, 0);
+		cursor: default;
+	}
+
+	&-inner {
+		overflow: hidden;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		padding-top: 60px;
+		width: $width_modal_base;
+		max-height: 90%;
+		background: #fff;
+		@include transform(translate(-50%, -50%));
+	}
+
+	&-head {
+		position: absolute;
+		top: 0;
+		right: 20px;
+		left: 20px;
+		padding-top: 6px;
+		border-bottom: 2px solid #303952;
+
+		h5 {
+			padding: 0 40px 0 3px;
+			height: 52px;
+			color: #303952;
+			font-weight: 500;
+			font-size: 26px;
+			line-height: 50px;
+			letter-spacing: -1px;
+			@include text-ellipsis(1);
+		}
+	}
+
+	// iframe extend 상속
+	&-content {
+		position: relative;
+		padding: 0 30px 50px;
+		height: 100%;
+
+		.mm_scroller & {
+			height: auto;
+		}
+
+		> .mm_formbox {
+			&:first-child {
+				> table {
+					border-top: 0;
+				}
+			}
+		}
+	}
+}
+///-- 모달 요소
+
+/// 모달 닫기
+.btn_modal-close {
+	position: absolute;
+	top: 9px;
+	right: 12px;
+	width: 60px;
+	height: 60px;
+	color: #202020;
+	font-size: 22px;
+	line-height: 60px;
+	text-align: center;
+
+	[class*="__ie1"] & { top: 8px; }
+}
+///-- 모달 닫기
+
+/// 모달 페이지
+html[class*="_modal_"] {
+	min-width: 0;
+
+	body {
+		overflow-y: visible;
+		min-width: 0;
+	}
+
+	.mm_view {
+		padding-top: 70px;
+	}
+
+	.mm_header {
+		right: 30px;
+		left: 30px;
+		height: 70px;
+		border-bottom: 1px solid #000;
+		font-weight: 400;
+
+		.mm_title {
+			position: static;
+			padding: 0;
+			margin-top: 34px;
+			color: #202020;
+			font-size: 20px;
+			text-align: left;
+			letter-spacing: -1px;
+			@include text-ellipsis(1);
+
+			@include context-after('[class*="__ie1"]', 'html[class*="_modal_"]') { margin-bottom: -3px; padding-top: 3px; }
+
+			small {
+				position: relative;
+				margin-left: 13px;
+				padding-left: 13px;
+				font-size: 12px;
+
+				&:before {
+					position: absolute;
+					left: 0;
+					font-size: 15px;
+					content: "ㆍ";
+				}
+			}
+		}
+
+		.btn_modal-close {
+			right: -18px;
+		}
+	}
+
+	.mm_page {
+		padding: 0;
+		height: 100%;
+	}
+
+	.mm_page-content {
+		padding: 0;
+		border-top: 0;
+	}
+}
+
+// iframe 내부
+.mm_modal-frame {
+	@extend .mm_modal-item-content;
+	width: $width_modal_base;
+}
+
+// 오늘하루 그만보기
+.m-modal-today {
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 11px;
+	background: #f2f2f2;
+}
+///-- 모달 페이지
+
+/// 계정연결
+.m-modal-account {
+	text-align: center;
+
+	> h2 {
+		padding: 50px 0 8px;
+		font-weight: 500;
+		font-size: 24px;
+		letter-spacing: -1.5px;
+
+		[class*="__ie1"] & { margin-bottom: -3px; padding-top: 53px; }
+	}
+
+	> p {
+		margin-bottom: 14px;
+		color: #7b7b7b;
+		font-size: 14px;
+		line-height: 20px;
+		letter-spacing: -1px;
+
+		[class*="__ie1"] & { margin-top: 2px; margin-bottom: 12px; }
+	}
+
+	&-form {
+		margin: 0 auto;
+		width: 360px;
+
+		.mm_form-text {
+			margin-bottom: 10px;
+		}
+
+		.btn_account {
+			margin-top: 10px;
+			width: 200px;
+		}
+	}
+
+	&-join {
+		position: relative;
+		margin: 50px -30px -50px;
+		padding: 27px 30px 0;
+		height: 108px;
+		background: #f9f9f9;
+		text-align: left;
+
+		dl {
+			dt {
+				font-size: 18px;
+				letter-spacing: -1px;
+
+				[class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+			}
+
+			dd {
+				margin-top: 6px;
+				color: #7b7b7b;
+				font-size: 12px;
+				line-height: 16px;
+
+				[class*="__ie1"] & { margin-top: 8px; }
+
+				strong {
+					color: #000;
+				}
+			}
+		}
+
+		.btn_join {
+			position: absolute;
+			top: 30px;
+			right: 42px;
+			width: 180px;
+		}
+	}
+}
+///-- 계정연결
+
+/// 약관보기
+.m-modal-terms {
+	padding-top: 8px;
+}
+///-- 약관보기
+
+/// 우편번호찾기
+.m-modal-postcode {
+	.m-modal-postcode-form {
+		padding: 40px 105px;
+		background: #f7f7f7;
+		border-bottom: 1px solid #cfcfcf;
+		font-size: 14px;
+		text-align: center;
+
+		[class*="__ie1"] & > p { margin-bottom: -2px; padding-top: 2px; }
+
+		.mm_form-text {
+			margin: 11px 0 18px;
+		}
+
+		.mm_btn {
+			width: 180px;
+		}
+	}
+
+	/// 우편번호리스트
+	.m-modal-postcode-list {
+		border-bottom: 1px solid #cfcfcf;
+
+		.text_result {
+			margin: 40px 0 8px;
+			font-size: 15px;
+
+			strong {
+				font-weight: 500;
+			}
+		}
+
+		> ul {
+			border-top: 1px solid #cfcfcf;
+
+			> li {
+				padding: 18px 15px;
+
+				&:nth-child(n+2) {
+					border-top: 1px solid #e8e8e8;
+				}
+
+				> a {
+					display: block;
+				}
+			}
+		}
+
+		.mm_text-none {
+			font-size: 14px;
+			line-height: 22px;
+
+			[class*="__ie1"] & { margin: 2px 0 -2px; }
+		}
+	}
+
+	.m-modal-postcode-item {
+		position: relative;
+		padding-right: 102px;
+
+		dl {
+			position: relative;
+			padding-left: 62px;
+			font-size: 14px;
+
+			&:nth-of-type(2) {
+				margin-top: 7px;
+			}
+
+			dt {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 55px;
+				height: 20px;
+				border: 1px solid #b9b9b9;
+				background: #fff;
+				color: #7b7b7b;
+				font-size: 12px;
+				line-height: 18px;
+				text-align: center;
+
+				[class*="__ie1"] & { line-height: 21px; }
+			}
+
+			dd {
+				padding-top: 1px;
+				line-height: 20px;
+
+				[class*="__ie1"] & { margin-bottom: -2px; padding-top: 3px; }
+			}
+		}
+
+		.text_postcode {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			margin-top: -6px;
+			font-size: 14px;
+
+			[class*="__ie1"] & { margin-top: -5px; }
+		}
+	}
+	///-- 우편번호리스트
+}
+///-- 우편번호찾기
+
+/// 개인정보취급방침
+.m-modal-privacy {
+	table {
+		border-top: 0;
+		border-bottom: 1px solid #cfcfcf;
+
+		> tbody {
+			> tr {
+				border-top: 1px solid #e8e8e8;
+
+				&:last-child {
+					border-top: 0;
+
+					td {
+						position: relative;
+
+						&:before {
+							position: absolute;
+							top: 12px;
+							left: 6px;
+							font-size: 20px;
+							content: "ㆍ";
+
+							[class*="__ie1"] & { top: 15px; }
+						}
+
+						span {
+							padding-left: 15px;
+						}
+					}
+				}
+			}
+
+			th[rowspan] {
+				+ td {
+					position: relative;
+					padding-bottom: 0;
+
+					&:before {
+						position: absolute;
+						top: 12px;
+						left: 6px;
+						font-size: 20px;
+						content: "ㆍ";
+
+						[class*="__ie1"] & { top: 15px; }
+					}
+
+					span {
+						padding-left: 15px;
+					}
+				}
+			}
+		}
+	}
+}
+///-- 개인정보취급방침
+
+/// 할인쿠폰다운받기
+.m-modal-coupondownload {
+	&.mm_modal-frame,
+	.mm_modal-item-inner {
+		width: 800px;
+	}
+
+	.mm_board-list {
+		margin-top: -1px;
+	}
+
+	.image_coupon {
+		margin: 19px 0 20px;
+		width: 100px;
+	}
+
+	.btn_download {
+		display: block;
+		margin: 20px auto 0;
+		width: 200px;
+
+		.mco_download {
+			margin-left: 9px;
+			font-size: 15px;
+
+			[class*="__ie1"] & { margin-top: -2px; }
+		}
+	}
+
+	.mm_attention {
+		margin-top: 44px;
+
+		[class*="__ie1"] & { margin-top: 45px; }
+	}
+}
+///-- 할인쿠폰다운받기
+
+/// 배송지목록
+.m-modal-orderaddress {
+	table {
+		border: 1px solid #e8e8e8;
+		border-top: 0;
+		border-bottom: 1px solid #cfcfcf;
+	}
+
+	tbody {
+		td {
+			border-left: 1px solid #e8e8e8;
+
+			[class*="__ie1"] & span { padding-top: 0; }
+
+			&:first-child {
+				border-left: 0;
+			}
+
+			&:nth-child(4) {
+				padding: 14px 10px;
+				text-align: left;
+			}
+
+			.mm_text-none {
+				padding: 53px 0 51px;
+				text-align: center;
+			}
+		}
+
+		.text_default {
+			display: block;
+			margin: 0 auto;
+			padding: 1px 0;
+			width: 62px;
+			height: 20px;
+			background: #23b593;
+			color: #fff;
+			font-size: 10px;
+
+			[class*="__ie1"] & { line-height: 20px; }
+		}
+
+		.mm_btn {
+			width: 65px;
+			background: #7b7b7b;
+
+			[class*="__ie1"] & { line-height: 22px; }
+		}
+	}
+
+	.btn_remove {
+		margin-top: 18px;
+		width: 115px;
+		color: #555;
+
+		&:after {
+			border-color: #555;
+		}
+	}
+
+	.mm_attention {
+		display: inline-block;
+		margin: 16px 0 0 26px;
+		color: #7b7b7b;
+		font-size: 12px;
+	}
+}
+///-- 배송지목록
+
+/// 개인정보제3자제공동의
+.m-modal-privacyagreement {
+	table {
+		border-top: 0;
+	}
+}
+///-- 개인정보제3자제공동의
+
+/// 옵션변경
+.m-modal-changeoption {
+	.m-prodetail-head-option {
+		margin-top: 0;
+
+		.m--option-item-list {
+			max-height: (83px * 1.8);
+		}
+
+		.m--option-selected {
+			padding-top: 14px;
+			border-top: 1px solid #e1e1e1;
+			background: #fff;
+
+			ul {
+				+ .text_option-none {
+					display: none;
+				}
+			}
+
+			.text_option-none {
+				display: block;
+				padding: 34px 0 32px;
+				border: 1px solid #7b7b7b;
+				font-size: 14px;
+				text-align: center;
+
+				[class*="__ie1"] & { padding: 36px 0 30px; }
+			}
+		}
+
+		.m--option-item {
+			section {
+				margin-bottom: 20px;
+			}
+		}
+	}
+
+	.mm_btngroup {
+		margin-top: 26px;
+
+		.mm_btn {
+			margin: 0 3px;
+			width: 200px;
+		}
+	}
+}
+///-- 옵션변경
+
+/// 후기작성
+.m-modal-prodreview {
+	.btn_submit {
+		display: block;
+		margin: 23px auto 0;
+		width: 200px;
+	}
+
+	.text_starscore {
+		margin: 4px 0 0 11px;
+		font-size: 14px;
+	}
+
+	.image_review {
+		display: block;
+		margin-bottom: 10px;
+
+		img {
+			width: auto;
+			max-width: 100%;
+		}
+	}
+}
+///-- 후기작성
+
+/// 상품문의하기
+.m-modal-prodinquiry {
+	.mm_attention {
+		margin-top: 8px;
+		color: #666;
+
+		[class*="__ie1"] & { margin: 10px 0 -2px; }
+
+		strong {
+			color: #000;
+		}
+	}
+
+	.btn_submit {
+		display: block;
+		margin: 23px auto 0;
+		width: 200px;
+
+		[class*="__ie1"] & { padding-top: 3px; }
+		.__edge & { padding-top: 1px; }
+	}
+}
+///-- 상품문의하기
+
+/// 회원등급별기준및혜택 (바로접속페이지에서 같은 구조로 사용됨)
+.m-modal-mypagebenefit {
+	&.mm_modal-frame,
+	.mm_modal-item-inner {
+		width: 871px;
+	}
+
+	&-grade {
+		@include clearfix;
+
+		dl {
+			float: left;
+			margin: 20px 0 0 1px;
+			width: 202px;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		dt {
+			float: left;
+			margin-left: 1px;
+			padding-top: 32px;
+			width: 100%;
+			height: 180px;
+			color: #fff;
+			font-size: 14px;
+			text-align: center;
+
+			&:first-child {
+				margin-left: 0;
+			}
+
+			.image_grade {
+				position: relative;
+				width: 62px;
+				height: 62px;
+			}
+
+			.text_grade {
+				display: block;
+				margin: 17px 0 13px;
+				font-size: 18px;
+
+				[class*="__ie1"] & { margin: 19px 0 11px; }
+			}
+
+			.text_qualify {
+				display: block;
+				padding: 12px 0;
+
+				[class*="__ie1"] & { padding: 14px 0 10px; }
+			}
+		}
+
+		dd {
+			position: relative;
+			margin-top: 180px;
+			padding: 15px 14px 17px;
+			height: 416px;
+			border: 1px solid #e8e8e8;
+			border-top: 0;
+			background: #f9f9f9;
+			text-align: center;
+
+			ul {
+				li {
+					position: relative;
+					margin-top: 21px;
+				}
+
+				.__tag_coupon__ {
+					display: inline-block;
+					position: absolute;
+					top: -27px;
+					right: 21px;
+					width: 31px;
+					height: 31px;
+					border-radius: 100%;
+					background: #424242;
+					font-weight: 500;
+					font-size: 18px;
+					font-family: $fontFamily_latin;
+					color: #fff;
+					line-height: 31px;
+
+					[class*="__ie1"] & { top: -29px; }
+
+					&:before {
+						margin-right: 1px;
+						font-size: 12px;
+						line-height: 32px;
+						content: "X";
+					}
+				}
+
+				span {
+					display: block;
+					margin-top: 11px;
+					font-size: 14px;
+
+					[class*="__ie1"] & { margin: 13px 0 -2px; }
+				}
+			}
+
+			.mm_btn {
+				position: absolute;
+				left: 15px;
+				bottom: 17px;
+				margin-top: 29px;
+				width: 170px;
+
+				.mco_download {
+					margin-left: 9px;
+
+					[class*="__ie1"] & { margin-top: -3px; }
+					.__edge & { margin-top: -1px; }
+				}
+			}
+		}
+	}
+
+	.__title_grade {
+		&-vip {
+			background: #9479b4;
+
+			.text_qualify {
+				background: #856da2;
+			}
+		}
+
+		&-gold {
+			background: #dcb36a;
+
+			.text_qualify {
+				background: #c6a15f;
+			}
+		}
+
+		&-silver {
+			background: #a1a1b6;
+
+			.text_qualify {
+				background: #9191a3;
+			}
+		}
+
+		&-family {
+			background: #72a99e;
+
+			.text_qualify {
+				background: #66988e;
+			}
+		}
+	}
+
+	&-point {
+		margin-top: 20px;
+
+		h4 {
+			display: inline-block;
+			padding-top: 28px;
+			width: 85px;
+			height: 85px;
+			border-radius: 100%;
+			background: #f2f2f2;
+			font-size: 14px;
+			text-align: center;
+			line-height: 15px;
+
+			[class*="__ie1"] & { padding-top: 29px; }
+
+			small {
+				font-size: 12px;
+			}
+		}
+
+		.mm_attention {
+			display: inline-block;
+			margin: 26px 0 0 16px;
+
+			[class*="__ie1"] & { margin-top: 27px; }
+		}
+	}
+}
+///-- 회원등급별기준및혜택
+
+/// 배송지추가
+.m-modal-address {
+	&-title {
+		strong {
+			padding-left: 12px;
+			color: #666;
+			font-size: 14px;
+			line-height: 26px;
+
+			[class*="__ie1"] & { margin-top: -1px; }
+		}
+
+		.mco_required {
+			margin: 1px 4px 0 -1px;
+			color: #e71d3e;
+			font-size: 10px;
+			line-height: 21px;
+			@include transform(scale(0.6));
+
+			[class*="__ie1"] & { margin-top: -1px; }
+		}
+	}
+}
+///-- 배송지추가
+
+/// 쿠폰사용범위
+.m-modal-couponscope {
+	.m--couponscope-list {
+		padding: 12px;
+		min-height: 150px;
+		border: 1px solid #e8e8e8;
+		border-top: 0;
+		border-bottom: 1px solid #cfcfcf;
+		font-size: 14px;
+		line-height: 22px;
+
+		[class*="__ie1"] & { padding-top: 14px; padding-bottom: 10px; }
+
+		ul {
+			margin-bottom: 12px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #e8e8e8;
+
+			li {
+				float: left;
+				padding-right: 10px;
+				width: 25%;
+				@include text-ellipsis(1);
+			}
+		}
+	}
+}
+///-- 쿠폰사용범위
+
+/// 비밀번호변경
+.m-modal-changepw {
+	text-align: center;
+
+	&-form {
+		padding: 51px 0 40px;
+		border-bottom: 1px solid #e1e1e1;
+		background: #f7f7f7;
+
+		dl {
+			margin-bottom: 29px;
+
+			[class*="__ie1"] & { margin-bottom: 27px; padding-top: 2px; }
+
+			dt {
+				font-size: 19px;
+			}
+
+			dd {
+				margin-top: 12px;
+				font-size: 16px;
+			}
+		}
+
+		.mm_form-text {
+			margin: 0 auto 10px;
+			width: 410px;
+		}
+	}
+
+	.mm_btngroup {
+		margin-top: 26px;
+
+		.mm_btn {
+			margin: 0 3px;
+			width: 200px;
+		}
+	}
+}
+///-- 비밀번호변경
+
+/// 휴대폰번호변경
+.m-modal-changemobile {
+	font-size: 14px;
+
+	dl {
+		margin: 0 auto;
+
+		dt {
+			float: left;
+			padding-right: 19px;
+			line-height: 36px;
+			letter-spacing: -1px;
+
+			[class*="__ie1"] & { line-height: 40px; }
+		}
+
+		dd {
+			float: left;
+
+			.mm_formbox-linked {
+				width: 384px;
+				letter-spacing: -1px;
+			}
+
+			.mm_btn {
+				margin-left: 10px;
+			}
+		}
+	}
+
+	&-number {
+		padding: 30px 0;
+
+		dl {
+			width: 508px;
+
+			.text_tilde {
+				color: #cfcfcf;
+			}
+
+			.mm_attention {
+				margin: 10px 0 0 -5px;
+				color: #7b7b7b;
+				font-size: 12px;
+			}
+		}
+	}
+
+	&-code {
+		padding: 30px 0;
+		border: 1px solid #e1e1e1;
+		border-width: 1px 0;
+		background: #f7f7f7;
+
+		dl {
+			width: 453px;
+
+			.text_attention {
+				margin-top: 10px;
+
+				[class*="__ie1"] & { margin: 12px 0 -2px; }
+
+				strong {
+					margin-left: 3px;
+				}
+			}
+		}
+	}
+
+	.mm_btngroup {
+		margin-top: 26px;
+
+		.mm_btn {
+			margin: 0 3px;
+			width: 200px;
+		}
+	}
+}
+///-- 휴대폰번호변경
+
+/// 영수증보기
+.m-modal-receipt {
+	.mm_formbox {
+		table {
+			border-bottom: 1px solid #e8e8e8;
+
+			tbody {
+				tr {
+					border-color: #e8e8e8;
+
+					th {
+						width: 130px;
+					}
+				}
+			}
+
+			.text_price:after {
+				content: "원";
+			}
+		}
+	}
+
+	tfoot {
+		border-top: 1px solid #e8e8e8;
+		background: #f2f2f2;
+
+		img {
+			width: 93px;
+		}
+
+		p {
+			padding: 13px 15px;
+			font-size: 12px;
+			line-height: 16px;
+			text-align: left;
+
+			[class*="__ie1"] & { padding-top: 15px; padding-bottom: 11px; }
+			.__edge & { padding-top: 14px; padding-bottom: 12px; }
+		}
+	}
+
+	.mm_attention {
+		padding-top: 10px;
+
+		[class*="__ie1"] & { margin-bottom: -2px; padding-top: 12px; }
+	}
+
+	.btn_print {
+		display: block;
+		margin: 23px auto 0;
+		width: 200px;
+
+		[class*="__ie1"] & { padding-top: 3px; }
+		.__edge & { padding-top: 1px; }
+	}
+}
+///-- 영수증보기
+
+/// 네이버 PCS쿠폰
+.m-modal-couponNaver {
+	&.mm_modal-frame {
+		padding-bottom: 82px;
+		width: 290px;
+	}
+
+	h4 {
+		padding: 50px 0 17px;
+		font-size: 22px;
+		text-align: center;
+
+		.logo_naver {
+			margin: 1px 9px 0 0;
+			width: 97px;
+		}
+
+		[class*="__ie1"] & { margin-bottom: -6px; line-height: 28px; }
+	}
+
+	.image_coupon {
+		display: block;
+		margin: 0 auto;
+		width: 156px;
+	}
+
+	.mm_attention {
+		margin: 18px 0 0 9px;
+
+		[class*="__ie1"] & { margin: 19px 0 -1px 9px; }
+	}
+
+	.btn_download {
+		display: block;
+		margin: 26px auto 0;
+		width: 200px;
+
+		.mco_download {
+			margin-left: 9px;
+
+			[class*="__ie1"] & { margin-top: -3px; }
+			.__edge & { margin-top: -1px; }
+		}
+	}
+}
+///-- 네이버 PCS쿠폰
+
+/// 개인정보의위탁현황
+.m-modal-trust {
+	&.mm_modal-frame,
+	.mm_modal-item-inner {
+		width: 400px;
+	}
+
+	.mm_attention {
+		font-size: 13px;
+		line-height: 19px;
+	}
+}
+/// 개인정보의위탁현황

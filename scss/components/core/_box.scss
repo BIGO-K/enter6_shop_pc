@@ -1,0 +1,169 @@
+@charset 'utf-8';
+
+/**
+** 컴포넌트 코어
+** 박스, 컨테이너, 싱커 등 box의 기본 단위
+**/
+
+/// 컨테이너
+// clearfix
+[class*="container"],
+.mm_container {
+	@include clearfix;
+}
+
+// min박스(pc)
+.mm_inner {
+	position: relative;
+	margin: 0 auto;
+	width: $minWidth_base;
+	@include clearfix;
+}
+///-- 컨테이너
+
+/// 기본형
+.mm_box {
+	// 기본형에는 스타일 적용 안함
+	
+	// 인라인블럭
+	&-inline {
+		display: inline-block;
+	}
+
+	// 블럭
+	&-block {
+		display: block;
+	}
+
+	// 왼쪽정렬
+	&-lside {
+		float: left;
+		@include clearfix;
+	}
+
+	// 오른쪽정렬
+	&-rside {
+		float: right;
+		@include clearfix;
+	}
+
+	// 전체영역 플로팅
+	&-full {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: auto;
+		height: auto;
+	}
+
+	// 가변
+	&-fluid {
+		@include fluid-media(100%);
+	}
+
+	// 플렉스컨테이너
+	&-flex {
+		@include flex-container();
+		
+		// 플렉스 column
+		&column {
+			@include flex-container(column);
+			min-height: 100%;
+		}
+
+		// 플렉스 자식요소 사이즈 비율
+		&[class*="_equal_"] {
+			> * {
+				@include prefix(flex, 1, webkit ms);
+				width: auto;
+				height: 100%;
+
+				> a,
+				> button {
+					display: block;
+					width: 100%;
+					text-align: center;
+
+					&:not(.mm_btn) {
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		// 플렉스 자식요소 사이즈 자동
+		&[class*="_auto_"] {
+			> * {
+				@include prefix(flex, auto, webkit ms);
+				width: auto;
+				height: 100%;
+
+				> a,
+				> button {
+					display: block;
+					text-align: center;
+
+					&:not(.mm_btn) {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+///-- 기본형
+
+/// 플렉스 자식요소
+.mm_flex {
+	// 사이즈 비율
+	&-equal {
+		@include prefix(flex, 1, webkit ms);
+	}
+	
+	// 사이즈 자동
+	&-auto {
+		@include prefix(flex, auto, webkit ms);
+	}
+}
+///-- 플렉스 자식요소
+
+/// 싱커(연결자)
+[class^="mm_syncer"],
+[class*=" mm_syncer"] {
+	display: none;
+
+	&[class$="-on"],
+	&[class*="-on "] {
+		display: block;
+
+		@include context-unify(table) {
+			display: table;
+		}
+
+		@include context-unify(tbody) {
+			display: table-row-group;
+		}
+
+		@include context-unify(tr) {
+			display: table-row;
+		}
+
+		@include context-unify(td) {
+			display: table-cell;
+		}
+	}
+}
+///-- 싱커(연결자)
+
+/// 디싱커(연결자/반대속성)
+[class^="mm_desyncer"],
+[class*=" mm_desyncer"] {
+	&[class$="-on"],
+	&[class*="-on "] {
+		display: none;
+	}
+}
+///-- 디싱커(연결자/반대속성)

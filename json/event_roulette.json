@@ -1,0 +1,10 @@
+{
+	"comment": [
+		"login :number - 0 로그인 전 / 1 로그인 후",
+		"chance :number - 0 게임완료 / 1 게임가능",
+		"result :number - 1~6 성공(등록된 순서) / 그 외 실패"
+	],
+	"login": 1,
+	"chance": 1,
+	"result": 1
+}

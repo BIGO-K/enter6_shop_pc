@@ -1,0 +1,511 @@
+@charset 'utf-8';
+
+/**
+** 페이지
+** 이벤트, 혜택, 기획전
+**/
+
+/// 이벤트/혜택 상단영역
+.m-event-jumbotron {
+	@include clearfix;
+
+	[class*="__ie1"] & { margin-top: 2px; }
+
+	// 배너
+	&-banner {
+		float: left;
+		width: 831px;
+		height: 408px;
+		border: 1px solid #b9b9b9;
+
+		a {
+			display: block;
+		}
+
+		.image_banner {
+			width: (831px - 2px);
+			height: (408px - 2px);
+
+			img {
+				height: 100%;
+			}
+		}
+
+		.swiper-pagination {
+			bottom: 15px !important;
+		}
+	}
+
+	// 공지
+	&-notice {
+		float: right;
+		position: relative;
+		margin-left: -1px;
+		padding: 28px 16px 0;
+		width: 270px;
+		height: 408px;
+		border: 1px solid #b9b9b9;
+
+		h4 {
+			padding-bottom: 8px;
+			border-bottom: 1px solid #999;
+			font-weight: 300;
+			font-size: 19px;
+			letter-spacing: -1px;
+
+			[class*="__ie1"] & { padding: 2px 0 6px; }
+		}
+
+		ul {
+			li {
+				font-size: 12px;
+				line-height: 1.2;
+
+				&:nth-child(n+2) {
+					border-top: 1px solid #e8e8e8;
+				}
+
+				a {
+					padding: 15px 0 13px;
+					max-width: 100%;
+					@include text-ellipsis(1);
+
+					[class*="__ie1"] & { padding: 17px 0 11px; }
+				}
+			}
+		}
+
+		.btn_more {
+			position: absolute;
+			top: 27px;
+			right: 16px;
+			padding: 0 2px;
+			color: #666;
+			font-size: 12px;
+			line-height: 27px;
+
+			[class*="__ie1"] & { line-height: 29px; }
+
+			.mco_link {
+				margin-left: 7px;
+				font-size: 13px;
+				line-height: 23px;
+			}
+		}
+	}
+}
+///-- 이벤트/혜택 상단영역
+
+/// 진행중인이벤트
+.m-event-list {
+	h4 {
+		padding-bottom: 11px;
+		font-weight: 300;
+		font-size: 24px;
+		letter-spacing: -1px;
+
+		[class*="__ie1"] & { padding: 3px 0 8px; }
+	}
+
+	ul {
+		margin: -42px 0 0 -24px;
+
+		li {
+			float: left;
+			margin: 42px 0 0 24px;
+
+			a {
+				display: block;
+				width: 257px;
+			}
+
+			.image_event {
+				width: 257px;
+				height: 257px;
+			}
+
+			figcaption {
+				margin-top: 13px;
+				text-align: center;
+
+				[class*="__ie1"] & { margin-top: 15px; margin-bottom: -2px; }
+
+				.text_event {
+					height: 40px;
+					font-size: 16px;
+					line-height: 20px;
+					@include text-ellipsis(2);
+				}
+
+				.text_date {
+					display: block;
+					margin-top: 12px;
+					color: #777;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}
+///-- 진행중인이벤트
+
+/// 기획전/이벤트제목
+.m-promo-title {// 출석체크,댓글응모,룰렛이벤트 타이틀에서 extend 공통사용
+	position: relative;
+	padding: 55px 0 24px;// 55px 74px 24px 0; 좋아요 또는 공유하기 버튼 추가 시
+	border-bottom: 1px solid #7b7b7b;
+
+	[class*="__ie1"] & { padding: 59px 0 20px; }
+
+	h3 {
+		font-weight: 300;
+		font-size: 26px;
+		line-height: 30px;
+		letter-spacing: -1px;
+	}
+
+	.mm_like {
+		// top: 50%;
+		// right: 20px;
+		// margin-top: -1px;
+	}
+}
+
+.m-event-title {
+	@extend .m-promo-title;
+}
+///-- 기획전/이벤트제목
+
+.m-promo-detail {
+	font-size: 16px;
+	line-height: 1.35;
+}
+
+/// 기획전앵커
+.m-promo-anchor {
+	margin-top: 48px;
+
+	&-inner {
+		border: 1px solid #cfcfcf;
+		width: $minWidth_base;
+		background: #fff;
+
+		.__anchor-sticky & {
+			position: fixed;
+			z-index: 1;
+			top: 0;
+		}
+	}
+
+	li {
+		float: left;
+
+		@include context-first('[class*="_equal2_"]') {
+			width: 50%;
+		}
+
+		@include context-first('[class*="_equal3_"]') {
+			width: 33.333333%;
+		}
+
+		@include context-first('[class*="_equal4_"]') {
+			width: 25%;
+		}
+	}
+
+	a {
+		display: block;
+		position: relative;
+		height: 46px;
+		font-weight: 300;
+		font-size: 15px;
+		line-height: 48px;
+		text-align: center;
+
+		[class*="__ie1"] & { line-height: 50px; }
+
+		&.__on {
+			color: $color_primary_base;
+			font-weight: 500;
+
+			&:after {
+				position: absolute;
+				right: -1px;
+				bottom: -1px;
+				left: -1px;
+				border-top: 3px solid $color_primary_base;
+				content: "";
+			}
+		}
+	}
+}
+///-- 기획전앵커
+
+/// 기획전상품목록
+.m-promo-product {
+	padding-top: 70px;
+
+	h4 {
+		padding-bottom: 10px;
+		border-bottom: 1px solid #000;
+		font-weight: 300;
+		font-size: 21px;
+		letter-spacing: -1px;
+
+		[class*="__ie1"] & { padding: 3px 0 7px; }
+	}
+
+	.mm_product-list {
+		margin-top: 28px;
+	}
+}
+///-- 기획전상품목록
+
+/// 이벤트하단버튼
+.m-promo-btngroup {
+	margin-top: 46px;
+
+	.mm_btn {
+		width: 200px;
+	}
+}
+
+.m-event-btngroup {
+	@extend .m-promo-btngroup;
+}
+///-- 이벤트하단버튼
+
+/// 출석체크이벤트
+.m-event-attendance {
+	background: url("../images/content/event/event_attendance_bg.jpg") no-repeat;
+	font-weight: 500;
+	font-family: $fontFamily_latin;
+
+	&-title {
+		padding-top: 193px;
+		font-size: 0;
+		text-align: center;
+
+		.text_count {
+			display: inline-block;
+			height: 60px;
+			padding-left: 117px;
+			color: #f34e4e;
+			font-size: 38px;
+			line-height: 60px;
+		}
+	}
+
+	&-list {
+		@include clearfix;
+		margin: 36px 132px 0;
+		padding: 1px 0 0 1px;
+
+		li {
+			float: left;
+			margin: -1px 0 0 -1px;
+			width: 168px;
+			height: 168px;
+			border: 1px solid #dadada;
+			background: #fff;
+			text-align: center;
+		}
+
+		.image_stamp {
+			margin-top: 23px;
+			width: 96px;
+			height: 96px;
+			background: url("../images/content/event/event_attendance_stamp.png") no-repeat 0 100%;
+
+			+ span {
+				display: block;
+				padding-top: 7px;
+				color: #212121;
+				font-size: 19px;
+				vertical-align: 0;
+
+				strong {
+					font-size: 26px;
+					vertical-align: 0;
+				}
+			}
+		}
+
+		button {
+			width: 100%;
+			height: 100%;
+
+			.image_stamp {
+				background-position: 0 0;
+
+				+ span {
+					color: #c0c0c0;
+				}
+			}
+		}
+	}
+
+	&-attention {
+		height: 162px;
+	}
+}
+///-- 출석체크이벤트
+
+/// 댓글응모이벤트
+.m-event-reply {
+	border-bottom: 1px solid #999;
+
+	&-entry {
+		padding: 29px 20px 28px;
+		border-bottom: 1px solid #999;
+		background: #f9f9f9;
+		font-size: 14px;
+
+		.text_id {
+			display: inline-block;
+			margin: 0 0 7px 4px;
+			font-weight: 700;
+
+			[class*="__ie1"] & { margin: 2px 0 5px 4px; }
+		}
+
+		.mm_btn {
+			width: 120px;
+		}
+	}
+
+	&-list {
+		border-bottom: 1px solid #cfcfcf;
+		font-size: 14px;
+		font-weight: 500;
+
+		tr {
+			border-bottom: 1px solid #e8e8e8;
+
+			&:last-child {
+				border: 0;
+			}
+		}
+
+		td {
+			padding: 16px 0 12px;
+			text-align: left;
+			line-height: 20px;
+
+			[class*="__ie1"] & { padding: 18px 0 10px; }
+
+			&.text_id {
+				padding: 16px 30px 12px;
+				word-break: break-all;
+
+				[class*="__ie1"] & { padding: 18px 30px 10px; }
+			}
+
+			&.text_date {
+				padding-left: 30px;
+			}
+		}
+	}
+}
+///-- 댓글응모이벤트
+
+/// 룰렛이벤트
+.m-event-roulette {
+	background: url("../images/content/event/event_roulette_bg.jpg") no-repeat;
+
+	&-title {
+		height: 362px;
+	}
+
+	&-tables {
+		position: relative;
+		margin: 0 auto;
+		width: 806px;
+		height: 806px;
+		background: #fff;
+		border-radius: 100%;
+		@include prefix(box-shadow, -1px 1px 16px rgba(#000, 0.7), webkit);
+
+		.image_roulette-arrow {
+			position: absolute;
+			z-index: $zIndex_floating;
+			top: 20px;
+			right: 160px;
+			@include prefix(transform-origin, 37px 37px, webkit ms);
+		}
+
+		.btn_start {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include transform(translate(-50%, -50%));
+
+			&:disabled {
+				&:after {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin: -106px 0 0 -106px;
+					width: 212px;
+					height: 212px;
+					border-radius: 100%;
+					background: rgba(#000, 0.6);
+					content: "";
+				}
+			}
+		}
+
+		.m--tables-wheel {
+			overflow: hidden;
+			height: 100%;
+
+			&:after {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 792px;
+				height: 792px;
+				background: url("../images/content/event/event_roulette_edge.png") no-repeat;
+				content: "";
+				@include transform(translate(-50%,-50%));
+			}
+
+			li {
+				position: absolute;
+				top: 42px;
+				left: 222px;
+				@include prefix(transform-origin, 50% 100%, webkit ms);
+
+				@for $n from 1 through 6 {
+					&:nth-child(#{$n}) {
+					   @include transform(rotate(30deg + ($n - 1) * 60));
+					}
+				}
+			}
+		}
+
+		.m--tables-result {
+			display: none;
+			position: absolute;
+			z-index: $zIndex_floating;
+			top: 19px;
+			left: 19px;
+
+			.btn_close {
+				position: absolute;
+				bottom: 147px;
+				left: 50%;
+				margin-left: -25px;
+				width: 50px;
+				height: 50px;
+
+				.__ie10 & { background: rgba(#000, 0); }
+			}
+		}
+	}
+
+	&-attention {
+		height: 164px;
+	}
+}
+///-- 룰렛이벤트

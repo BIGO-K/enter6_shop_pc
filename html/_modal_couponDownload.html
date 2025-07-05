@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko" class="__mm_modal__">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+	<!-- 소셜태그 -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<!--// 소셜태그 -->
+
+	<title>(팝업) 할인쿠폰 다운받기 - 엔터식스 온라인몰</title>
+
+	<!-- 라이브러리 css -->
+	<link rel="stylesheet" href="../css/libs/fontello-custom.css">
+	<link rel="stylesheet" href="../css/libs/swiper-4.4.6.min.css">
+	<link rel="stylesheet" href="../css/libs/overlayscrollbars-1.6.1.min.css">
+	<link rel="stylesheet" href="../css/libs/pikaday.css">
+
+	<!-- 페이지 css -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/app.css">
+
+	<!-- (D) 스크립트(폴리필, 라이브러리)는 요청을 줄이기 위해 combind + minify를 적용해주세요. -->
+	<!-- 폴리필 스크립트 -->
+	<script src="../js/polyfill/es6-promise.auto-4.2.4.min.js"></script>
+
+	<!-- 라이브러리 스크립트 -->
+	<!-- <script src="../js/libs/webfontloader-1.6.28.min.js"></script> -->
+	<script src="../js/libs/jquery-3.3.1.slim.min.js"></script>
+	<script src="../js/libs/axios-0.18.0.min.js"></script>
+	<script src="../js/libs/underscore-1.9.1.min.js"></script>
+	<script src="../js/libs/load-image.all-2.20.1.min.js"></script>
+	<script src="../js/libs/tweenmax-2.0.2.min.js"></script>
+	<script src="../js/libs/swiper-4.4.6.min.js"></script>
+	<script src="../js/libs/overlayscrollbars-1.6.1.min.js"></script>
+	<script src="../js/libs/moment-2.23.0.min.js"></script>
+	<script src="../js/libs/pikaday-1.8.0.min.js"></script>
+	<script src="../js/libs/sortable-1.6.0.min.js"></script>
+	<!-- <script src="../js/libs/handlebars-4.0.12.min.js"></script> -->
+	<!-- <script src="../js/libs/template7-1.4.0.min.js"></script> -->
+	<!-- <script src="../js/libs/vue-2.5.21.min.js"></script> -->
+	<!-- <script src="../js/libs/autoNumeric-4.1.0.min.js"></script> -->
+	<!-- <script src="../js/libs/chart-2.7.3.min.js"></script> -->
+	<!-- <script src="../js/libs/ckeditor.full-4.10.0/ckeditor.js"></script> -->
+	
+	<!-- 공통 선언 스크립트 -->
+	<script src="../js/app_common.js"></script>
+
+	<!-- (D) 페이지 공통 스크립트는 body 하단, 전용 스크립트는 .mm_page-content 하단에 넣어주세요. -->
+</head>
+<body>
+	<div id="mm_app" class="mm_app">
+		<!-- 스킵 -->
+		<nav class="mm_skip">
+			<ul>
+				<li><a href="#mm_body" data-href="anchor">본문바로가기</a></li>
+			</ul>
+		</nav>
+		<!-- 스킵 -->
+		
+		<!-- 화면 -->
+		<div class="mm_view">
+			<!-- 헤더 -->
+			<div class="mm_header">
+				<h1 class="mm_title"><span>할인쿠폰 다운받기</span></h1>
+				<button type="button" class="btn_modal-close" onclick="mm.modal.close();"><i class="mco_modal-close"></i><span class="mm_ir-blind">모달 닫기</span></button>
+			</div>
+			<!--// 헤더 -->
+
+			<!-- 내용 -->
+			<div id="mm_body" class="mm_page">
+				<div class="mm_scroller" data-scrollbar>
+					<!-- 본문 -->
+					<div class="mm_page-content">
+						<!-- (D) 실제 내용을 추가하는 부분입니다. -->
+						
+						<!-- (D) iframe 모달은 html 요소에 '__mm_modal__' 클래스를 추가합니다. -->
+						<div class="mm_modal-frame m-modal-coupondownload">
+							<div class="mm_board-list">
+								<table>
+									<colgroup>
+										<col style="width:46px">
+										<col style="width:126px">
+										<col>
+										<col style="width:110px">
+										<col style="width:130px">
+										<col style="width:180px">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col">
+												<label class="mm_form-check">
+													<input type="checkbox" name="dev_check-coupon" data-check="{ '_type': 'check_all' }">
+													<b class="mm_box-block">
+														<i class="mco_form-check"></i>
+														<span class="text_label mm_ir-blind">전체선택</span>
+													</b>
+												</label>
+											</th>
+											<th scope="col"><span>쿠폰</span></th>
+											<th scope="col"><span>쿠폰 종류</span></th>
+											<th scope="col"><span>할인율/할인금액</span></th>
+											<th scope="col"><span>쿠폰 조건</span></th>
+											<th scope="col"><span>쿠폰 사용기간</span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<label class="mm_form-check">
+													<input type="checkbox" name="dev_check-coupon">
+													<b class="mm_box-block">
+														<i class="mco_form-check"></i>
+														<span class="text_label mm_ir-blind">선택</span>
+													</b>
+												</label>
+											</td>
+											<td><i class="image_coupon"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/coupon20.png' }" alt="20%할인쿠폰"></i></td>
+											<td><span>20% 할인쿠폰</span></td>
+											<td><span>20%</span></td>
+											<td><span>20,000원 이상<br>구매 시</span></td>
+											<td><span>2018.12.20 ~ 2019.20.20</span></td>
+										</tr>
+										<tr>
+											<td>
+												<label class="mm_form-check">
+													<input type="checkbox" name="dev_check-coupon">
+													<b class="mm_box-block">
+														<i class="mco_form-check"></i>
+														<span class="text_label mm_ir-blind">선택</span>
+													</b>
+												</label>
+											</td>
+											<td><i class="image_coupon"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/coupon10.png' }" alt="10%할인쿠폰"></i></td>
+											<td><span>10% 할인쿠폰</span></td>
+											<td><span>10%</span></td>
+											<td><span>20,000원 이상<br>구매 시</span></td>
+											<td><span>2018.12.20 ~ 2019.20.20</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<button type="button" class="mm_btn __btn_xl__ btn_download"><span>쿠폰 다운받기</span><i class="mco_download"></i></button>
+							<div class="mm_attention">
+								<ul>
+									<li>해당 상품에 사용 가능한 쿠폰 리스트이며, 리스트의 쿠폰은 모두 다운로드 가능합니다</li>
+									<li>다운로드된 쿠폰은 ‘마이페이지 &#62; 나의 쿠폰함’ 메뉴에서 확인 가능하며 주문 시에도 확인하실 수 있습니다</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- 현재 페이지 스크립트 -->
+						<!-- <script src="../js/.js"></script> -->
+					</div>
+					<!--// 본문 -->
+				</div>
+			</div>
+			<!--// 내용 -->
+		</div>
+		<!--// 화면 -->
+		
+		<!-- 공통 페이지 스크립트 -->
+		<script src="../js/app_page-common.js"></script>
+	</div>
+</body>
+</html>

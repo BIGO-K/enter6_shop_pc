@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko" class="__mm_customPop__">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+	<!-- 소셜태그 -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<!--// 소셜태그 -->
+
+	<title>(팝업) 페이백 100% - 엔터식스 온라인몰</title>
+
+	<!-- 라이브러리 css -->
+	<link rel="stylesheet" href="../css/libs/fontello-custom.css">
+	<link rel="stylesheet" href="../css/libs/swiper-4.4.6.min.css">
+	<link rel="stylesheet" href="../css/libs/overlayscrollbars-1.6.1.min.css">
+	<link rel="stylesheet" href="../css/libs/pikaday.css">
+
+	<!-- 페이지 css -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/app.css">
+
+	<!-- (D) 스크립트(폴리필, 라이브러리)는 요청을 줄이기 위해 combind + minify를 적용해주세요. -->
+	<!-- 폴리필 스크립트 -->
+	<script src="../js/polyfill/es6-promise.auto-4.2.4.min.js"></script>
+
+	<!-- 라이브러리 스크립트 -->
+	<!-- <script src="../js/libs/webfontloader-1.6.28.min.js"></script> -->
+	<script src="../js/libs/jquery-3.3.1.slim.min.js"></script>
+	<script src="../js/libs/axios-0.18.0.min.js"></script>
+	<script src="../js/libs/underscore-1.9.1.min.js"></script>
+	<script src="../js/libs/load-image.all-2.20.1.min.js"></script>
+	<script src="../js/libs/tweenmax-2.0.2.min.js"></script>
+	<script src="../js/libs/swiper-4.4.6.min.js"></script>
+	<script src="../js/libs/overlayscrollbars-1.6.1.min.js"></script>
+	<script src="../js/libs/moment-2.23.0.min.js"></script>
+	<script src="../js/libs/pikaday-1.8.0.min.js"></script>
+	<script src="../js/libs/sortable-1.6.0.min.js"></script>
+	<!-- <script src="../js/libs/handlebars-4.0.12.min.js"></script> -->
+	<!-- <script src="../js/libs/template7-1.4.0.min.js"></script> -->
+	<!-- <script src="../js/libs/vue-2.5.21.min.js"></script> -->
+	<!-- <script src="../js/libs/autoNumeric-4.1.0.min.js"></script> -->
+	<!-- <script src="../js/libs/chart-2.7.3.min.js"></script> -->
+	<!-- <script src="../js/libs/ckeditor.full-4.10.0/ckeditor.js"></script> -->
+	
+	<!-- 공통 선언 스크립트 -->
+	<script src="../js/app_common.js"></script>
+
+	<!-- (D) 페이지 공통 스크립트는 body 하단, 전용 스크립트는 .mm_page-content 하단에 넣어주세요. -->
+</head>
+<body>
+	<div id="mm_app" class="mm_app">
+		<!-- 스킵 -->
+		<nav class="mm_skip">
+			<ul>
+				<li><a href="#mm_body" data-href="anchor">본문바로가기</a></li>
+			</ul>
+		</nav>
+		<!-- 스킵 -->
+		
+		<!-- 화면 -->
+		<div class="mm_view">
+
+			<!-- 내용 -->
+			<div id="mm_body" class="mm_page">
+				<div class="mm_scroller" data-scrollbar>
+					<!-- 본문 -->
+					<div class="mm_page-content">
+						<!-- (D) 실제 내용을 추가하는 부분입니다. -->
+						
+						<!-- (D) iframe 모달은 html 요소에 '__mm_modal__' 클래스를 추가합니다. -->
+						<div class="m-custom-popup">
+							<a href="#" target="_blank" title="새 창 열림" onclick="window.open(this.href);$('.btn_popup-close').trigger('click');return false;"><i class="image_banner"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="mm_preload" data-preload="{ '_src': '../images/_sample/notice1.jpg' }" alt="페이백 100% 어쩌고 저쩌고"></i></a>
+						</div>
+						
+						<!-- 현재 페이지 스크립트 -->
+						<script>
+							$(function(){
+								
+								var popupID = 'custom1';// 팝업을 여러 개 노출할 경우 고유 id 지정
+								var popupType = (mm._isIframe) ? 'LAYER_' : 'WINDOW_';// 윈도우팝업, 레이어팝업 구분
+								var $checkToday = $('.m-custom-popup-close').find(':checkbox');
+								
+								// 쿠키 셋팅
+								$checkToday.on('click', function() {
+									
+									if ($checkToday.is(':checked')) mm.cookie.set('IS_HIDE_POPUP_' + popupType + popupID, true, 1, true);// 1일 자정 리셋
+									else mm.cookie.remove('IS_HIDE_POPUP_' + popupType + popupID);
+									
+								});
+		
+								// 팝업 닫기
+								$('.btn_popup-close').on('click', function() {
+									
+									if (mm._isIframe) $('#' + popupID, parent.document).remove();
+									else window.close();
+									
+								});
+		
+							});
+						</script>
+					</div>
+					<!--// 본문 -->
+				</div>
+				<div class="m-custom-popup-close">
+					<div class="mm_box-lside">
+						<label class="mm_form-check">
+							<input type="checkbox">
+							<b class="mm_box-block">
+								<i class="mco_form-check"></i>
+								<span class="text_label">오늘 하루 열지않음</span>
+							</b>
+						</label>
+					</div>
+					<div class="mm_box-rside">
+						<button type="button" class="btn_popup-close"><i class="mco_close"></i><span class="mm_ir-blind">닫기</span></button>
+					</div>
+				</div>
+			</div>
+			<!--// 내용 -->
+		</div>
+		<!--// 화면 -->
+		
+		<!-- 공통 페이지 스크립트 -->
+		<script src="../js/app_page-common.js"></script>
+	</div>
+</body>
+</html>

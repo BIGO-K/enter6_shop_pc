@@ -1,0 +1,416 @@
+@charset 'utf-8';
+
+/**
+** GNB, LNB, 카테고리메뉴, 브레드크럼, 페이지네이션
+**/
+
+/// gnb
+.mm_gnb {
+	height: 60px;
+	font-weight: 500;
+	text-align: center;
+
+	&-inner {
+		display: inline-block;
+
+		li {
+			float: left;
+
+			a {
+				padding: 0 34px;
+				height: 60px;
+				font-size: 17px;
+				line-height: 62px;
+
+				[class*="__ie1"] & { line-height: 66px; }
+			}
+		}
+	}
+}
+///-- gnb
+
+/// lnb
+.mm_lnb {
+	float: left;
+	width: 180px;
+
+	h2 {
+		padding: 66px 0 16px;
+		border-bottom: 2px solid #000;
+		font-weight: 500;
+		font-size: 28px;
+		letter-spacing: -1.5px;
+
+		[class*="__ie1"] & > span { display: inline-block; padding-top: 3px; margin-bottom: -3px; }
+	}
+
+	> ul {
+		margin-top: 31px;
+
+		[class*="__ie1"] & { margin-top: 33px; margin-bottom: -2px; }
+
+		> li {
+			h6 {
+				padding: 22px 0 4px;
+				font-weight: 600;
+				font-size: 18px;
+				letter-spacing: -1px;
+
+				@include context-after(':first-child', 'li') {
+					padding-top: 2px;
+				}
+			}
+			
+			> a {
+				padding: 16px 0 4px;
+				font-size: 18px;
+				letter-spacing: -1px;
+
+				@include context-after(':first-child', 'li') {
+					padding-top: 2px;
+				}
+				
+				&.__lnb-on {
+					color: $color_primary_base;
+				}
+			}
+		}
+
+		ul {
+			> li {
+				> a {
+					display: block;
+					color: #555;
+					font-weight: 600;
+					font-size: 14px;
+					line-height: 24px;
+
+					&.__lnb-on {
+						color: $color_primary_base;
+					}
+				}
+			}
+		}
+	}
+}
+///-- lnb
+
+/// 카테고리메뉴
+.mm_catemenu {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	.btn_catemenu-toggle {
+		padding-left: 42px;
+		height: 34px;
+		color: #202020;
+		font-weight: 500;
+		font-size: 13px;
+		line-height: 36px;
+
+		[class*="__ie1"] & span { padding-top: 1px; }
+		.__edge & span { margin-top: -1px; }
+
+		@include context-after('.__dropdown-on', '.mm_catemenu') {
+			&:before {
+				background: $color_primary_base;
+			}
+
+			.ico_menu {
+				background: transparent;
+
+				&:before {
+					@include transform(translateY(5px) scale(1.2) rotate(45deg));
+				}
+
+				&:after {
+					@include transform(translateY(-5px) scale(1.2) rotate(-45deg));
+				}
+			}
+		}
+
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 34px;
+			height: 34px;
+			background: #202020;
+			content: "";
+			@include transition(background $time_fast);
+		}
+
+		.ico_menu {
+			position: absolute;
+			top: 16px;
+			left: 9px;
+			width: 16px;
+			height: 1px;
+			background: #fff;
+			@include transition(background $time_fast);
+
+			&:before,
+			&:after {
+				position: absolute;
+				left: 0;
+				width: 16px;
+				border-top: 1px solid #fff;
+				content: "";
+				@include transition(transform $time_fast);
+				@include prefix(transform-origin, 50% 50%, webkit ms);
+			}
+
+			&:before {
+				top: -5px;
+			}
+
+			&:after {
+				bottom: -5px;
+			}
+		}
+	}
+
+	&-item {
+		position: absolute;
+		top: 34px;
+		left: 0;
+		width: $minWidth_base;
+		background: #fff;
+
+		nav {
+			border: 2px solid $color_primary_base;
+
+			> ul {
+				> li {
+					height: auto !important;
+					font-size: 14px;
+
+					&:nth-child(n+2) {
+						border-left: 1px solid #f0f0f0;
+					}
+
+					h6 {
+						background: #fefbfb;
+						text-align: center;
+						
+						> a {
+							display: block;
+							padding: 21px 0 28px;
+						}
+
+						.mm_ico-category {
+							@include transform(scale((42/50)));
+						}
+
+						span {
+							display: block;
+							margin-top: 1px;
+							font-weight: 500;
+							letter-spacing: -1px;
+
+							[class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+						}
+					}
+
+					ul {
+						padding: 11px 0 42px;
+						border-top: 1px solid #f7f7f7;
+
+						[class*="__ie1"] & { padding: 13px 0 40px; }
+
+						a {
+							display: block;
+							padding-left: 12px;
+							line-height: 26px;
+							
+							&:hover,
+							&:focus {
+								color: $color_primary_base;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+///-- 카테고리메뉴
+
+/// 브레드크럼
+.mm_breadcrumb {
+	position: absolute;
+	z-index: 1;
+	top: 28px;
+
+	ol {
+		li {
+			float: left;
+			color: #666;
+			font-size: 0;
+			line-height: 30px;
+
+			.mco_home {
+				font-size: 17px;
+			}
+
+			.mm_form-select {
+				display: inline-block;
+				width: 150px;
+			}
+
+			.mco_next {
+				margin: 0 8px;
+				font-size: 13px;
+
+				[class*="__ie1"] & { margin-top: -1px; }
+			}
+		}
+	}
+	
+	+ .mm_title {
+		padding-top: 80px;
+		
+		[class*="__ie1"] & { padding-top: 84px; }
+	}
+}
+///-- 브레드크럼
+
+/// 페이지네이션
+.mm_pagination {
+	$height_pagination_base: 30px;
+
+	margin-top: 16px;
+	text-align: center;
+	
+	[class*="__ie1"] &, .__edge & { margin-top: 15px; padding-bottom: 1px; }
+
+	.mm_box-inline {
+		position: relative;
+
+		[class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+	}
+
+	li {
+		float: left;
+
+		&:nth-child(n+2) {
+			margin-left: 10px;
+		}
+
+		a {
+			display: block;
+			padding: 0 10px;
+			height: $height_pagination_base;
+			color: #999;
+			font-size: 13px;
+			line-height: $height_pagination_base + 4px;
+			text-align: center;
+
+			&.__page-on {
+				color: $color_primary_base;
+				font-weight: 500;
+			}
+		}
+	}
+
+	[class^="btn_control"] {
+		$width_pagination-control: 24px;
+
+		position: absolute;
+		top: 0;
+		padding: 0 10px;
+		height: $height_pagination_base;
+		color: #666;
+		font-size: 13px;
+		line-height: $height_pagination_base;
+		text-align: center;
+
+		// 처음
+		&.btn_control-first {
+			left: -44px - 36px;
+		}
+
+		// 이전
+		&.btn_control-prev {
+			left: -44px;
+		}
+
+		// 다음
+		&.btn_control-next {
+			right: -44px;
+		}
+
+		// 마지막
+		&.btn_control-last {
+			right: -44px - 36px;
+		}
+
+		&[disabled] {
+			@include opacity(0.4);
+		}
+	}
+}
+///-- 페이지네이션
+
+/// 페이저 (페이지네이션 심플)
+.mm_pager {
+	$height_pager_base: 30px;
+
+	margin-top: 16px;
+	text-align: center;
+
+	.mm_box-inline {
+		position: relative;
+	}
+
+	&-count {
+		padding: 0 10px;
+		color: #999;
+		font-size: 13px;
+		line-height: $height_pager_base + 4px;
+
+		strong {
+			color: $color_primary_base;
+			font-weight: 500;
+		}
+	}
+
+	[class^="btn_control"] {
+		$width_pager-control: 24px;
+
+		position: absolute;
+		top: 0;
+		padding: 0 10px;
+		height: $height_pager_base;
+		color: #666;
+		font-size: 13px;
+		line-height: $height_pager_base;
+		text-align: center;
+
+		// 처음
+		&.btn_control-first {
+			left: -44px - 36px;
+		}
+
+		// 이전
+		&.btn_control-prev {
+			left: -44px;
+		}
+
+		// 다음
+		&.btn_control-next {
+			right: -44px;
+		}
+
+		// 마지막
+		&.btn_control-last {
+			right: -44px - 36px;
+		}
+
+		&[disabled] {
+			@include opacity(0.4);
+		}
+	}
+}
+///-- 페이저 (페이지네이션 심플)

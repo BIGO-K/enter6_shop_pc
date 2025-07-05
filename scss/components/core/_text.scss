@@ -1,0 +1,321 @@
+@charset 'utf-8';
+
+/**
+** 컴포넌트 코어
+** 텍스트, 알림, 대체텍스트, 타이틀, 태그, 플래그, 뱃지
+**/
+
+/// 기본형
+.mm_text {
+	/// 강조
+	&-primary {
+		color: $color_primary_base !important;
+
+		&-light {
+			color: $color_primary_base !important;
+		}
+
+		&-dark {
+			color: $color_primary_base !important;
+		}
+	}
+	&-secondary {
+		color: $color_secondary_base !important;
+	}
+	&-tertiary {
+		color: $color_tertiary_base !important;
+	}
+	///-- 강조
+
+	/// 상태(긍정/부정)
+	&-positive {
+		color: $color_positive_base;
+	}
+	&-negative {
+		color: $color_negative_base;
+	}
+	///-- 상태(긍정/부정)
+
+	/// 없음
+	&-none {
+		padding: 53px 0 51px;
+		font-size: 16px;
+		line-height: 21px;
+		text-align: center;
+
+		[class*="__ie1"] & { margin-bottom: -3px; line-height: 24px; }
+
+		.mco_none {
+			display: block;
+			padding: 3px 0 12px;
+			color: #b9b9b9;
+			font-size: 40px;
+			line-height: 1;
+		}
+
+		// small {
+		// 	display: inline-block;
+		// 	margin-top: 8px;
+		// 	color: #808080;
+		// 	font-size: 14px;
+		// 	line-height: 20px;
+		// }
+	}
+	///-- 없음
+
+	/// 상단 안내
+	&-guide {
+		// padding: 16px 14px;
+		// border-bottom: 1px solid #b9b9b9;
+		// color: #4d556a;
+		// font-size: 14px;
+		// line-height: 18px;
+	}
+	///-- 상단 안내
+
+	/// 말줄임
+	&-ellipsis {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		word-break: break-all;
+
+		br {
+			display: none;
+		}
+	}
+	///-- 말줄임
+
+	/// 쪼개기
+	&-break {
+		word-break: break-all;
+	}
+	///-- 쪼개기
+
+	/// 별점
+	&-star {
+		// font-size: 14px;
+	}
+	///-- 별점
+}
+///-- 기본형
+
+/// 대체텍스트
+.mm_ir {
+	&-blind {
+		@include text-ir(blind);
+	}
+
+	&-indent {
+		@include text-ir();
+	}
+
+	&-wa {
+		@include text-ir(wa);
+	}
+}
+///-- 대체텍스트
+
+/// 페이지제목
+.mm_title {
+	padding: 53px 0 32px;
+	font-weight: 300;
+	font-size: 25px;
+	text-align: center;
+	letter-spacing: -2px;
+
+	[class*="__ie1"] & { margin-bottom: -3px; padding-top: 56px; }
+	
+	// 큰 텍스트 (상품, 브랜드 등)
+	&[class*="_lg_"] {
+		padding: 50px 0 28px;
+		font-weight: 400;
+		font-size: 32px;
+	
+		[class*="__ie1"] & { padding: 54px 0 24px; }
+	}
+
+	strong {
+		display: inline-block;
+		font-weight: 500;
+	}
+
+	small {
+		display: inline-block;
+		margin-left: 6px;
+		vertical-align: 0;
+		font-size: 20px;
+		letter-spacing: -1px;
+	}
+}
+///-- 페이지제목
+
+/// 컨텐츠제목
+.mm_heading {
+	padding: 60px 0 12px;
+	font-size: 20px;
+	letter-spacing: -1px;
+
+	[class*="__ie1"] & > span { display: inline-block; margin-bottom: -3px; padding-top: 3px; }
+
+	strong {
+		display: inline-block;
+		margin-left: 8px;
+
+		[class*="__ie1"] & { margin-top: 3px; margin-bottom: -3px; }
+	}
+
+	small {
+		display: inline-block;
+		margin-left: 10px;
+		vertical-align: 0;
+		color: #7b7b7b;
+		font-size: 13px;
+
+		[class*="__ie1"] & { vertical-align: -2px; }
+	}
+
+	.mm_form-check {
+		margin: -1px 0 0 14px;
+	}
+}
+///-- 컨텐츠제목
+
+/// 소제목
+.mm_strapline {
+	// padding: 46px 0 30px;
+	// font-size: 22px;
+	// text-align: center;
+}
+///-- 소제목
+
+/// 태그
+.mm_tag {
+	display: inline-block;
+	position: relative;
+	padding: 0 6px;
+	height: 20px;
+	background: #fff;
+	color: #666;
+	font-size: 10px;
+	line-height: 22px;
+
+	[class*="__ie1"] & { padding-top: 1px; }
+
+	// 큰사이즈
+	&[class*="_lg_"] {
+		padding: 0 8px;
+		height: 32px;
+		font-size: 14px;
+		line-height: 34px;
+
+		[class*="__ie1"] & { padding-top: 2px; }
+	}
+
+	// 엔터식스온라인몰
+	&[class*="_mall_"] {
+		&:after {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			border: 1px solid #999;
+			content: "";
+		}
+	}
+
+	// 일반상품
+	&[class*="_general_"] {
+		color: #fff;
+		background: #67a09a;
+	}
+
+	// 세일상품
+	&[class*="_sale_"] {
+		color: #fff;
+		background: #e2726b;
+	}
+
+	// 단일상품
+	&[class*="_single_"] {
+		color: #fff;
+		background: #6f83a3;
+	}
+	
+	// 예약상품
+	&[class*="_reserve_"] {
+		color: #fff;
+		background: #917470;
+	}
+
+	// 스윗딜상품
+	&[class*="_deal_"] {
+		color: #fff;
+		background: #dc6f96;
+	}
+	
+	// 주문제작상품
+	&[class*="_custom_"] {
+		color: #fff;
+		background: #82a45d;
+	}
+
+	// 무료배송
+	&[class*="_shipping_"] {
+		color: #fff;
+		background: #777091;
+	}
+
+	// 무료반품
+	&[class*="_return_"] {
+		color: #fff;
+		background: #618b67;
+	}
+
+	// 할인쿠폰
+	&[class*="_discount_"] {
+		color: #fff;
+		background: #ae7196;
+	}
+
+	// 판매자쿠폰
+	&[class*="_seller_"] {
+		color: #fff;
+		background: #e68f60;
+	}
+	
+	// 즉시사용포인트쿠폰
+	&[class*="_usepoint_"] {
+		color: #fff;
+		background: #eda446;
+	}
+	
+	// 심야쿠폰
+	&[class*="_night_"] {
+		color: #fff;
+		background: #4a4c65;
+	}
+}
+///-- 태그
+
+/// 뱃지
+.mm_badge {
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 100%;
+	background: $color_primary_base;
+	color: #fff;
+	text-align: center;
+
+	// 스윗딜
+	&[class*="_deal_"] {
+		width: 52px;
+		height: 52px;
+		font-size: 0;
+		text-indent: -99999px;
+		background-image: url("../images/common/ico_deal.png");
+		background-size: cover;
+	}
+}
+///-- 뱃지

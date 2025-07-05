@@ -1,0 +1,23 @@
+@charset 'utf-8';
+
+/**
+** 페이지
+** 회사소개, 약관, 정책
+**/
+
+/// 약관/정책
+.m-terms {
+    padding: 18px 30px 42px;
+    border: 1px solid #b9b9b9;
+    font-size: 14px;
+    line-height: 20px;
+
+    [class*="__ie1"] & { margin: 2px 0 -2px; }
+
+    .mm_terms-item {
+        margin-top: 17px;
+
+        [class*="__ie1"] & { margin-top: 19px; }
+    }
+}
+///-- 약관/정책

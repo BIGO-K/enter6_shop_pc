@@ -1,0 +1,364 @@
+@charset 'utf-8';
+
+/**
+** 푸터
+**/
+
+/// 푸터영역
+.mm_footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-top: 1px solid #f2f2f2;
+	background: #fff;
+
+	// 공지사항
+	&-notice {
+		padding: 37px 0;
+		background: #f7f7f7;
+
+		section {
+			padding-left: 76px;
+
+			h5 {
+				position: absolute;
+				top: 0;
+				margin-left: -76px;
+				padding-top: 12px;
+				width: 58px;
+				height: 58px;
+				border: 1px solid #000;
+				font-size: 15px;
+				line-height: 17px;
+				text-align: center;
+
+				[class*="__ie1"] & { padding-top: 14px; }
+			}
+		}
+
+		&-list {
+			float: left;
+			width: 430px;
+
+			[class*="__ie1"] & { margin-bottom: -1px; padding-top: 1px; }
+			.__edge & { margin-top: -1px; margin-bottom: 1px; }
+
+			ul {
+				margin: -1px 0 -4px;
+			}
+
+			a {
+				display: block;
+				position: relative;
+				padding-right: 75px;
+				font-size: 14px;
+				line-height: 21px;
+
+				p {
+					@include text-ellipsis(1);
+				}
+
+				.text_date {
+					position: absolute;
+					color: #4f4f4f;
+					top: 0;
+					right: 0;
+				}
+			}
+		}
+
+		&-cs {
+			float: right;
+			width: 503px;
+
+			.text_hours {
+				font-size: 16px;
+
+				[class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+			}
+
+			.text_tel {
+				margin: 9px 0 -2px -3px;
+				font-weight: 700;
+				font-size: 35px;
+				letter-spacing: -1.5px;
+
+				[class*="__ie1"] & { margin-bottom: -6px; padding-top: 4px; }
+
+				.text_tilde {
+					display: inline-block;
+					margin: 13px 0 0 1px;
+					width: 8px;
+					border-top: 4px solid #000;
+					font-size: 0;
+
+					[class*="__ie1"] & { margin-top: 9px; }
+				}
+			}
+
+			.text_add {
+				position: absolute;
+				bottom: 0;
+				margin-left: 192px;
+				font-size: 12px;
+
+				[class*="__ie1"] & { bottom: -2px; }
+
+				a {
+					margin-top: 6px;
+					font-size: 14px;
+
+					[class*="__ie1"] & { margin-top: 6px; }
+
+					.mco_email {
+						margin: -1px 7px 0 1px;
+
+						[class*="__ie1"] & { margin-top: -3px; }
+					}
+				}
+			}
+		}
+	}
+
+	// 메뉴
+	&-menu {
+		padding: 10px 0;
+
+		ul {
+			margin-left: -19px;
+
+			li {
+				float: left;
+
+				a {
+					padding: 0 19px;
+					height: 42px;
+					font-size: 15px;
+					line-height: 44px;
+
+					[class*="__ie1"] & { line-height: 46px; }
+				}
+			}
+		}
+
+		&-family {
+			position: absolute;
+			top: 3px;
+			right: 0;
+			width: 190px;
+		}
+	}
+
+	// 정보
+	&-info {
+		padding: 24px 0 19px;
+		border-top: 1px solid #f2f2f2;
+		color: #666;
+
+		h6 {
+			font-weight: 700;
+			font-size: 19px;
+
+			[class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+		}
+
+		.mm_btn {
+			width: auto;
+
+			.mco_link {
+				margin-left: 6px;
+				@include transform(scale(0.7));
+
+				[class*="__ie1"] & { margin-top: -1px; }
+			}
+		}
+
+		address {
+			margin-top: 5px;
+			font-size: 14px;
+			line-height: 20px;
+
+			[class*="__ie1"] & { margin-top: 7px; margin-bottom: -2px; }
+
+			> span {
+				display: inline-block;
+				margin-right: 12px;
+			}
+
+			.mm_btn {
+				margin: -1px 0 0 5px;
+
+				[class*="__ie1"] & { margin-top: -3px; }
+			}
+		}
+
+		&-ascrow {
+			margin-top: 10px;
+
+			dt {
+				float: left;
+				padding-left: 17px;
+				font-weight: 600;
+				font-size: 13px;
+				background: url("../images/common/nice_ascrow.png") no-repeat;
+
+				[class*="__ie1"] & { margin-bottom: -1px; padding-top: 1px; }
+			}
+
+			dd {
+				float: left;
+				font-size: 12px;
+
+				[class*="__ie1"] & { margin-bottom: -2px; padding-top: 2px; }
+
+				&:before {
+					margin: -1px 10px 0;
+					height: 13px;
+					border-left: 1px solid #c9c9c9;
+					content: "";
+				}
+
+				.mm_btn {
+					margin: -5px 0 -3px 5px;
+
+					[class*="__ie1"] & { margin-top: -7px; }
+				}
+			}
+		}
+
+		.text_copyright {
+			margin-top: 5px;
+			color: #999;
+			font-size: 12px;
+
+			[class*="__ie1"] & { margin: 7px 0 -2px; }
+		}
+
+		&-sns {
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			li {
+				float: left;
+
+				&:nth-child(n+2) {
+					margin-left: 10px;
+				}
+			}
+
+			a {
+				width: 32px;
+				height: 32px;
+				border-radius: 32px;
+				background: #cfcfcf;
+				color: #fff;
+				line-height: 32px;
+				text-align: center;
+
+				&.btn_facebook {
+					font-size: 19px;
+					line-height: 36px;
+
+					[class*="__ie"] & { line-height: 34px; }
+
+					&:hover,
+					&:focus {
+						background: #3d5b9a;
+					}
+				}
+
+				&.btn_instagram {
+					font-size: 14px;
+
+					&:hover,
+					&:focus {
+						background: #d32a6d;
+					}
+				}
+
+				&.btn_blog {
+					font-size: 18px;
+
+					[class*="__ie"] & { line-height: 36px; }
+
+					&:hover,
+					&:focus {
+						background: #fe7024;
+					}
+
+					.mco_sns-blog:before {
+						margin: 2px 0 -2px;
+						font-weight: 800;
+					}
+				}
+
+				&.btn_twitter {
+					font-size: 13px;
+
+					[class*="__ie1"] & { line-height: 30px; }
+
+					&:hover,
+					&:focus {
+						background: #27a2ef;
+					}
+				}
+
+				&.btn_kakaostory {
+					font-size: 14px;
+					line-height: 34px;
+
+					&:hover,
+					&:focus {
+						background: #fbc836;
+					}
+				}
+			}
+		}
+	}
+
+	// 수상
+	&-awards {
+		padding: 15px 0;
+		background: #fafafa;
+		text-align: center;
+
+		ul {
+			display: inline-block;
+
+			li {
+				float: left;
+
+				&:nth-child(n+2) {
+					margin-left: 20px;
+				}
+			}
+		}
+
+		figure {
+			@include clearfix;
+
+			.image_award {
+				float: left;
+				height: 35px;
+
+				img {
+					width: auto;
+					height: 100%;
+				}
+			}
+
+			figcaption {
+				float: left;
+				margin: 4px 0 0 7px;
+				color: #545454;
+				line-height: 14px;
+				text-align: left;
+
+				[class*="__ie1"] & { margin-top: 5px; }
+			}
+		}
+	}
+}
+///-- 푸터영역

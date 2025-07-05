@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko" class="__mm_modal__">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+	<!-- 소셜태그 -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<!--// 소셜태그 -->
+
+	<title>(팝업) 배송지 수정 - 엔터식스 온라인몰</title>
+
+	<!-- 라이브러리 css -->
+	<link rel="stylesheet" href="../css/libs/fontello-custom.css">
+	<link rel="stylesheet" href="../css/libs/swiper-4.4.6.min.css">
+	<link rel="stylesheet" href="../css/libs/overlayscrollbars-1.6.1.min.css">
+	<link rel="stylesheet" href="../css/libs/pikaday.css">
+
+	<!-- 페이지 css -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/app.css">
+
+	<!-- (D) 스크립트(폴리필, 라이브러리)는 요청을 줄이기 위해 combind + minify를 적용해주세요. -->
+	<!-- 폴리필 스크립트 -->
+	<script src="../js/polyfill/es6-promise.auto-4.2.4.min.js"></script>
+
+	<!-- 라이브러리 스크립트 -->
+	<!-- <script src="../js/libs/webfontloader-1.6.28.min.js"></script> -->
+	<script src="../js/libs/jquery-3.3.1.slim.min.js"></script>
+	<script src="../js/libs/axios-0.18.0.min.js"></script>
+	<script src="../js/libs/underscore-1.9.1.min.js"></script>
+	<script src="../js/libs/load-image.all-2.20.1.min.js"></script>
+	<script src="../js/libs/tweenmax-2.0.2.min.js"></script>
+	<script src="../js/libs/swiper-4.4.6.min.js"></script>
+	<script src="../js/libs/overlayscrollbars-1.6.1.min.js"></script>
+	<script src="../js/libs/moment-2.23.0.min.js"></script>
+	<script src="../js/libs/pikaday-1.8.0.min.js"></script>
+	<script src="../js/libs/sortable-1.6.0.min.js"></script>
+	<!-- <script src="../js/libs/handlebars-4.0.12.min.js"></script> -->
+	<!-- <script src="../js/libs/template7-1.4.0.min.js"></script> -->
+	<!-- <script src="../js/libs/vue-2.5.21.min.js"></script> -->
+	<!-- <script src="../js/libs/autoNumeric-4.1.0.min.js"></script> -->
+	<!-- <script src="../js/libs/chart-2.7.3.min.js"></script> -->
+	<!-- <script src="../js/libs/ckeditor.full-4.10.0/ckeditor.js"></script> -->
+	
+	<!-- 공통 선언 스크립트 -->
+	<script src="../js/app_common.js"></script>
+
+	<!-- (D) 페이지 공통 스크립트는 body 하단, 전용 스크립트는 .mm_page-content 하단에 넣어주세요. -->
+</head>
+<body>
+	<div id="mm_app" class="mm_app">
+		<!-- 스킵 -->
+		<nav class="mm_skip">
+			<ul>
+				<li><a href="#mm_body" data-href="anchor">본문바로가기</a></li>
+			</ul>
+		</nav>
+		<!-- 스킵 -->
+		
+		<!-- 화면 -->
+		<div class="mm_view">
+			<!-- 헤더 -->
+			<div class="mm_header">
+				<h1 class="mm_title m-modal-address-title"><span>배송지 수정</span><strong><i class="mco_required" title="필수입력"></i>표시는 필수입력 항목</strong></h1>
+				<button type="button" class="btn_modal-close" onclick="mm.modal.close();"><i class="mco_modal-close"></i><span class="mm_ir-blind">모달 닫기</span></button>
+			</div>
+			<!--// 헤더 -->
+
+			<!-- 내용 -->
+			<div id="mm_body" class="mm_page">
+				<div class="mm_scroller" data-scrollbar>
+					<!-- 본문 -->
+					<div class="mm_page-content">
+						<!-- (D) 실제 내용을 추가하는 부분입니다. -->
+						
+						<!-- (D) iframe 모달은 html 요소에 '__mm_modal__' 클래스를 추가합니다. -->
+						<div class="mm_modal-frame m-modal-address-register">
+							<div class="mm_formbox">
+								<table>
+									<tbody>
+										<tr>
+											<th scope="row"><span>배송지명</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_form-text">
+													<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+													<label>
+														<input type="text" class="textfield"><i class="bg_text"></i>
+														<span class="text_placeholder mm_ir-blind">배송지명</span>
+													</label>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>받는 사람</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_formbox-linked">
+													<div class="mm_form-text __text_auto__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" value="홍길동"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">받는 사람</span>
+														</label>
+													</div>
+													<label class="mm_form-check">
+														<input type="checkbox" checked>
+														<b class="mm_box-block">
+															<i class="mco_form-check"></i>
+															<span class="text_label">기본 배송지로 설정</span>
+														</b>
+													</label>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>휴대폰번호</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_formbox-linked">
+													<div class="mm_form-text __text_shorter__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" maxlength="4" value="010"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">휴대폰번호(앞자리)</span>
+														</label>
+													</div>
+													<span class="text_tilde">-</span>
+													<div class="mm_form-text __text_shorter__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" maxlength="4" value="2222"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">휴대폰번호(가운데자리)</span>
+														</label>
+													</div>
+													<span class="text_tilde">-</span>
+													<div class="mm_form-text __text_shorter__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" maxlength="4" value="3333"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">휴대폰번호(뒷자리)</span>
+														</label>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>추가 연락처</span></th>
+											<td>
+												<div class="mm_formbox-linked">
+													<div class="mm_form-text __text_shorter__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">추가연락처(앞자리)</span>
+														</label>
+													</div>
+													<span class="text_tilde">-</span>
+													<div class="mm_form-text __text_shorter__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">추가연락처(가운데자리)</span>
+														</label>
+													</div>
+													<span class="text_tilde">-</span>
+													<div class="mm_form-text __text_shorter__">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" maxlength="4"><i class="bg_text"></i>
+															<span class="text_placeholder mm_ir-blind">추가연락처(뒷자리)</span>
+														</label>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row"><span>주소</span><i class="mco_required" title="필수입력"></i></th>
+											<td>
+												<div class="mm_formbox-address">
+													<div class="mm_formbox-address-postcode">
+														<div class="mm_form-text">
+															<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+															<label>
+																<input type="text" class="textfield" value="13488" readonly><i class="bg_text"></i>
+																<span class="text_placeholder mm_ir-blind">우편번호</span>
+															</label>
+														</div>
+														<a href="_modal_postcode.html" class="mm_btn __btn_lg_light__ btn_postcode" data-href="{ '_type': 'modal' }"><span>주소찾기</span></a>
+													</div>
+													<div class="mm_form-text">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" value="경기도 성남시 분당구 판교로 331" readonly><i class="bg_text"></i>
+															<span class="text_placeholder">검색주소</span>
+														</label>
+													</div>
+													<div class="mm_form-text">
+														<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+														<label>
+															<input type="text" class="textfield" value="아름방송판교 202호(삼평동)"><i class="bg_text"></i>
+															<span class="text_placeholder">상세주소</span>
+														</label>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="mm_btngroup">
+									<div class="mm_box-inline">
+										<button type="button" class="mm_btn __btn_xl_line__" onclick="mm.modal.close();"><span>취소하기</span></button>
+										<button type="button" class="mm_btn __btn_xl_primary__"><span>수정하기</span></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 현재 페이지 스크립트 -->
+						<!-- <script src="../js/.js"></script> -->
+					</div>
+					<!--// 본문 -->
+				</div>
+			</div>
+			<!--// 내용 -->
+		</div>
+		<!--// 화면 -->
+		
+		<!-- 공통 페이지 스크립트 -->
+		<script src="../js/app_page-common.js"></script>
+	</div>
+</body>
+</html>

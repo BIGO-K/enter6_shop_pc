@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+	<!-- 소셜태그 -->
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<!--// 소셜태그 -->
+
+	<title>이용약관 - 엔터식스 온라인몰</title>
+
+	<!-- 라이브러리 css -->
+	<link rel="stylesheet" href="../css/libs/fontello-custom.css">
+	<link rel="stylesheet" href="../css/libs/swiper-4.4.6.min.css">
+	<link rel="stylesheet" href="../css/libs/overlayscrollbars-1.6.1.min.css">
+	<link rel="stylesheet" href="../css/libs/pikaday.css">
+
+	<!-- 페이지 css -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/app.css">
+
+	<!-- (D) 스크립트(폴리필, 라이브러리)는 요청을 줄이기 위해 combind + minify를 적용해주세요. -->
+	<!-- 폴리필 스크립트 -->
+	<script src="../js/polyfill/es6-promise.auto-4.2.4.min.js"></script>
+
+	<!-- 라이브러리 스크립트 -->
+	<!-- <script src="../js/libs/webfontloader-1.6.28.min.js"></script> -->
+	<script src="../js/libs/jquery-3.3.1.slim.min.js"></script>
+	<script src="../js/libs/axios-0.18.0.min.js"></script>
+	<script src="../js/libs/underscore-1.9.1.min.js"></script>
+	<script src="../js/libs/load-image.all-2.20.1.min.js"></script>
+	<script src="../js/libs/tweenmax-2.0.2.min.js"></script>
+	<script src="../js/libs/swiper-4.4.6.min.js"></script>
+	<script src="../js/libs/overlayscrollbars-1.6.1.min.js"></script>
+	<script src="../js/libs/moment-2.23.0.min.js"></script>
+	<script src="../js/libs/pikaday-1.8.0.min.js"></script>
+	<script src="../js/libs/sortable-1.6.0.min.js"></script>
+	<!-- <script src="../js/libs/handlebars-4.0.12.min.js"></script> -->
+	<!-- <script src="../js/libs/template7-1.4.0.min.js"></script> -->
+	<!-- <script src="../js/libs/vue-2.5.21.min.js"></script> -->
+	<!-- <script src="../js/libs/autoNumeric-4.1.0.min.js"></script> -->
+	<!-- <script src="../js/libs/chart-2.7.3.min.js"></script> -->
+	<!-- <script src="../js/libs/ckeditor.full-4.10.0/ckeditor.js"></script> -->
+
+	<!-- 공통 선언 스크립트 -->
+	<script src="../js/app_common.js"></script>
+
+	<!-- (D) 페이지 공통 스크립트는 body 하단, 전용 스크립트는 .mm_page-content 하단에 넣어주세요. -->
+</head>
+<body>
+	<div id="mm_app" class="mm_app">
+		<!-- 스킵 -->
+		<nav class="mm_skip">
+			<ul>
+				<li><a href="#mm_body" data-href="anchor">본문바로가기</a></li>
+			</ul>
+		</nav>
+		<!-- 스킵 -->
+
+		<!-- 화면 -->
+		<div class="mm_view">
+			<!-- 헤더 -->
+			<div class="mm_header">
+				<div class="mm_header-top">
+					<div class="mm_inner mm_container">
+						<div class="mm_box-rside">
+							<ul>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>로그인</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>회원가입</span></a></li>
+								<!-- <li><a href="#" data-href="{ '_type': 'link' }"><span>로그아웃</span></a></li> -->
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>고객센터</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="mm_inner">
+					<h1><a href="#" data-href="{ '_type': 'link' }"><span class="mm_ir-blind">엔터식스 온라인몰</span></a></h1>
+
+					<!-- 헤더 검색 -->
+					<div class="mm_header-search">
+						<a href="#mm_search" class="btn_search">
+							<span class="mm_ir-blind">검색하기</span>
+							<ul>
+								<li><span>인기검색어</span></li>
+								<li><span>최근검색어</span></li>
+							</ul>
+						</a>
+						<!-- (D) 키워드배너는 돋보기를 클릭할 때만 링크가 이동됩니다. -->
+						<div class="mm_header-search-keyword">
+							<span>로엠/테이트 오늘만 착한가격! 득템하러 바로가기</span>
+							<a href="#" data-href="{ '_type': 'link' }"><i class="mco_search"></i><span class="mm_ir-blind">바로가기</span></a>
+						</div>
+
+						<div id="mm_search" class="mm_search">
+							<div class="mm_inner">
+								<div class="mm_search-form">
+									<div class="mm_form-text">
+										<button type="button" class="btn_text-clear"><i class="mco_form-clear"></i><span class="mm_ir-blind">지우기</span></button>
+										<label>
+											<input type="text" id="dev_search-keyword" class="textfield"><i class="bg_text"></i>
+											<span class="text_placeholder mm_ir-blind">검색어</span>
+										</label>
+									</div>
+									<button type="button" class="btn_submit"><i class="mco_search"></i><span class="mm_ir-blind">검색하기</span></button>
+
+									<script>
+										$(function() {
+
+											// (D) 검색어 자동완성영역 노출 샘플로 수정해서 적용해주세요.
+											$('#dev_search-keyword').on('keyup change', function() {
+
+												var $autocomplete = $('.mm_search-autocomplete');
+												if ($.trim($(this).val()).length > 0) $autocomplete.addClass('__autocomplete-on');
+												else $autocomplete.removeClass('__autocomplete-on');
+
+											});
+
+										});
+									</script>
+								</div>
+
+								<!-- 검색자동완성 -->
+								<div class="mm_search-autocomplete">
+									<!-- (D) 최대 10개까지 노출합니다. -->
+									<div class="mm_search-autocomplete-list">
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>후드 <strong class="mm_text-primary">아</strong>노락</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>하이넥 알파카</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>캡틴 <strong class="mm_text-primary">아</strong>메리카</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>지미추 맨 <strong class="mm_text-primary">아</strong>이스</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>웨스트우드 알래스카</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스오리지널</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스 운동화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스 슈퍼스타</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스 블랙</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>운동화 <strong class="mm_text-primary">아</strong>디다스</span></a></li>
+										</ul>
+									</div>
+
+									<section class="mm_search-autocomplete-category">
+										<h6><span>추천 카테고리</span></h6>
+										<!-- (D) 최대 4개까지 노출합니다. -->
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>유니섹스/진 캐주얼 &#62; 티셔츠 &#62; 기본/라운드/브이넥 티셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠/레저 &#62; <strong class="mm_text-primary">아</strong>웃도어 &#62; 남성의류 &#62; 긴바지</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠/레저 &#62; 스포츠슈즈 &#62; 남성스포츠슈즈 &#62; 운동화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠/레저 &#62; <strong class="mm_text-primary">아</strong>웃도어 &#62; 여성의류 &#62; 자켓/점퍼/바람막이</span></a></li>
+										</ul>
+									</section>
+
+									<section class="mm_search-autocomplete-brand">
+										<h6><span>추천 브랜드</span></h6>
+										<!-- (D) 최대 8개까지 노출합니다. -->
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>엠포리오 알마니</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>나보노</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>장프로보카퇴르</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>이러브플랫</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>이에이엠제이</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>네타</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>케이드코드</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span><strong class="mm_text-primary">아</strong>이엠</span></a></li>
+										</ul>
+									</section>
+								</div>
+								<!--// 검색자동완성 -->
+
+								<!-- 검색어목록 -->
+								<div class="mm_search-list">
+									<div class="mm_search-list-inner">
+										<section>
+											<h6><span>인기 검색어</span></h6>
+											<ol>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>로엠</span><i class="mco_rank-up" title="순위상승"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>쉬즈미스</span><i class="mco_rank-down" title="순위하락"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>잇미샤</span><i class="mco_rank-unchanged" title="순위변동없음"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>푸마</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>뉴에라</span><i class="mco_rank-unchanged" title="순위변동없음"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>SOUP</span><i class="mco_rank-down" title="순위하락"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>후드짚업</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>라인에디션</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>게스</span><i class="mco_rank-up" title="순위상승"></i></a></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>더아이잗</span><i class="mco_rank-new" title="신규진입"></i></a></li>
+											</ol>
+										</section>
+
+										<section>
+											<h6><span>최근 검색어</span></h6>
+											<ul>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>아디다스</span></a><button type="button" class="btn_remove"><i class="mco_remove __mco_circle__"></i><span class="mm_ir-blind">삭제</span></button></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>나이키에어맥스97</span></a><button type="button" class="btn_remove"><i class="mco_remove __mco_circle__"></i><span class="mm_ir-blind">삭제</span></button></li>
+												<li><a href="#" data-href="{ '_type': 'link' }"><span>숏패딩점퍼</span></a><button type="button" class="btn_remove"><i class="mco_remove __mco_circle__"></i><span class="mm_ir-blind">삭제</span></button></li>
+											</ul>
+											<button type="button" class="mm_btn __btn_line_transparent__ btn_remove-all"><i class="mco_trash"></i><span>검색기록 전체 삭제</span></button>
+											<p class="mm_text-none">최근 검색어가 없습니다</p>
+										</section>
+									</div>
+								</div>
+								<!--// 검색어목록 -->
+
+								<div class="mm_search-menu">
+									<ul>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_cs"></i><span>고객센터</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_mypage"></i><span>마이페이지</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_order"></i><span>주문/배송조회</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_return"></i><span>취소/반품/교환</span><i class="mco_link __mco_sm__"></i></a></li>
+										<li><a href="#" data-href="{ '_type': 'link' }"><i class="mco_inquiry"></i><span>1:1 문의하기</span><i class="mco_link __mco_sm__"></i></a></li>
+									</ul>
+								</div>
+
+								<button type="button" class="btn_search-close"><i class="mco_close"></i><span class="mm_ir-blind">검색창 닫기</span></button>
+							</div>
+						</div>
+						<!--// 전체 검색영역 -->
+					</div>
+					<!--// 헤더 검색 -->
+
+					<!-- gnb -->
+					<nav class="mm_gnb">
+						<div class="mm_gnb-inner">
+							<ul>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>베스트</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span style="color:#e71d3e;">롱패딩DAY</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>스윗딜</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>엔터식스 NOW</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>이벤트/혜택</span></a></li>
+							</ul>
+						</div>
+					</nav>
+					<!--// gnb -->
+
+					<div class="mm_header-quick">
+						<ul>
+							<li>
+								<a href="#" data-href="{ '_type': 'link' }">
+									<i class="mco_cart"><strong class="text_badge">2</strong></i>
+									<span>장바구니</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" data-href="{ '_type': 'link' }">
+									<i class="mco_mypage"></i>
+									<span>마이페이지</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- 카테고리메뉴 -->
+					<div class="mm_dropdown mm_catemenu">
+						<button type="button" class="btn_dropdown btn_catemenu-toggle" title="펼쳐보기"><i class="ico_menu"></i><span>전체 카테고리</span></button>
+						<div class="mm_dropdown-item mm_catemenu-item">
+							<nav class="mm_dropdown-item-inner">
+								<ul class="mm_box-flex __flex_equal__">
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_woman__"></i><span>여성패션</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>티셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>블라우스/셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>팬츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스커트</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>원피스</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>니트/가디건</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>자켓</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>점퍼</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>코트</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>베스트/조끼</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_man__"></i><span>남성패션</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>티셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>셔츠/남방</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>팬츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>정장</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>니트/가디건</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>베스트</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>자켓</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>점퍼</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>코트</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_unisex__"></i><span>유니섹스/진 캐주얼</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>티셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>셔츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>원피스/스커트</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>팬츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>데님팬츠</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>니트/가디건</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>자켓</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>점퍼</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>코트</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_underware__"></i><span>언더웨어</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>여성언더웨어</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>남성언더웨어</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>커플언더웨어</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_kids__"></i><span>키즈/베이비</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>신생아의류</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>유아의류</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>아동의류</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_leisure__"></i><span>스포츠/레저</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠의류</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠슈즈</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>스포츠가방/잡화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>아웃도어</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>캠핑</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>골프의류/용품</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_style__"></i><span>잡화/명품/뷰티</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>패션슈즈</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>핸드백/잡화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>기타액세서리</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>뷰티</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>해외명품</span></a></li>
+										</ul>
+									</li>
+									<li>
+										<h6><a href="#" data-href="{ '_type': 'link' }"><i class="mm_ico-category __ico_life__"></i><span>라이프스타일</span></a></h6>
+										<ul>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>홈데코</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>주방/욕실</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>가전/가구</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>문구/생활잡화</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>취미</span></a></li>
+											<li><a href="#" data-href="{ '_type': 'link' }"><span>푸드</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<!--// 카테고리메뉴 -->
+				</div>
+			</div>
+			<!--// 헤더 -->
+
+			<!-- 내용 -->
+			<div id="mm_body" class="mm_page">
+				<!-- 사이드요소 -->
+				<div class="mm_sidebar">
+					<div class="mm_inner">
+						<div class="mm_sidebar-lside">
+							<!-- 사이드 슬라이드배너 -->
+							<div class="mm_sidebar-banner">
+								<div class="mm_swiper">
+									<div class="mm_swiper-inner">
+										<ul class="swiper-wrapper">
+											<li class="swiper-slide"><a href="#" data-href="{ '_type': 'link' }"><i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_banner1.jpg' }" alt="2018 F/W 메이크업"></i></a></li>
+											<li class="swiper-slide"><a href="#" data-href="{ '_type': 'link' }"><i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_banner1.jpg' }" alt="2018 F/W 메이크업"></i></a></li>
+										</ul>
+									</div>
+									<div class="swiper-count"></div>
+								</div>
+							</div>
+							<!--// 사이드 슬라이드배너 -->
+
+							<!-- 사이드 둥둥배너 -->
+							<div class="mm_sidebar-floating">
+								<a href="#" data-href="{ '_type': 'link' }">
+									<i class="image_banner"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_floating.png' }" alt="마블컬렉션"></i>
+									<i class="image_expand"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/_sample/side_floating_expand.png' }" alt="마블컬렉션"></i>
+								</a>
+								<button type="button" class="btn_hide"><i class="mco_close"></i><span class="mm_ir-blind">배너 숨기기</span></button>
+							</div>
+							<!--// 사이드 둥둥배너 -->
+						</div>
+						<div class="mm_sidebar-rside">
+							<!-- 사이드 바로온 -->
+							<!-- <div class="mm_sidebar-direct"><a href="#" data-href="{ '_type': 'link' }"><span>바로접속</span><strong>OFF</strong></a></div> -->
+							<div class="mm_sidebar-direct __direct-on"><a href="#" data-href="{ '_type': 'link' }"><span>바로접속</span><strong>ON</strong></a></div>
+							<!--// 사이드 바로온 -->
+
+							<!-- 사이드 최근본상품 -->
+							<section class="mm_sidebar-recent">
+								<h6><span>최근 본 상품</span></h6>
+								<div class="mm_swiper" data-swiper="{ 'configs': { 'autoplay': false } }">
+									<div class="mm_swiper-inner">
+										<ul class="swiper-wrapper">
+											<li class="swiper-slide">
+												<ul>
+													<li><a href="#" data-href="{ '_type': 'link' }" title="엠폴헴 남성 멀티스프라이프 포플린 그래픽셔츠"><i class="mm_preload mm_bg-contain image_product" data-preload="{ '_src': '../images/_sample/product_x100_1.jpg' }"></i></a></li>
+													<li><a href="#" data-href="{ '_type': 'link' }" title="반스 18년 인기아이템 슬립온 블랙체크(재입고)"><i class="mm_preload mm_bg-contain image_product" data-preload="{ '_src': '../images/_sample/product_x100_2.jpg' }"></i></a></li>
+												</ul>
+											</li>
+											<li class="swiper-slide">
+												<ul>
+													<li><a href="#" data-href="{ '_type': 'link' }" title="잇미샤 가을신상 리본 포인트 콜라보레이션 블라우스"><i class="mm_preload mm_bg-contain image_product" data-preload="{ '_src': '../images/_sample/product_x100_3.jpg' }"></i></a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+									<div class="swiper-control">
+										<div class="mm_box-inline">
+											<button type="button" class="btn_swiper-prev"><i class="mco_prev __mco_circle__"></i><span class="mm_ir-blind">이전</span></button>
+											<button type="button" class="btn_swiper-next"><i class="mco_next __mco_circle__"></i><span class="mm_ir-blind">다음</span></button>
+										</div>
+									</div>
+								</div>
+							</section>
+							<!--// 사이드 최근본상품 -->
+
+							<a href="#mm_app" class="btn_anchor-top" data-href="{ '_type': 'anchor' }" title="페이지 처음으로 이동"><i class="mco_up __mco_face__"></i><span>UP</span></a>
+							<a href="#mm_footer" class="btn_anchor-bottom" data-href="{ '_type': 'anchor' }" title="페이지 마지막으로 이동"><i class="mco_down __mco_face__"></i><span>DOWN</span></a>
+						</div>
+					</div>
+				</div>
+				<!--// 사이드요소 -->
+
+				<!-- 본문 -->
+				<div class="mm_page-content">
+					<!-- (D) 실제 내용을 추가하는 부분입니다. -->
+
+					<div class="mm_inner">
+						<h3 class="mm_title __title_lg__"><span>이용약관</span></h3>
+
+						<div class="mm_terms m-terms">
+							<p><span>엔터식스 패션쇼핑몰 전자상거래(인터넷사이버몰) 표준약관 - 표준약관 제 10023호</span></p>
+							<article class="mm_terms-item">
+								<h4>제1조(목적)</h4>
+								<ul>
+									<li><p>이 약관은 주식회사 엔터식스 패션쇼핑몰 (이하 “회사”라 한다)에서 운영하는 인터넷 사이트[엔터식스 온라인몰www.enter6.co.kr)에서 제공하는 인터넷 관련 서비스(이하 ”서비스”라 한다)를 이용함에 있어 “회사”와 이용자의 권리와 의무 및 책임사항을 규정함을 목적으로 합니다.</p></li>
+									<li><p>* 「PC통신, 스마트폰(아이폰, 안드로이드폰등) 모바일 어플리케이션, 기타 무선등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다」</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제2조(정의)</h4>
+								<ul>
+									<li>
+										<dl>
+											<dt>① “엔터식스 온라인몰"이란 “회사”가 재화 또는 용역(이하 "재화 등"이라 함)을 “이용자”에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 "재화 등"을 거래할 수 있도록 설정한 가상의 영업장을 말하며 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.</dt>
+											<dd><p>* 엔터식스 온라인몰 현황 (2018년 3월 현재)<p></dd>
+											<dd><p>- 엔터식스 온라인몰(www.enter6.co.kr)</p></dd>
+										</dl>
+									</li>
+									<li><p>② “이용자”란 “엔터식스 온라인몰”에 접속하여 이 약관에 따라 “엔터식스 온라인몰”이 제공하는 서비스를 받는 회원 및 비회원을 의미합니다.</p></li>
+									<li><p>③ “회원”이라 함은 "엔터식스 온라인몰"에 개인정보를 제공하여 회원등록을 한 자로서, "엔터식스 온라인몰"의 정보를 지속적으로 제공받으며, "엔터식스 온라인몰"이 제공하는 서비스를 계속적으로 이용할 수 있는 자를 말합니다.</p></li>
+									<li><p>④ “비회원”이라 함은 회원에 가입하지 않고 "엔터식스 온라인몰"이 제공하는 서비스를 이용하는 자를 말합니다.</p></li>
+									<li><p>⑤ “회사”는 “회원”이 회원등록 시 부여 받은 ID로 “엔터식스 온라인몰”에 자유롭게 접속하기 위해서 엔터식스 온라인몰에 접속을 위한 최소한의 정보를 공유합니다.</p></li>
+									<li><p>⑥ “적립금(포인트)”란 “엔터식스 온라인몰”이 제공하는 서비스를 이용할 때 현금처럼 사용할 수 있는 “회사” 전용의 가상 화폐를 말합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제3조(약관의 명시와 개정)</h4>
+								<ul>
+									<li><p>① "엔터식스 온라인몰"은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호/모사전송번호/전자우편주소, 사업자등록번호, 통신판매업신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 “엔터식스 온라인몰” 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.</p></li>
+									<li><p>② "엔터식스 온라인몰”은 이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회/배송책임/환불조건 등과 같은 중요한 내용을 이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.</p></li>
+									<li><p>③ "엔터식스 온라인몰”은 전자상거래등에서의소비자보호에관한법률, 약관의규제에관한법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진등에관한법률, 소비자보호법 등 관련법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.</p></li>
+									<li><p>④ "엔터식스 온라인몰”이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행 약관과 함께 몰의 초기화면에 그 적용일자 7일 이전부터 적용일자 전일까지 공지합니다. 다만, 이용자에게 불리하게 약관내용을 변경하는 경우에는 최소한 30일 이상의 사전 유예기간을 두고 공지합니다. 이 경우 "엔터식스 온라인몰”은 개정 전 내용과 개정 후 내용을 명확하게 비교하여 이용자가 알기 쉽도록 표시합니다.</p></li>
+									<li><p>⑤ "엔터식스 온라인몰”이 약관을 개정할 경우에는 그 개정 약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정전의 약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정 약관 조항의 적용을 받기를 원하는 뜻을 제3항에 의한 개정약관의 공지기간 내에 "엔터식스 온라인몰”에 송신하여 "엔터식스 온라인몰”의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.</p></li>
+									<li><p>⑥ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래등에서의소비자보호에관한법률, 약관의규제등에관한법률, 공정거래위원회가 정하는 전자상거래등에서의소비자보호지침 및 관계법령 또는 상관례에 따릅니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제4조(서비스의 제공 및 변경)</h4>
+								<ul>
+									<li>
+										<dl>
+											<dt>① "엔터식스 온라인몰”은 다음과 같은 업무를 수행합니다.</dt>
+											<dd><p>1. 재화 또는 용역에 대한 정보 제공 및 구매계약의 체결</p></dd>
+											<dd><p>2. 구매계약이 체결된 재화 또는 용역의 배송</p></dd>
+											<dd><p>3. 기타 "엔터식스 온라인몰”이 정하는 업무</p></dd>
+										</dl>
+									</li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제5조(서비스의 중단)</h4>
+								<ul>
+									<li><p>① "엔터식스 온라인몰”은 컴퓨터 등 정보통신설비의 보수점검ㆍ교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.</p></li>
+									<li><p>② "엔터식스 온라인몰”은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, "엔터식스 온라인몰”이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.</p></li>
+									<li><p>③ 사업종목의 전환, 사업의 포기, 업체간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 "엔터식스 온라인몰”은 제8조에 정한 방법으로 이용자에게 통지하고 당초 "엔터식스 온라인몰”에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, "엔터식스 온라인몰”이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 적립금 등을 "몰"에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제6조(회원가입)</h4>
+								<ul>
+									<li><p>① 이용자는 "엔터식스 온라인몰”이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 회원가입을 신청합니다.</p></li>
+									<li>
+										<dl>
+											<dt>② "엔터식스 온라인몰”은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각호에 해당하지 않는 한 회원으로 등록합니다.</dt>
+											<dd><p>1. 가입신청자가 이 약관 제7조제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 다만 제7조제3항에 의한 회원자격 상실 후 3년이 경과한 자로서 "엔터식스 온라인몰”의 회원재가입 승낙을 얻은 경우에는 예외로 한다.</p></dd>
+											<dd><p>2. 등록 내용에 허위, 기재누락, 오기가 있는 경우</p></dd>
+											<dd><p>3. 기타 회원으로 등록하는 것이 "엔터식스 온라인몰”의 기술상 현저히 지장이 있다고 판단되는 경우</p></dd>
+										</dl>
+									</li>
+									<li><p>③ 회원가입계약의 성립시기는 "엔터식스 온라인몰”의 승낙이 회원에게 도달한 시점으로 합니다.</p></li>
+									<li><p>④ 회원은 제15조제1항에 의한 등록사항에 변경이 있는 경우, 즉시 전자우편 기타 방법으로 "엔터식스 온라인몰”에 대하여 그 변경사항을 알려야 합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제7조(회원 탈퇴 및 자격 상실 등)</h4>
+								<ul>
+									<li><p>① 회원은 "엔터식스 온라인몰”에 언제든지 탈퇴를 요청할 수 있으며 "엔터식스 온라인몰”은 즉시 회원탈퇴를 처리합니다.</p></li>
+									<li>
+										<dl>
+											<dt>② 회원이 다음 각호의 사유에 해당하는 경우, "엔터식스 온라인몰”은 회원자격을 제한 및 정지시킬 수 있습니다.</dt>
+											<dd><p>1. 가입 신청시에 허위 내용을 등록한 경우</p></dd>
+											<dd><p>2. "엔터식스 온라인몰”을 이용하여 구입한 재화등의 대금, 기타 "엔터식스 온라인몰”이용에 관련하여 회원이 부담하는 채무를 기일에 지급하지 않는 경우</p></dd>
+											<dd><p>3. 다른 사람의 "엔터식스 온라인몰” 이용을 방해하거나 그 정보를 도용하는 등 전자상거래 질서를 위협하는 경우</p></dd>
+											<dd><p>4. "엔터식스 온라인몰”을 이용하여 법령 또는 이 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우</p></dd>
+										</dl>
+									</li>
+									<li><p>③ "엔터식스 온라인몰”이 회원 자격을 제한ㆍ정지 시킨후, 동일한 행위가 2회이상 반복되거나 30일이내에 그 사유가 시정되지 아니하는 경우 “엔터식스 온라인몰”은 회원자격을 상실시킬 수 있습니다.</p></li>
+									<li><p>④ “엔터식스 온라인몰”이 회원자격을 상실시키는 경우에는 회원등록을 말소합니다. 이 경우 회원에게 이를 통지하고, 회원등록 말소 전에 최소한 30일 이상의 기간을 정하여 소명할 기회를 부여합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제8조(회원에 대한 통지)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”이 회원에 대한 통지를 하는 경우, 회원이 "엔터식스 온라인몰”와 미리 약정하여 지정한 전자우편 주소로 할 수 있습니다.</p></li>
+									<li><p>② "엔터식스 온라인몰”은 불특정다수 회원에 대한 통지의 경우 1주일이상 "엔터식스 온라인몰” 게시판에 게시함으로서 개별 통지에 갈음할 수 있습니다. 다만, 회원 본인의 거래와 관련하여 중대한 영향을 미치는 사항에 대하여는 개별통지를 합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제9조(구매신청)</h4>
+								<p>"엔터식스 온라인몰” 이용자는 "엔터식스 온라인몰”상에서 다음 또는 이와 유사한 방법에 의하여 구매를 신청하며, "몰"은 이용자가 구매신청을 함에 있어서 다음의 각 내용을 알기 쉽게 제공하여야 합니다. 단, 회원인 경우 제2호 내지 제4호의 적용을 제외할 수 있습니다.</p>
+								<ul>
+									<li><p>1. 재화등의 검색 및 선택</p></li>
+									<li><p>2. 성명, 주소, 전화번호, 전자우편주소(또는 이동전화번호) 등의 입력</p></li>
+									<li><p>3. 약관내용, 청약철회권이 제한되는 서비스, 배송료ㆍ설치비 등의 비용부담과 관련한 내용에 대한 확인</p></li>
+									<li><p>4. 이 약관에 동의하고 위 3호의 사항을 확인하거나 거부하는 표시(예, 마우스 클릭)</p></li>
+									<li><p>5. 재화등의 구매신청 및 이에 관한 확인 또는 "몰"의 확인에 대한 동의</p></li>
+									<li><p>6. 결제방법의 선택</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제10조(계약의 성립)</h4>
+								<ul>
+									<li>
+										<dl>
+											<dt>① “엔터식스 온라인몰”은 제9조와 같은 구매신청에 대하여 다음 각호에 해당하면 승낙하지 않을 수 있습니다. 다만, 미성년자와 계약을 체결하는 경우에는 법정대리인의 동의를 얻지 못하면 미성년자 본인 또는 법정대리인이 계약을 취소할 수 있다는 내용을 고지하여야 합니다.</dt>
+											<dd><p>1. 신청 내용에 허위, 기재누락, 오기가 있는 경우</p></dd>
+											<dd><p>2. 미성년자가 담배, 주류 등 청소년보호법에서 금지하는 재화 및 용역을 구매하는 경우</p></dd>
+											<dd><p>3. 기타 구매신청에 승낙하는 것이 "몰" 기술상 현저히 지장이 있다고 판단하는 경우</p></dd>
+										</dl>
+									</li>
+									<li><p>② "엔터식스 온라인몰”의 승낙이 제12조 제1항의 수신확인통지형태로 이용자에게 도달한 시점에 계약이 성립한 것으로 봅니다.</p></li>
+									<li><p>③ "엔터식스 온라인몰”의 승낙의 의사표시에는 이용자의 구매 신청에 대한 확인 및 판매가능 여부, 구매신청의 정정 취소 등에 관한 정보 등을 포함하여야 합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제11조(대금 지급방법)</h4>
+								<ul>
+									<li>
+										<dl>
+											<dt>① "엔터식스 온라인몰”에서 구매한 재화 또는 용역에 대한 대금지급방법은 다음 각 호의 방법 중 가용한 방법으로 할 수 있습니다. 단, “엔터식스 온라인몰”은 “이용자”의 지급방법에 대하여 재화 등의 대금에 어떠한 명목의 수수료도 추가하여 징수할 수 없습니다.</dt>
+											<dd><p>1. 폰 뱅킹, 인터넷뱅킹등의 각종 계좌이체</p></dd>
+											<dd><p>2. 선불카드, 직불카드, 신용카드 등의 각종 카드 결제</p></dd>
+											<dd><p>3. 온라인무통장입금</p></dd>
+											<dd><p>4. 휴대폰 등 모바일기기를 통한 결제</p></dd>
+											<dd><p>5. “엔터식스 온라인몰”이 지급한 적립금</p></dd>
+										</dl>
+									</li>
+									<li><p>② "엔터식스 온라인몰”의 승낙이 제12조 제1항의 수신확인통지형태로 “이용자”에게 도달한 시점에 계약이 성립한 것으로 봅니다.</p></li>
+									<li><p>③ "엔터식스 온라인몰”의 승낙의 의사표시에는 “이용자”의 구매 신청에 대한 확인 및 판매가능 여부, 구매신청의 정정 취소등에 관한 정보 등을 포함하여야 합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제11조의 2(적립금 서비스)</h4>
+								<ul>
+									<li><p>① "회원”은 적립금을 “엔터식스 온라인몰”에서 재화 등의 구매시 결제수단으로 사용할 수 있으며, “회사”는 적립금의 적립기준, 사용방법, 사용기한 및 제한에 대한 사항을 서비스화면에 별도로 게시하거나 통지합니다. 적립금의 사용조건에 관한 사항은 “회사”의 정책에 따라 달라질 수 있습니다.</p></li>
+									<li><p>② 적립금의 유효기간은 원칙적으로 적립금 지급일로부터 1년이며, 유효기간 동안 사용하지 않을 경우 순차적으로 소멸됩니다</p></li>
+									<li><p>③ “회원”은 적립금을 제3자와 유상으로 거래하거나 현금으로 전환할 수 없습니다.</p></li>
+									<li><p>④ “회사”는 “회원”이 부정한 목적이나 용도로 적립금을 사용할 경우 적립금을 박탈하거나 “회원”자격을 정지할 수 있습니다</p></li>
+									<li><p>⑤ 회원탈퇴시 적립된 적립금 중 미사용한 적립금은 즉시 소멸되며, 탈퇴 후 재가입하더라도 소멸된 적립금은 복구되지 아니합니다.</p></li>
+									<li><p>⑥ 엔터식스 온라인몰의 운영정책에 따라 브랜드몰의 적립금은 독립적으로 운영(적립, 사용, 제한, 소멸)됩니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제12조(수신확인통지, 구매신청 변경 및 취소)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”은 이용자의 구매신청이 있는 경우 이용자에게 수신확인통지를 합니다.</p></li>
+									<li><p>② 수신확인통지를 받은 이용자는 의사표시의 불일치등이 있는 경우에는 수신확인통지를 받은 후 즉시 구매신청 변경 및 취소를 요청할 수 있고 “엔터식스 온라인몰”은 배송전에 이용자의 요청이 있는 경우에는 지체없이 그 요청에 따라 처리하여야 합니다. 다만 이미 대금을 지불한 경우에는 제15조의 청약철회 등에 관한 규정에 따릅니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제13조(재화 등의 공급 및 보관)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”은 이용자와 재화등의 공급시기에 관하여 별도의 약정이 없는 이상, 이용자가 청약을 한 날부터 7일 이내에 재화 등을 배송할 수 있도록 주문제작, 포장 등 기타의 필요한 조치를 취합니다. 다만, “엔터식스 온라인몰”이 이미 재화 등의 대금의 전부 또는 일부를 받은 경우에는 대금의 전부 또는 일부를 받은 날부터 2영업일 이내에 조치를 취합니다. 이때 “엔터식스 온라인몰”은 이용자가 재화등의 공급 절차 및 진행 사항을 확인할 수 있도록 적절한 조치를 합니다.</p></li>
+									<li><p>② “엔터식스 온라인몰”은 이용자가 구매한 재화에 대해 배송수단, 수단별 배송비용 부담자, 수단별 배송기간 등을 명시합니다. 만약 “엔터식스 온라인몰”이 약정 배송기간을 초과한 경우에는 그로 인한 이용자의 손해를 배상하여야 합니다. 다만 “엔터식스 온라인몰”이 고의ㆍ과실이 없음을 입증한 경우에는 그러하지 아니합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제14조(청약철회 등)</h4>
+								<ul>
+									<li><p>① "엔터식스 온라인몰”과 재화등의 구매에 관한 계약을 체결한 이용자는 수신확인의 통지를 받은 날부터 7일 이내에는 청약의 철회를 할 수 있습니다.</p></li>
+									<li>
+										<dl>
+											<dt>② 이용자는 재화 등을 배송 받은 경우 다음 각호의 1에 해당하는 경우에는 반품 및 교환을 할 수 없습니다.</dt>
+											<dd><p>1. 이용자에게 책임 있는 사유로 재화 등이 멸실 또는 훼손된 경우(다만, 재화 등의 내용을 확인하기 위하여 포장 등을 훼손한 경우에는 청약철회를 할 수 있습니다)</p></dd>
+											<dd><p>2. 이용자의 사용 또는 일부 소비에 의하여 재화 등의 가치가 현저히 감소한 경우</p></dd>
+											<dd><p>3. 시간의 경과에 의하여 재판매가 곤란할 정도로 재화등의 가치가 현저히 감소한 경우</p></dd>
+											<dd><p>4. 같은 성능을 지닌 재화등으로 복제가 가능한 경우 그 원본인 재화 등의 포장을 훼손한 경우</p></dd>
+										</dl>
+									</li>
+									<li><p>③ 제2항 제2호 내지 제4호의 경우에 “엔터식스 온라인몰”이 사전에 청약철회 등이 제한되는 사실을 소비자가 쉽게 알 수 있는 곳에 명기하거나 시용상품을 제공하는 등의 조치를 하지 않았다면 이용자의 청약철회등이 제한되지 않습니다.</p></li>
+									<li><p>④ 이용자는 제1항 및 제2항의 규정에 불구하고 재화등의 내용이 표시한 광고 내용과 다르거나 계약내용과 다르게 이행된 때에는 당해 재화등을 공급받은 날부터 3월이내, 그 사실을 안 날 또는 알 수 있었던 날부터 30일 이내에 청약철회 등을 할 수 있습니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제15조(청약철회 등의 효과)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”은 이용자로부터 재화 등을 반환받은 경우 3영업일 이내에 이미 지급받은 재화등의 대금을 환급합니다. 이 경우 “엔터식스 온라인몰”이 이용자에게 재화등의 환급을 지연한 때에는 그 지연기간에 대하여 공정거래위원회가 정하여 고시하는 지연이자율을 곱하여 산정한 지연이자를 지급합니다.</p></li>
+									<li><p>② “엔터식스 온라인몰”은 위 대금을 환급함에 있어서 이용자가 신용카드 또는 전자화폐 등의 결제수단으로 재화등의 대금을 지급한 때에는 지체없이 당해 결제수단을 제공한 사업자로 하여금 재화등의 대금의 청구를 정지 또는 취소하도록 요청합니다.</p></li>
+									<li><p>③ 청약철회 등의 경우 공급받은 재화등의 반환에 필요한 비용은 이용자가 부담합니다. “엔터식스 온라인몰”은 이용자에게 청약철회등을 이유로 위약금 또는 손해배상을 청구하지 않습니다. 다만 재화등의 내용이 표시한 광고 내용과 다르거나 계약내용과 다르게 이행되어 청약철회등을 하는 경우 재화등의 반환에 필요한 비용은 “엔터식스 온라인몰”이 부담합니다.</p></li>
+									<li><p>④ 이용자가 재화등을 제공 받을때 발송비를 부담한 경우에 “엔터식스 온라인몰”은 청약철회시 그 비용을 누가 부담하는지를 이용자가 알기 쉽도록 명확하게 표시합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제16조(개인정보보호)</h4>
+								<ul>
+									<li>
+										<p>① “엔터식스 온라인몰”은 이용자의 정보수집시 구매계약 이행에 필요한 최소한의 정보를 수집합니다. 다음 사항을 필수사항으로 하며 그 외 사항은 선택사항으로 합니다.</p>
+										<dl>
+											<dt>[필수 입력사항]</dt>
+											<dd><p>① 성명 ② 생년월일 ③ 성별 ④ 핸드폰 ⑤ 이메일 ⑥ 아이디 ⑦ 비밀번호 ⑧ 배송지주소</p></dd>
+											<dt>[선택 입력사항]</dt>
+											<dd><p>엔터식스 온라인몰의 각 정책에 따라 입력하시면 됩니다.</p></dd>
+										</dl>
+									</li>
+									<li><p>② “엔터식스 온라인몰”이 이용자의 개인식별이 가능한 개인정보를 수집하는 때에는 반드시 당해 이용자의 동의를 받습니다.</p></li>
+									<li>
+										<dl>
+											<dt>③ 제공된 개인정보는 당해 이용자의 동의없이 목적외의 이용이나 제3자에게 제공할 수 없으며, 이에 대한 모든 책임은 “엔터식스 온라인몰”이 집니다. 다만, 다음의 경우에는 예외로 합니다.</dt>
+											<dd><p>1. 배송업무상 배송업체에게 배송에 필요한 최소한의 이용자의 정보(성명, 주소, 전화번호)를 알려주는 경우</p></dd>
+											<dd><p>2. 통계작성, 학술연구 또는 시장조사를 위하여 필요한 경우로서 특정 개인을 식별할 수 없는 형태로 제공하는 경우</p></dd>
+											<dd><p>3. 재화등의 거래에 따른 대금정산을 위하여 필요한 경우</p></dd>
+											<dd><p>4. 도용방지를 위하여 본인확인에 필요한 경우</p></dd>
+											<dd><p>5. 법률의 규정 또는 법률에 의하여 필요한 불가피한 사유가 있는 경우</p></dd>
+										</dl>
+									</li>
+									<li><p>④ “엔터식스 온라인몰”이 제2항과 제3항에 의해 이용자의 동의를 받아야 하는 경우에는 개인정보관리 책임자의 신원(소속, 성명 및 전화번호, 기타 연락처), 정보의 수집목적 및 이용목적, 제3자에 대한 정보제공 관련사항(제공 받은 자, 제공목적 및 제공할 정보의 내용) 등 정보통신망이용촉진등에관한법률 제22조제2항이 규정한 사항을 미리 명시하거나 고지해야 하며 이용자는 언제든지 이 동의를 철회할 수 있습니다.</p></li>
+									<li><p>⑤ 이용자는 언제든지 “엔터식스 온라인몰”이 가지고 있는 자신의 개인정보에 대해 열람 및 오류정정을 요구할 수 있으며 "몰"은 이에 대해 지체 없이 필요한 조치를 취할 의무를 집니다. 이용자가 오류의 정정을 요구한 경우에는 "몰"은 그 오류를 정정할 때까지 당해 개인정보를 이용하지 않습니다.</p></li>
+									<li><p>⑥ “엔터식스 온라인몰”은 개인정보 보호를 위하여 관리자를 한정하여 그 수를 최소화하며 신용카드, 은행계좌 등을 포함한 이용자의 개인정보의 분실, 도난, 유출, 변조 등으로 인한 이용자의 손해에 대하여 모든 책임을 집니다.</p></li>
+									<li>
+										<p>⑦ "엔터식스 온라인몰” 또는 그로부터 개인정보를 제공받은 제3자는 개인정보의 수집목적 또는 제공받은 목적을 달성한 때에는 당해 개인정보를 지체 없이 파기합니다.</p>
+										<dl>
+											<dt>[개인정보관리책임자]</dt>
+											<dd><p>- 성 명: 김경원</p></dd>
+											<dd><p>- 소속부서: e-전략부문장</p></dd>
+											<dd><p>- 전자우편: help@enter6.co.kr</p></dd>
+											<dd><p>- 전화번호: 02-511-8588(202)</p></dd>
+
+											<dt>[개인정보보호 담당부서]</dt>
+											<dd><p>- 소속부서: 전략팀</p></dd>
+											<dd><p>- 전자우편: help@enter6.co.kr</p></dd>
+											<dd><p>- 전화번호: 1566-6222</p></dd>
+										</dl>
+									</li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제17조(엔터식스 온라인몰 의무)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”은 법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며 이 약관이 정하는 바에 따라 지속적이고, 안정적으로 재화ㆍ용역을 제공하는데 최선을 다하여야 합니다.</p></li>
+									<li><p>② “엔터식스 온라인몰”은 이용자가 안전하게 인터넷 서비스를 이용할 수 있도록 이용자의 개인정보(신용정보 포함)보호를 위한 보안 시스템을 갖추어야 합니다.</p></li>
+									<li><p>③ “엔터식스 온라인몰”이 상품이나 용역에 대하여 「표시ㆍ광고의공정화에관한법률」 제3조 소정의 부당한 표시ㆍ광고행위를 함으로써 이용자가 손해를 입은 때에는 이를 배상할 책임을 집니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제18조(회원의 ID 및 비밀번호에 대한 의무)</h4>
+								<ul>
+									<li><p>① 제17조의 경우를 제외한 ID와 비밀번호에 관한 관리책임은 회원에게 있습니다.</p></li>
+									<li><p>② 회원은 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는 안됩니다.</p></li>
+									<li><p>③ 회원이 자신의 ID 및 비밀번호를 도난당하거나 제3자가 사용하고 있음을 인지한 경우에는 바로 "엔터식스 온라인몰”에 통보하고 "엔터식스 온라인몰”의 안내가 있는 경우에는 그에 따라야 합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제19-1조(이용자의 의무)</h4>
+								<dl>
+									<dt>이용자는 다음 행위를 하여서는 안됩니다.</dt>
+									<dd><p>1. 신청 또는 변경시 허위 내용의 등록</p></dd>
+									<dd><p>2. 타인의 정보 도용</p></dd>
+									<dd><p>3. "엔터식스 온라인몰”에 게시된 정보의 변경</p></dd>
+									<dd><p>4. “엔터식스 온라인몰”이 정한 정보 이외의 정보(컴퓨터 프로그램 등) 등의 송신 또는 게시</p></dd>
+									<dd><p>5. "엔터식스 온라인몰” 기타 제3자의 저작권 등 지적재산권에 대한 침해</p></dd>
+									<dd><p>6. "엔터식스 온라인몰” 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위</p></dd>
+									<dd><p>7. 외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 몰에 공개 또는 게시하는 행위</p></dd>
+								</dl>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제19-2조(해외배송서비스)</h4>
+								<p>해외배송이용약관.</p>
+								<ul>
+									<li>
+										<dl>
+											<dt>① 회사는 회사와 업무제휴관계에 있는 해외배송망을 통하여 매매계약이 체결된 상품의 해외 배송절차를 조력하는 서비스를 제공하며, 해외배송의 단계는 다음 각 호와 같이 구분됩니다.</dt>
+											<dd><p>1. 국내배송단계 : 이용자가 구매한 상품이 회사와 업무제휴관계에 있는 제3자의 물류센터로 입고되는 시점까지의 단계</p></dd>
+											<dd><p>2. 해외배송단계 : 물류센터 입고 후 해외배송망을 통하여 수취인에게 배송되기까지의 단계</p></dd>
+										</dl>
+									</li>
+									<li><p>② 해외배송의 경우 배송요청인 상태에서는 언제든지 구매계약 취소가 가능하며, 배송중인 상태에서 이용자 변심에 의한 반품은 이용자가 배송비, 결제취소에 따른 일정수수료를 부담하는 조건으로 가능합니다. 또한 해외배송단계부터는 반품이 불가함을 원칙으로 하되, 해외배송이 완료된 상품이 원시적인 하자가 있는 등의 사유로 인하여 회사가 교환 또는 반품을 승인하는 경우는 예외로 합니다.</p></li>
+									<li><p>③ 회사로부터 반품을 승인 받고자 하는 이용자는 객관적인 입증자료를 회사로 송부하여 상품의 원시적인 하자 등 그 사유를 증명하여야 하고, 상품의 하자 등이 증명된 경우 반품에 소요되는 배송비 등 필요경비는 회사가 부담하는 것으로 합니다.</p></li>
+									<li><p>④ 회사로부터 교환 또는 반품을 승인 받은 경우 이용자는 해외배송 고객센터에 연락한 후, 해당 지역 우체국을 통해 물품을 발송하고, 배송비 등을 증명할 수 있는 서류를 회사에 제공해야 합니다.</p></li>
+									<li><p>⑤ 상품 구매 시 결제한 예상 해외배송비가 실제 소요된 해외배송비보다 부족한 경우에는 이를 추가결제 하여야 배송이 가능합니다. 회사의 계속적인 통보에도 부족한 해외배송비가 6개월 이상 결제되지 않을 경우 해당 상품은 회사에 귀속될 수 있습니다.</p></li>
+									<li><p>⑥ 해외배송 서비스 이용시 배송국가에 따라 발생할 수 있는 관세, 배송국가들이 부과하는 제세금 등 기타비용은 수취인이 부담하여야 합니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제20조(사이트의 연결)</h4>
+								<ul>
+									<li><p>1. "사이트"는 타 사이트에 하이퍼링크(하이퍼링크의 대상에는 문자, 그림 및 동화상 등이 포함됨)방식 등에 의해 연결시킬 수 있습니다.</p></li>
+									<li><p>2. “회사”는 이용자가 해당 연결사이트와 독자적으로 상품 또는 용역을 거래한 행위에 대해서는 아무런 책임을 부담하지 않습니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제21조(저작권 등 지적재산권 관련사항)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”이 작성한 저작물에 대한 저작권 기타 지적재산권은 "엔터식스 온라인몰”에 귀속합니다.</p></li>
+									<li><p>② 이용자는 “엔터식스 온라인몰”을 이용함으로써 얻은 정보 중 “엔터식스 온라인몰”에게 저작권 등 지적재산권이 귀속된 정보를 “엔터식스 온라인몰”의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하는 등으로 “엔터식스 온라인몰”의 저작권 등 지적재산권을 침해하여서는 안됩니다.</p></li>
+									<li><p>③ “엔터식스 온라인몰”의 약정에 따라 이용자에게 귀속된 저작권을 사용하는 경우 당해 이용자에게 통보하여야 합니다.</p></li>
+									<li><p>④ “이용자”가 “엔터식스 온라인몰”에 이미지 파일 등을 스크랩하여 게시하였다가 당해 이미지 파일 등에 관한 저작권 등 지적재산권을 보유한 자가 “엔터식스 온라인몰”에게 위 게시행위에 관하여 소명자료를 갖추어 이의를 제기한 경우, “엔터식스 온라인몰”은 즉시 당해 이미지 파일 등을 삭제할 수 있습니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제22조(게시물)</h4>
+								<ul>
+									<li><p>① 게시물이라 함은 서비스 게시판에 회원이 올린 글, 서비스의 질문과 대답 등을 포함합니다.</p></li>
+									<li><p>② “회원”이 게시하는 정보 및 질문과 답변 등으로 인해 발생하는 손실이나 문제는 전적으로 “회원” 개인의 판단에 따른 책임이며, 회사의 고의가 아닌 한 회사는 이에 대하여 책임지지 않습니다.</p></li>
+									<li><p>③ “회원”은 공공질서나 미풍양속에 위배되는 내용과 타인의 저작권을 포함한 지적재산권및 기타 권리를 침해하는 내용물에 대하여는 등록할 수 없으며, 만일 이와 같은 내용의 게시물로 인해 발생하는 결과에 대한 모든 책임은 회원 본인에게 있습니다.</p></li>
+									<li>
+										<dl>
+											<dt>④ “회사”는 다음에 해당하는 게시물이나 자료를 사전통지 없이 삭제하거나 이동 또는 등록거부를 할 수 있습니다.</dt>
+											<dd><p>- 다른 회원 또는 제3자에게 심한 모욕을 주거나 명예를 손상시키는 내용인 경우</p></dd>
+											<dd><p>- 공공질서 및 미풍양속에 위반되는 내용을 유포하거나 링크시비는 경우</p></dd>
+											<dd><p>- 불법복제 또는 해킹을 조장하는 내용인 경우</p></dd>
+											<dd><p>- 영리를 목적으로 하는 광고일 경우</p></dd>
+											<dd><p>- 범죄와 결부된다고 객관적으로 인정되는 내용일 경우</p></dd>
+											<dd><p>- 다른 이용자 또는 제3자의 저작권 등 기타 권리를 침해하는 내용인 경우</p></dd>
+											<dd><p>- 회사에서 규정한 게시물 원칙에 어긋나거나, 게시판 성격에 부합하지 않는 경우</p></dd>
+											<dd><p>- 기타 관계법령에 위배된다고 판단되는 경우</p></dd>
+											<dd><p>- 게시물에 대하여 제3자로부터 저작권 및 기타 권리의 침해 또는 명예훼손, 음란성 등의 이유로 이의가 제기된 경우 회사는 당해 게시물을 임시 삭제할 수 있으며, 이의를 제기한자와 게시물 등록자 간에 소송, 합의 등을 통해 당해 게시물에 관한 법적 문제가 종결된 후 이를 근거로 회사에 신청이 있는 경우에만 상기 임시 삭제된 게시물은 다시 등록될 수 있습니다.</p></dd>
+										</dl>
+									</li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제23조(분쟁해결)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”은 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를 보상처리하기 위하여 피해보상처리기구를 설치ㆍ운영합니다.</p></li>
+									<li><p>② “엔터식스 온라인몰”은 이용자로부터 제출되는 불만사항 및 의견은 우선적으로 그 사항을 처리합니다. 다만, 신속한 처리가 곤란한 경우에는 이용자에게 그 사유와 처리일정을 즉시 통보해 드립니다.</p></li>
+									<li><p>③ "엔터식스 온라인몰”와 이용자간에 발생한 전자상거래 분쟁과 관련하여 이용자의 피해구제신청이 있는 경우에는 공정거래위원회 또는 시, 도지사가 의뢰하는 분쟁조정기관의 조정에 따를 수 있습니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제24조(면책조항)</h4>
+								<ul>
+									<li><p>① “회사”는 기간 통신 사업자의 서비스 중단 및 천재지변, 전쟁 등 불가항력적인 일의 발생으로 인해 서비스의 중단이 있을 경우 이에 대해 면책됩니다.</p></li>
+									<li><p>② “회사”는 회원의 컴퓨터 오작동과 회원이 잘못 등록한 정보에 의하여 발생한 손실에 관하여 면책 됩니다.</p></li>
+									<li><p>③ “회사”는 회원이 게시한 게시물에 대해 사전에 심사 하거나 내용을 검토할 의무가 없으며, 그에 따른 일체의 분쟁에 대해서 면책됩니다.<br>다만, 회사의 고의 또는 과실에 의한 손해발생인 경우에는 면책되지 않습니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제25조 (광고게재 등)</h4>
+								<ul>
+									<li><p>① “회사”는 이용자에게 최상의 서비스를 원활하게 제공하기 위한 재정기반을 마련하기 위하여 상업용 광고를 화면에 게재하거나 이메일 또는 DM(서신) 등을 이용하여 개별 이용자에게 보낼 수 있습니다.<br>단, 수신거절의 의사를 명백히 표시한 이용자에 대해서는 더 이상 이메일 또는 DM(서신) 등을 발송하지 않습니다.</p></li>
+									<li><p>② "회사"는 본 서비스를 통한 광고주의 판촉활동에 회원이 직접 참여함으로써 발생하는 손해에 대하여는 아무런 책임을 부담하지 않습니다.</p></li>
+								</ul>
+							</article>
+							<article class="mm_terms-item">
+								<h4>제26조(재판권 및 준거법)</h4>
+								<ul>
+									<li><p>① “엔터식스 온라인몰”과 이용자간에 발생한 전자거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속 관할로 합니다.<br>다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 아니하거나, 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.”</p></li>
+								</ul>
+							</article>
+						</div>
+					</div>
+
+					<!-- 현재 페이지 스크립트 -->
+					<!-- <script src="../js/.js"></script> -->
+				</div>
+				<!--// 본문 -->
+
+				<!-- 푸터 -->
+				<div id="mm_footer" class="mm_footer">
+					<!-- 푸터 - 공지사항 -->
+					<div class="mm_footer-notice">
+						<div class="mm_inner">
+							<section class="mm_footer-notice-list">
+								<h5><span>공지<br>사항</span></h5>
+								<ul>
+									<li><a href="#" data-href="{ '_type': 'link' }"><p>2018년 10월 신용카드 무이자할부 혜택</p><span class="text_date">2018.10.01</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><p>사이트 정기점검 안내</p><span class="text_date">2018.10.01</span></a></li>
+									<li><a href="#" data-href="{ '_type': 'link' }"><p>네이버페이 내부점검 안내</p><span class="text_date">2018.10.01</span></a></li>
+								</ul>
+							</section>
+							<section class="mm_footer-notice-cs">
+								<h5><span>고객<br>센터</span></h5>
+								<p class="text_hours">AM 10:00 ~ PM 5:00</p>
+								<p class="text_tel">1566 <span class="text_tilde">-</span> 6222</p>
+								<p class="text_add">PM 12:30 ~ PM 1:30 및 주말 제외<br><a href="mailto:help@enter6.co.kr" title="새 창 열림"><i class="mco_email"></i><span>help@enter6.co.kr</span></a></p>
+							</section>
+						</div>
+					</div>
+					<!--// 푸터 - 공지사항 -->
+
+					<!-- 푸터 - 메뉴 -->
+					<div class="mm_footer-menu">
+						<div class="mm_inner">
+							<ul>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>회사소개</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>이용약관</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>개인정보처리방침</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>청소년보호정책</span></a></li>
+								<li><a href="#" data-href="{ '_type': 'link' }"><span>입점신청</span></a></li>
+							</ul>
+							<div class="mm_form-select mm_footer-menu-family">
+								<label>
+									<select>
+										<option value="">Family Site</option>
+									</select>
+									<i class="mco_form-select"></i>
+								</label>
+							</div>
+						</div>
+					</div>
+					<!--// 푸터 - 메뉴 -->
+
+					<!-- 푸터 - 정보 -->
+					<div class="mm_footer-info">
+						<div class="mm_inner">
+							<h6><span>(주)엔터식스 패션쇼핑몰</span></h6>
+							<address>
+								<span>서울특별시 광진구 광나루로 56길 85 37층, 38층, 39층</span>
+								<span>대표이사: 김상대</span>
+								<span>개인정보담당자: 김경원</span><br>
+								<span>사업자등록번호: 120-81-45616</span>
+								<span>통신판매업신고: 2017-서울광진-0523호 <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=&apv_perm_no=2017304019030200523" class="mm_btn __btn_2xs_line_lighter__" title="새 창 열림" onclick="window.open(this.href, '', 'width=750, height=700, menubar=no, status=no, toolbar=no, resizable=yes, scrollbars=auto');return false;"><span>사업자정보확인</span><i class="mco_link"></i></a></span>
+							</address>
+							<dl class="mm_footer-info-ascrow">
+								<dt>NICE구매안전(에스크로)서비스</dt>
+								<dd>안전거래를 위해 나이스페이먼츠 구매안전(에스크로)에 가입하여 서비스를 제공하고 있습니다 <a href="https://pg.nicepay.co.kr/issue/IssueEscrow.jsp?Mid=entersix0m&CoNo=1208145616" class="mm_btn __btn_2xs_line_lighter__" title="새 창 열림" onclick="window.open(this.href, '', 'width=450, height=390, menubar=no, status=no, toolbar=no, resizable=no, scrollbars=auto');return false;"><span>서비스 가입사실 확인</span><i class="mco_link"></i></a></dd>
+							</dl>
+							<p class="text_copyright">&copy; (주)엔터식스 패션쇼핑몰. all rights reserved.</p>
+							<div class="mm_footer-info-sns">
+								<ul>
+									<li><a href="https://www.facebook.com/enter6onlinemall/" class="btn_facebook" target="_blank" title="새 창 열림"><i class="mco_sns-facebook"></i><span class="mm_ir-blind">페이스북</span></a></li>
+									<li><a href="https://www.instagram.com/enter6_onlinemall/" class="btn_instagram" target="_blank" title="새 창 열림"><i class="mco_sns-instagram"></i><span class="mm_ir-blind">인스타그램</span></a></li>
+									<li><a href="http://blog.enter6.co.kr/" class="btn_blog" target="_blank" title="새 창 열림"><i class="mco_sns-blog"></i><span class="mm_ir-blind">블로그</span></a></li>
+									<li><a href="https://twitter.com/Enter_6" class="btn_twitter" target="_blank" title="새 창 열림"><i class="mco_sns-twitter"></i><span class="mm_ir-blind">트위터</span></a></li>
+									<li><a href="https://story.kakao.com/ch/enter6" class="btn_kakaostory" target="_blank" title="새 창 열림"><i class="mco_sns-kakaostory"></i><span class="mm_ir-blind">카카오스토리</span></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--// 푸터 - 정보 -->
+
+					<!-- 푸터 - 수상 -->
+					<div class="mm_footer-awards">
+						<ul>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_icsi.png' }" alt=""></i>
+									<figcaption>2014 대한민국<br>인터넷소통 대상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_wa.png' }" alt=""></i>
+									<figcaption>2014 웹어워드코리아<br>유통분야 최우수상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_kqma.png' }" alt=""></i>
+									<figcaption>2014 한국품질경영<br>우수기업 선정</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_kto.png' }" alt=""></i>
+									<figcaption>한국관광공사<br>국가인증우수쇼핑점</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2014_kba.png' }" alt=""></i>
+									<figcaption>2014 대한민국<br>블로그어워드 대상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2013_ksa.png' }" alt=""></i>
+									<figcaption>2013 대한민국<br>SNS 대상</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_qsc.png' }" alt=""></i>
+									<figcaption>중국관광청<br>서비스품질 인증</figcaption>
+								</figure>
+							</li>
+							<li>
+								<figure>
+									<i class="image_award"><img class="mm_preload" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-preload="{ '_src': '../images/common/award_2009_kea.png' }" alt=""></i>
+									<figcaption>2009 대한민국<br>엔터테인먼트 대상</figcaption>
+								</figure>
+							</li>
+						</ul>
+					</div>
+					<!--// 푸터 - 수상 -->
+				</div>
+				<!--// 푸터 -->
+			</div>
+			<!--// 내용 -->
+		</div>
+		<!--// 화면 -->
+
+		<!-- 공통 페이지 스크립트 -->
+		<script src="../js/app_page-common.js"></script>
+	</div>
+</body>
+</html>

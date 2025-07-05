@@ -1,0 +1,56 @@
+@charset 'utf-8';
+
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/variables';
+
+/**
+** font-face
+** 마지막 파라미터 기본 값은 eot woff2 woff 입니다.
+**/
+
+// $path: '../fonts/';// local
+$path: '//image.enter6.co.kr/data/fonts/shop/pc/';// CDN
+
+/// fontello
+@include font-face('Fontello', $path + 'fontello', 400, woff2 woff);
+
+/// gothic a1
+@include font-face('GothicA1', $path + 'GothicA1-Regular', 400, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-Medium', 500, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-SemiBold', 600, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-Bold', 700, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-ExtraBold', 800, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-Black', 900, woff2 woff);
+// @include font-face('GothicA1', $path + 'GothicA1-Thin', 100, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-ExtraLight', 200, woff2 woff);
+@include font-face('GothicA1', $path + 'GothicA1-Light', 300, woff2 woff);
+
+/// 여기어때 잘난체
+@include font-face('Jalnan', $path + 'YG-JALNAN', 400, woff2 woff);
+
+/// noto sans kr
+// @include font-face('NotoSansKR', $path + 'NotoSansCJKkr-Regular');
+// @include font-face('NotoSansKR', $path + 'NotoSansCJKkr-Thin', 100);
+// @include font-face('NotoSansKR', $path + 'NotoSansCJKkr_light', 300);
+// @include font-face('NotoSansKR', $path + 'NotoSansCJKkr-Medium', 500);
+// @include font-face('NotoSansKR', $path + 'NotoSansCJKkr-Bold', 700);
+// @include font-face('NotoSansKR', $path + 'NotoSansCJKkr-Black', 900);
+
+/// ebrima
+// @include font-face('Ebrima', $path + 'ebrima');
+// @include font-face('Ebrima', $path + 'ebrimabd', 700);
+
+/// roboto
+// @include font-face('Roboto', $path + 'Roboto-Regular');
+// @include font-face('Roboto', $path + 'Roboto-Thin');
+// @include font-face('Roboto', $path + 'Roboto_light');
+// @include font-face('Roboto', $path + 'Roboto-Medium');
+// @include font-face('Roboto', $path + 'Roboto-Bold');
+// @include font-face('Roboto', $path + 'Roboto-Black');
+
+/// spoqa han sans ver.2
+// @include font-face(spoquaHanSans, $path + 'SpoqaHanSans-Regular');
+// @include font-face(spoquaHanSans, $path + 'SpoqaHanSans-Bold', 700);
+// @include font-face(spoquaHanSans, $path + 'SpoqaHanSans_light', 300);
+// @include font-face(spoquaHanSans, $path + 'SpoqaHanSans-Thin', 100);
