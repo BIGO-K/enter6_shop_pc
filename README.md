@@ -1,8 +1,8 @@
 # 엔터6 쇼핑몰 프론트 PC
 + 엔터6 전체 일정  
-	https://docs.google.com/spreadsheets/d/1dKDZv7RbG4iovnJ3IrP_CQicKeuoxjlL6lpu0QsiI3g/edit?pli=1#gid=87448540
+	https://docs.google.com/spreadsheets/
 + 프론트 스토리보드 구글드라이브 경로  
-	https://drive.google.com/drive/u/1/folders/1SAxuZWftIIB3VkaoxMQTYzzQ3QQUMqtH
+	https://drive.google.com/drive/
 + 퍼블리싱 작업 리스트  
 	http://publish.mmonstar.co.kr/enter6/shop_2019/pc/
 + 아톰에서 작업할 경우 **remoteFTP** 를 이용하면 FTP에 바로 업로드됩니다.
@@ -27,9 +27,9 @@
 
 ## DESIGN
 + 디자인 구글드라이브 경로  
-	https://drive.google.com/drive/u/1/folders/1U9LutPoXwC2R8B0uj9s0kwYUPy23GG4B
+	https://drive.google.com/drive/
 + 디자인 IA  
-	https://drive.google.com/drive/u/1/folders/1Dtixy8CmPfcUba_nvltNn89-b8sGi7eX
+	https://drive.google.com/drive/
 <br><br>
 - - -
 
